@@ -19,7 +19,6 @@ public class Bootstrap extends Job {
             for (Locale locale : locales) {
                 String code = locale.getCountry();
         	if (code != "") {
-            	  System.out.println(code);
 	              Country country = new Country(code);
 	              country.save();
               }
@@ -30,5 +29,4 @@ public class Bootstrap extends Job {
         }
         
     }
- 
 }

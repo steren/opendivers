@@ -20,6 +20,24 @@ public class Dive extends Model {
 	public double maxDepth;
 	public long duration;
 	
+	public double airTemperature;
+	public double waterSurfaceTemperature;
+	public double waterBottomTemperature;
+	
+	@ManyToMany
+	public List<DiveType> type;
+	@ManyToOne
+	public WaterType water;
+	
+	/** was it a dive dedicated to training ? */
+	public boolean training;
+	
+	@ManyToOne
+	public Center center;
+	
+	@ManyToMany(mappedBy = "dives", cascade = CascadeType.ALL)
+	public List<Trip> trips;
+	
 	/** divers in this dive who have an account */
 	@ManyToMany(mappedBy = "dives", cascade = CascadeType.ALL)
 	public List<User> userDivers;
@@ -28,4 +46,7 @@ public class Dive extends Model {
 	// TODO
 	//public List<nonUser> otherDivers;
 	
+	public String toString() {
+	    return date.toString();
+	}
 }

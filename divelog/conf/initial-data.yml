@@ -1,0 +1,46 @@
+# Initial data of the website
+# Warning: be sure to use spaces and not tabs in a yml file
+
+# Type of Dive
+
+DiveType(altitude):
+    label: altitude
+
+DiveType(cave):
+    label: cave
+
+DiveType(deep):
+    label: deep
+
+DiveType(drift):
+    label: drift
+
+DiveType(ice):
+    label: ice
+
+DiveType(night):
+    label: night
+
+DiveType(search):
+    label: search
+
+DiveType(wreck):
+    label: wreck
+
+# Type of Water
+
+WaterType(seaocean):
+    label: seaocean
+
+WaterType(lake):
+    label: lake
+
+WaterType(cave):
+    label: cave
+
+WaterType(river):
+    label: river
+
+WaterType(quarry):
+    label: quarry
+

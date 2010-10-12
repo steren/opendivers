@@ -26,4 +26,8 @@ public class Country extends Model {
 		return locale.getDisplayCountry(locale);
 	}
 	
+	public String toString() {
+	    return getName();
+	}
+	
 }
