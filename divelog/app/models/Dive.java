@@ -17,7 +17,7 @@ public class Dive extends Model {
 	@ManyToOne
 	public Spot spot;
 
-	public long maxDepth;
+	public double maxDepth;
 	public long duration;
 	
 	/** divers in this dive who have an account */
