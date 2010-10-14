@@ -29,14 +29,14 @@
 			<div id="signupBox" class="floatingBox" style="display:none;">
 			<h2>&{'signup'}</h2>
 			#{form @Register.registerNew()}
+                <p id="email-field">
+                    <label for="email">&{'email'}</label>
+                    <input type="text" name="email" id="email" value="&{flash.email}" />
+                </p>
                 <p id="username-field">
                     <label for="username">&{'username'}</label>
                     <input type="text" name="username" id="username" value="&{flash.username}" />
                 </p>
-			    <p id="email-field">
-			        <label for="email">&{'email'}</label>
-			        <input type="text" name="email" id="email" value="&{flash.email}" />
-			    </p>    
 			    <p id="password-field">
 			        <label for="password">&{'password'}</label>
 			        <input type="password" name="password" id="password" value="" />

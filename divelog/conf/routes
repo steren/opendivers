@@ -12,5 +12,12 @@ GET     /                                       Application.index
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 
+GET     /register                               Register.RegisterNew
+
+GET     /dives                                  Dives.index
+GET     /dives/create                           Dives.create
+GET     /dive/{<[0-9]+>id}                      Dive.show
+
+
 # Catch all
-*       /{controller}/{action}                  {controller}.{action}
+#*       /{controller}/{action}                  {controller}.{action}
