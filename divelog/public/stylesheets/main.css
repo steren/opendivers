@@ -1,0 +1,8 @@
+#userOptions {
+    float: right;	
+}
+
+.floatingBox {
+    float:right;
+    border : 1px solid black;
+}

@@ -10,6 +10,7 @@
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
         <script src="@{'/public/javascripts/jquery-ui-1.8.5.custom.min.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/main.js'}" type="text/javascript" charset="utf-8"></script>
         #{get 'moreScripts' /}
     </head>
     <body>
@@ -19,13 +20,13 @@
             <a href="@{Secure.logout()}">&{'logout'}</a> 
 		#{/if}
 		#{else}
-            <a href="">&{'signup'}</a>
-            <a href="">&{'login'}</a>
+            <span id="signupLink"><a href="" onclick="return false">&{'signup'}</a></span>
+            <span id="loginLink"><a href="" onclick="return false">&{'login'}</a></span>
 		#{/else}
         </div>
         
         #{if !controllers.Secure.Security.isConnected()}
-			<div id="signup-box">
+			<div id="signupBox" class="floatingBox" style="display:none;">
 			<h2>&{'signup'}</h2>
 			#{form @Register.registerNew()}
                 <p id="username-field">
@@ -43,10 +44,10 @@
 			    <p id="signin-field">
 			    <input type="submit" id="signin" value="&{'signup'}" />
 			    </p>
-			 #{/form}
+			#{/form}
 			</div>
 
-			<div id="#login-box">
+			<div id="loginBox" class="floatingBox" style="display:none;">
 	        <h2>&{'login'}</h2>
 	           #{form @Secure.authenticate()}
 	                <p id="email-field">
