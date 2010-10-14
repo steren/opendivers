@@ -1,0 +1,8 @@
+signup=S'enregistrer
+login=Se connecter
+logout=Se déconnecter
+
+username=Nom d'utilisateur
+email=Email
+password=Mot de passe
+remember=garder en mémoire
