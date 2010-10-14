@@ -16,9 +16,11 @@ GET     /register                               Register.RegisterNew
 
 GET     /dives                                  Dives.index
 GET     /dive/{<[0-9]+>id}                      Dives.show
+GET     /dive/{<[0-9]+>id}/edit                 Dives.edit
 
 GET     /trips                                  Trips.index
 GET     /trip/{<[0-9]+>id}                      Trips.show
+GET     /trip/{<[0-9]+>id}/edit                 Trips.edit
 
 
 # Catch all
