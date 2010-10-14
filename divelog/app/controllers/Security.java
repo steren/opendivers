@@ -14,11 +14,24 @@ public class Security extends Secure.Security {
         Application.index();
     }
 
-    static boolean authenticate(String username, String password) {
-    	User user = User.find("userName=? and password=?", username, Crypto.passwordHash(password)).first();
+    static boolean authenticate(String email, String password) {
+    	System.out.println("AUTHENTICATE");
+    	User user = User.find("email=? and password=?", email, Crypto.passwordHash(password)).first();
     	if (user!=null) {
     		return true;
     	}
     	return false;
+    }
+    
+    static User connectedUser() {
+    	User user = User.find("byEmail", connected()).first();
+    	if (user!=null) {
+    		return user;
+    	}
+    	return null;
+    }
+    
+    static String connectedUserName() {
+    	return connectedUser().userName;
     }
 }

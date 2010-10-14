@@ -16,7 +16,7 @@
     <body>
         <div id="userOptions">
 		#{if controllers.Secure.Security.isConnected()}
-            ${controllers.Secure.Security.connected()}
+            ${controllers.Security.connectedUserName()}
             <a href="@{Secure.logout()}">&{'logout'}</a> 
 		#{/if}
 		#{else}
@@ -51,7 +51,7 @@
 	        <h2>&{'login'}</h2>
 	           #{form @Secure.authenticate()}
 	                <p id="email-field">
-			            <label for="username">&{'email'}</label>
+			            <label for="username">&{'email'}</label> *{ Secure module works using "username", but for us, username is the email }*
 			            <input type="text" name="username" id="username" value="${flash.username}" />
 			        </p>
 			        <p id="password-field">

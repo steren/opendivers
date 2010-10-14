@@ -12,8 +12,8 @@ import java.util.*;
 public class User extends Model {
 	
     public String email;
-    public String password;
     public String userName;
+    public String password;
     public boolean isAdmin;
     
 	/** Date the user created his account */
@@ -29,10 +29,10 @@ public class User extends Model {
 	@ManyToMany(cascade = CascadeType.ALL)
 	public List<User> buddies;
 	
-    public User(String email, String password, String userName) {
+    public User(String email, String userName, String password) {
         this.email = email;
-        this.password = Crypto.passwordHash(password);
         this.userName = userName;
+        this.password = Crypto.passwordHash(password);
     }
     
     /**
