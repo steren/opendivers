@@ -1,351 +1,196 @@
- <div class="row">
-  <div class="label">Date</div>
-  <div class="field">
+<div id="accordion">
+    <h3><a href="#">Basic parameters</a></h3>
+    <div>
+		<div class="row">
+		  <div class="label">Date</div>
+		  <div class="field">
+		      <script type="text/javascript">
+		        $(function() {
+		          $("#date").datepicker({ dateFormat: 'yy-mm-dd' } );
+		        });
+		      </script>
+		      <!-- TODO: date format needs to come from application.conf -->
+		      <input id="date" type="text" name="entity.date" 
+		        value="${entity?.date?.format('yyyy-MM-dd')}"
+		        size="10" />
+		  </div>
+		  <span class="error" style="display:none;">${errors.forKey('entity.date')}</span>
+		</div>
+		
+		 <div class="row">
+		  <div class="label">Spot</div>
+		  <div class="field">
+		        <select name="entity.spot.id">
+		              
+		                      <option value="">(None)</option>              
+		              
+		        %{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
+		          
+		          %{
+		            selected = false;
+		            if (entity?.spot?.id == it.id) {
+		              selected = true
+		            }
+		          }%
+		          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+		        %{ } }%
+		        </select>
+		  </div>
+		  <span class="error" style="display:none;">${errors.forKey('entity.spot')}</span>
+		</div>
+		
+		 <div class="row">
+		  <div class="label">Max Depth</div>
+		  <div class="field">
+		      <input type="text" name="entity.maxDepth" value="${entity?.maxDepth}"/>
+		  </div>
+		  <span class="error" style="display:none;">${errors.forKey('entity.maxDepth')}</span>
+		</div>
+		
+		 <div class="row">
+		  <div class="label">Duration</div>
+		  <div class="field">
+		      <input type="text" name="entity.duration" value="${entity?.duration}"/>
+		  </div>
+		  <span class="error" style="display:none;">${errors.forKey('entity.duration')}</span>
+		</div>
+		 <div class="row">
+		  <div class="label">Training</div>
+		  <div class="field">
+		      <input type="checkbox" name="entity.training"
+		        ${entity?.training ? 'checked':''}
+		      />
+		  </div>
+		  <span class="error" style="display:none;">${errors.forKey('entity.training')}</span>
+		</div>
+		
+		 <div class="row">
+		  <div class="label">Center</div>
+		  <div class="field">
+		        <select name="entity.center.id">
+		              
+		                      <option value="">(None)</option>              
+		              
+		        %{ models.Center.all().fetch().sort{ it.toString() }.each() { }%
+		          
+		          %{
+		            selected = false;
+		            if (entity?.center?.id == it.id) {
+		              selected = true
+		            }
+		          }%
+		          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+		        %{ } }%
+		        </select>
+		  </div>
+		  <span class="error" style="display:none;">${errors.forKey('entity.center')}</span>
+		</div>
+		
+    </div>
+    
+    <h3><a href="#">Marine life</a></h3>
+    <div>
+         <div class="row">
+          <div class="label">Fishes</div>
+          <div class="field">
+                <select name="entity.fishes.id" multiple>
+                %{ models.Fish.all().fetch().sort{ it.toString() }.each() { }%
+                  
+                  %{
+                    selected = false;
+                    entity?.fishes.each() { f ->
+                      if (f.id == it?.id)
+                        selected = true;
+                    }
+                  }%
+                  <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+                %{ } }%
+                </select>
+          </div>
+          <span class="error" style="display:none;">${errors.forKey('entity.fishes')}</span>
+        </div>
+    </div>
     
     
-      <script type="text/javascript">
-        $(function() {
-          $("#date").datepicker({ dateFormat: 'yy-mm-dd' } );
-        });
-      </script>
-      <!-- TODO: date format needs to come from application.conf -->
-      <input id="date" type="text" name="entity.date" 
-        value="${entity?.date?.format('yyyy-MM-dd')}"
-        size="10" />
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.date')}</span>
+    <h3><a href="#">Advanced parameters</a></h3>
+    <div>
+		<div class="row">
+		  <div class="label">Air Temperature</div>
+		  <div class="field">
+		      <input type="text" name="entity.airTemperature" value="${entity?.airTemperature}"/>
+		  </div>
+		  <span class="error" style="display:none;">${errors.forKey('entity.airTemperature')}</span>
+		</div>
+		
+		 <div class="row">
+		  <div class="label">Water Surface Temperature</div>
+		  <div class="field">
+		      <input type="text" name="entity.waterSurfaceTemperature" value="${entity?.waterSurfaceTemperature}"/>
+		  </div>
+		  <span class="error" style="display:none;">${errors.forKey('entity.waterSurfaceTemperature')}</span>
+		</div>
+		
+		 <div class="row">
+		  <div class="label">Water Bottom Temperature</div>
+		  <div class="field">
+		      <input type="text" name="entity.waterBottomTemperature" value="${entity?.waterBottomTemperature}"/>
+		  </div>
+		  <span class="error" style="display:none;">${errors.forKey('entity.waterBottomTemperature')}</span>
+		</div>
+		
+		 <div class="row">
+		  <div class="label">Type</div>
+		  <div class="field">
+		        <select name="entity.type.id" multiple>
+		        %{ models.DiveType.all().fetch().sort{ it.toString() }.each() { }%
+		          
+		          %{
+		            selected = false;
+		            entity?.type.each() { f ->
+		              if (f.id == it?.id)
+		                selected = true;
+		            }
+		          }%
+		          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+		        %{ } }%
+		        </select>
+		  </div>
+		  <span class="error" style="display:none;">${errors.forKey('entity.type')}</span>
+		</div>
+		
+		 <div class="row">
+		  <div class="label">Water</div>
+		  <div class="field">
+		        <select name="entity.water.id">
+		                      <option value="">(None)</option>              
+		        %{ models.WaterType.all().fetch().sort{ it.toString() }.each() { }%
+		          
+		          %{
+		            selected = false;
+		            if (entity?.water?.id == it.id) {
+		              selected = true
+		            }
+		          }%
+		          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+		        %{ } }%
+		        </select>
+		  </div>
+		  <span class="error" style="display:none;">${errors.forKey('entity.water')}</span>
+		</div>
+    </div>
 </div>
-
-
- <div class="row">
-  <div class="label">Spot</div>
-  <div class="field">
-    
-    
-    
-    
-      
-      
-        <select name="entity.spot.id">
-              
-                      <option value="">(None)</option>              
-              
-        %{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
-          
-          %{
-            selected = false;
-            if (entity?.spot?.id == it.id) {
-              selected = true
-            }
-          }%
-          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-        %{ } }%
-        </select>
-      
-    
-    
-    
-    
-    
-    
-    
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.spot')}</span>
-</div>
-
-
- <div class="row">
-  <div class="label">Max Depth</div>
-  <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <input type="text" name="entity.maxDepth" value="${entity?.maxDepth}"/>
-    
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.maxDepth')}</span>
-</div>
-
-
- <div class="row">
-  <div class="label">Duration</div>
-  <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <input type="text" name="entity.duration" value="${entity?.duration}"/>
-    
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.duration')}</span>
-</div>
-
-
- <div class="row">
-  <div class="label">Air Temperature</div>
-  <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <input type="text" name="entity.airTemperature" value="${entity?.airTemperature}"/>
-    
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.airTemperature')}</span>
-</div>
-
-
- <div class="row">
-  <div class="label">Water Surface Temperature</div>
-  <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <input type="text" name="entity.waterSurfaceTemperature" value="${entity?.waterSurfaceTemperature}"/>
-    
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.waterSurfaceTemperature')}</span>
-</div>
-
-
- <div class="row">
-  <div class="label">Water Bottom Temperature</div>
-  <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <input type="text" name="entity.waterBottomTemperature" value="${entity?.waterBottomTemperature}"/>
-    
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.waterBottomTemperature')}</span>
-</div>
-
-
- <div class="row">
-  <div class="label">Type</div>
-  <div class="field">
-    
-    
-    
-    
-      
-        <select name="entity.type.id" multiple>
-        %{ models.DiveType.all().fetch().sort{ it.toString() }.each() { }%
-          
-          %{
-            selected = false;
-            entity?.type.each() { f ->
-              if (f.id == it?.id)
-                selected = true;
-            }
-          }%
-          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-        %{ } }%
-        </select>
-      
-      
-    
-    
-    
-    
-    
-    
-    
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.type')}</span>
-</div>
-
-
- <div class="row">
-  <div class="label">Water</div>
-  <div class="field">
-    
-    
-    
-    
-      
-      
-        <select name="entity.water.id">
-              
-                      <option value="">(None)</option>              
-              
-        %{ models.WaterType.all().fetch().sort{ it.toString() }.each() { }%
-          
-          %{
-            selected = false;
-            if (entity?.water?.id == it.id) {
-              selected = true
-            }
-          }%
-          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-        %{ } }%
-        </select>
-      
-    
-    
-    
-    
-    
-    
-    
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.water')}</span>
-</div>
-
-
- <div class="row">
-  <div class="label">Training</div>
-  <div class="field">
-    
-      <input type="checkbox" name="entity.training"
-        ${entity?.training ? 'checked':''}
-      />
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.training')}</span>
-</div>
-
-
- <div class="row">
-  <div class="label">Center</div>
-  <div class="field">
-    
-    
-    
-    
-      
-      
-        <select name="entity.center.id">
-              
-                      <option value="">(None)</option>              
-              
-        %{ models.Center.all().fetch().sort{ it.toString() }.each() { }%
-          
-          %{
-            selected = false;
-            if (entity?.center?.id == it.id) {
-              selected = true
-            }
-          }%
-          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-        %{ } }%
-        </select>
-      
-    
-    
-    
-    
-    
-    
-    
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.center')}</span>
-</div>
-
-
- <div class="row">
-  <div class="label">Fishes</div>
-  <div class="field">
-    
-    
-    
-    
-      
-        <select name="entity.fishes.id" multiple>
-        %{ models.Fish.all().fetch().sort{ it.toString() }.each() { }%
-          
-          %{
-            selected = false;
-            entity?.fishes.each() { f ->
-              if (f.id == it?.id)
-                selected = true;
-            }
-          }%
-          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-        %{ } }%
-        </select>
-      
-      
-    
-    
-    
-    
-    
-    
-    
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.fishes')}</span>
-</div>
-
 
  <div class="row">
   <div class="label"></div>
   <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
       <input type="hidden" name="entity.id" value="${entity?.id}"/>
-    
-    
-    
   </div>
   <span class="error" style="display:none;">${errors.forKey('entity.id')}</span>
 </div>
 
+    <script>
+    $(function() {
+        $( "#accordion" ).accordion();
+    });
+    </script>
 
