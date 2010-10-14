@@ -1,22 +1,11 @@
 package controllers;
 
 import models.User;
+import play.libs.Crypto;
 import play.mvc.*;
 
-public class Security extends Controller {
+public class Security extends Secure.Security {
 
-	public static void register() {
-		render("Secure/register.html");
-	}
-	
-	public static void registerNew(String email, String username, String password) {
-		System.out.println("register:" + email + "/" + username + "/" + password);
-		User user = new User(email, username, password);
-		user.save();
-		
-		Application.index();
-	}
-	
     static void onDisconnected() {
         Application.index();
     }
@@ -25,4 +14,11 @@ public class Security extends Controller {
         Application.index();
     }
 
+    static boolean authenticate(String username, String password) {
+    	User user = User.find("userName=? and password=?", username, Crypto.passwordHash(password)).first();
+    	if (user!=null) {
+    		return true;
+    	}
+    	return false;
+    }
 }

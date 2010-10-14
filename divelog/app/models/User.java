@@ -13,7 +13,7 @@ public class User extends Model {
 	
     public String email;
     public String password;
-    public String fullname;
+    public String userName;
     public boolean isAdmin;
     
 	/** Date the user created his account */
@@ -29,10 +29,10 @@ public class User extends Model {
 	@ManyToMany(cascade = CascadeType.ALL)
 	public List<User> buddies;
 	
-    public User(String email, String password, String fullname) {
+    public User(String email, String password, String userName) {
         this.email = email;
-        this.password = password;
-        this.fullname = fullname;
+        this.password = Crypto.passwordHash(password);
+        this.userName = userName;
     }
     
     /**
