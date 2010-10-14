@@ -13,6 +13,44 @@
         #{get 'moreScripts' /}
     </head>
     <body>
+        <div id="userOptions">
+		#{if controllers.Secure.Security.isConnected()}
+            ${controllers.Secure.Security.connected()}
+            <a href="@{Secure.logout()}">&{'logout'}</a> 
+		#{/if}
+		#{else}
+            <a href="">&{'signup'}</a>
+            <a href="@{Secure.login()}">&{'login'}</a>
+		#{/else}
+        </div>
+        
+        #{if !controllers.Secure.Security.isConnected()}
+			<div id="signup-box">
+			<h2>&{'signup'}</h2>
+			#{form @Security.registerNew()}
+			    <p id="username-field">
+			        <label for="email">&{'email'}</label>
+			        <input type="text" name="email" id="email" value="&{flash.email}" />
+			    </p>    
+			    <p id="password-field">
+			        <label for="username">&{'username'}</label>
+			        <input type="text" name="username" id="username" value="&{flash.username}" />
+			    </p>
+			    <p id="password-field">
+			        <label for="password">&{'password'}</label>
+			        <input type="password" name="password" id="password" value="" />
+			    </p>
+			    <p id="signin-field">
+			    <input type="submit" id="signin" value="&{'secure.signin'}" />
+			    </p>
+			 #{/form}
+			</div>
+			
+			<div id="#login-box">
+	         <h2>&{'login'}</h2>
+			</div>
+		#{/if}
+		
         #{doLayout /}
     </body>
 </html>
