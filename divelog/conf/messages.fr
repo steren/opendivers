@@ -6,3 +6,5 @@ username=Nom d'utilisateur
 email=Email
 password=Mot de passe
 remember=garder en mémoire
+
+newdive=Ajouter une plongée

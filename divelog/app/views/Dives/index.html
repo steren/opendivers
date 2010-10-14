@@ -1,30 +1,24 @@
 #{extends 'main.html' /}
 
-<h2>Dives</h2>
+<h2>My Dives</h2>
 
-<table class="entity Dive">
-	<thead>
-		<tr>
-			<th><!-- actions --></th>
-				<th>Date</th>
-				<th>Spot</th>
-				<th>Type</th>
-				<th>Training</th>
-		</tr>
-	</thead>
-	<tbody>
-	#{list items:entities, as:'entity'}
-		<tr>
-			<td>
-				<a href="@{Dives.show(entity.id)}">Show</a>&nbsp;
-			</td>
-					<td>${entity.date}</td>
-					<td>${entity.spot}</td>
-					<td>${entity.type}</td>
-					<td>${entity.training}</td>
-		</tr>
-	#{/list}
-	</tbody>
-</table>
+<a href="@{Dives.create}">&{'newdive'}</a>
 
-<a href="@{Dives.create}">Create</a>
+<div>
+	<span><!-- actions --></span>
+		<span>Date</span>
+		<span>Spot</span>
+		<span>Type</span>
+		<span>Training</span>
+</div>
+#{list items:entities, as:'entity'}
+	<div>
+		<span>
+			<a href="@{Dives.show(entity.id)}">Show</a>&nbsp;
+		</span>
+				<span>${entity.date}</span>
+				<span>${entity.spot}</span>
+				<span>${entity.type}</span>
+				<span>${entity.training}</span>
+	</div>
+#{/list}

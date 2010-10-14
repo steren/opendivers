@@ -15,9 +15,11 @@ GET     /public/                                staticDir:public
 GET     /register                               Register.RegisterNew
 
 GET     /dives                                  Dives.index
-GET     /dives/create                           Dives.create
-GET     /dive/{<[0-9]+>id}                      Dive.show
+GET     /dive/{<[0-9]+>id}                      Dives.show
+
+GET     /trips                                  Trips.index
+GET     /trip/{<[0-9]+>id}                      Trips.show
 
 
 # Catch all
-#*       /{controller}/{action}                  {controller}.{action}
+*       /{controller}/{action}                  {controller}.{action}
