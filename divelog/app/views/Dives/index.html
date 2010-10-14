@@ -1,0 +1,130 @@
+#{extends 'main.html' /}
+
+<h2>Dives</h2>
+
+<table class="entity Dive">
+	<thead>
+		<tr>
+			<th><!-- actions --></th>
+			
+	        
+				<th>Date</th>
+	        
+			
+	        
+				<th>Spot</th>
+	        
+			
+	        
+				<th>Max Depth</th>
+	        
+			
+	        
+				<th>Duration</th>
+	        
+			
+	        
+				<th>Air Temperature</th>
+	        
+			
+	        
+				<th>Water Surface Temperature</th>
+	        
+			
+	        
+				<th>Water Bottom Temperature</th>
+	        
+			
+	        
+				<th>Type</th>
+	        
+			
+	        
+				<th>Water</th>
+	        
+			
+	        
+				<th>Training</th>
+	        
+			
+	        
+				<th>Center</th>
+	        
+			
+	        
+				<th>Fishes</th>
+	        
+			
+	        
+				<th>Id</th>
+	        
+			
+		</tr>
+	</thead>
+	<tbody>
+	#{list items:entities, as:'entity'}
+		<tr>
+			<td>
+				<a href="@{Dives.show(entity.id)}">Show</a>&nbsp;
+				<a href="@{Dives.edit(entity.id)}">Edit</a>&nbsp;
+				<a href="@{Dives.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
+			</td>
+			
+        
+					<td>${entity.date}</td>
+        
+			
+        
+					<td>${entity.spot}</td>
+        
+			
+        
+					<td>${entity.maxDepth}</td>
+        
+			
+        
+					<td>${entity.duration}</td>
+        
+			
+        
+					<td>${entity.airTemperature}</td>
+        
+			
+        
+					<td>${entity.waterSurfaceTemperature}</td>
+        
+			
+        
+					<td>${entity.waterBottomTemperature}</td>
+        
+			
+        
+					<td>${entity.type}</td>
+        
+			
+        
+					<td>${entity.water}</td>
+        
+			
+        
+					<td>${entity.training}</td>
+        
+			
+        
+					<td>${entity.center}</td>
+        
+			
+        
+					<td>${entity.fishes}</td>
+        
+			
+        
+					<td>${entity.id}</td>
+        
+			
+		</tr>
+	#{/list}
+	</tbody>
+</table>
+
+<a href="@{Dives.create}">Create</a>

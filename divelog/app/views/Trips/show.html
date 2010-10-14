@@ -1,0 +1,76 @@
+#{extends 'main.html' /}
+
+<h2>View Trip</h2>
+
+<div class="entity">
+
+  
+	<div class="row">
+		<span class="elem">
+			startDate:
+		</span>
+		<span class="value">
+      ${entity.startDate}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			endDate:
+		</span>
+		<span class="value">
+      ${entity.endDate}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			creator:
+		</span>
+		<span class="value">
+      ${entity.creator}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			dives:
+		</span>
+		<span class="value">
+      ${entity.dives}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			countries:
+		</span>
+		<span class="value">
+      ${entity.countries}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			id:
+		</span>
+		<span class="value">
+      ${entity.id}
+		</span>
+	</div>
+  
+
+</div>
+
+<a href="@{Trips.index}">Back</a>
+

@@ -1,0 +1,74 @@
+#{extends 'main.html' /}
+
+<h2>Trips</h2>
+
+<table class="entity Trip">
+	<thead>
+		<tr>
+			<th><!-- actions --></th>
+			
+	        
+				<th>Start Date</th>
+	        
+			
+	        
+				<th>End Date</th>
+	        
+			
+	        
+				<th>Creator</th>
+	        
+			
+	        
+				<th>Dives</th>
+	        
+			
+	        
+				<th>Countries</th>
+	        
+			
+	        
+				<th>Id</th>
+	        
+			
+		</tr>
+	</thead>
+	<tbody>
+	#{list items:entities, as:'entity'}
+		<tr>
+			<td>
+				<a href="@{Trips.show(entity.id)}">Show</a>&nbsp;
+				<a href="@{Trips.edit(entity.id)}">Edit</a>&nbsp;
+				<a href="@{Trips.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
+			</td>
+			
+        
+					<td>${entity.startDate}</td>
+        
+			
+        
+					<td>${entity.endDate}</td>
+        
+			
+        
+					<td>${entity.creator}</td>
+        
+			
+        
+					<td>${entity.dives}</td>
+        
+			
+        
+					<td>${entity.countries}</td>
+        
+			
+        
+					<td>${entity.id}</td>
+        
+			
+		</tr>
+	#{/list}
+	</tbody>
+</table>
+
+<a href="@{Trips.create}">Create</a>

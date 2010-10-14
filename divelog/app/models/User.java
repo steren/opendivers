@@ -17,12 +17,17 @@ public class User extends Model {
     public boolean isAdmin;
     
 	/** Date the user created his account */
-	private Date crdate; // private because must be read-only.
+	private Date crDate;
     
 	/** the dives the user has made */
 	@ManyToMany(cascade = CascadeType.ALL)
 	public List<Dive> dives;
 	
+	@OneToMany(mappedBy = "uploader", cascade = CascadeType.ALL)
+	public List<Picture> pictures;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	public List<User> buddies;
 	
     public User(String email, String password, String fullname) {
         this.email = email;
@@ -44,8 +49,8 @@ public class User extends Model {
     	return false;
     }
 	
-    public Date getCrdate() {
-		return crdate;
+    public Date getCrDate() {
+		return crDate;
 	}
 
     

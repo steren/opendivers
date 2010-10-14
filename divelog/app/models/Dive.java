@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-public class Dive extends Model {
+public class Dive extends CommentModel {
 
 	/** date of the dive */
 	public Date date;
@@ -37,6 +37,9 @@ public class Dive extends Model {
 	
 	@ManyToMany(mappedBy = "dives", cascade = CascadeType.ALL)
 	public List<Trip> trips;
+	
+	@ManyToMany
+	public List<Fish> fishes;
 	
 	/** divers in this dive who have an account */
 	@ManyToMany(mappedBy = "dives", cascade = CascadeType.ALL)

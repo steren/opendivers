@@ -1,0 +1,184 @@
+
+ <div class="row">
+  <div class="label">Start Date</div>
+  <div class="field">
+    
+    
+      <script type="text/javascript">
+        $(function() {
+          $("#startDate").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="startDate" type="text" name="entity.startDate" 
+        value="${entity?.startDate?.format('yyyy-MM-dd')}"
+        size="10" />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.startDate')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">End Date</div>
+  <div class="field">
+    
+    
+      <script type="text/javascript">
+        $(function() {
+          $("#endDate").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="endDate" type="text" name="entity.endDate" 
+        value="${entity?.endDate?.format('yyyy-MM-dd')}"
+        size="10" />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.endDate')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Creator</div>
+  <div class="field">
+    
+    
+    
+    
+      
+      
+        <select name="entity.creator.id">
+              
+                      <option value="">(None)</option>              
+              
+        %{ models.User.all().fetch().sort{ it.toString() }.each() { }%
+          
+          %{
+            selected = false;
+            if (entity?.creator?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+      
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.creator')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Dives</div>
+  <div class="field">
+    
+    
+    
+    
+      
+        <select name="entity.dives.id" multiple>
+        %{ models.Dive.all().fetch().sort{ it.toString() }.each() { }%
+          
+          %{
+            selected = false;
+            entity?.dives.each() { f ->
+              if (f.id == it?.id)
+                selected = true;
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.dives')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Countries</div>
+  <div class="field">
+    
+    
+    
+    
+      
+        <select name="entity.countries.id" multiple>
+        %{ models.Country.all().fetch().sort{ it.toString() }.each() { }%
+          
+          %{
+            selected = false;
+            entity?.countries.each() { f ->
+              if (f.id == it?.id)
+                selected = true;
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.countries')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+    
+    
+    
+    
+    
+    
+    
+    
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+
+

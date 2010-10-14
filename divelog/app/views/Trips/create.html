@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+
+<h2>Create Trip</h2>
+
+<div class="entity">
+#{form @Trips.save(), id:'createForm'}
+	#{include 'Trips/_form.html' /}
+	<input type="submit" name="submit" value="Save" />
+#{/form}
+</div>
+
+<a href="@{Trips.index}">Cancel</a>
