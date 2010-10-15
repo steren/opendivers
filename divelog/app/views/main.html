@@ -29,6 +29,17 @@
 		#{/else}
         </div>
         
+        #{if flash.error}
+		    <p class="error">
+		        ${flash.error}
+		    </p>
+		#{/if}
+        #{if flash.success}
+            <p class="success">
+                ${flash.success}
+            </p>
+        #{/if}
+        
         #{if !controllers.Secure.Security.isConnected()}
 			<div id="signupBox" class="floatingBox" style="display:none;">
 			<h2>&{'signup'}</h2>
