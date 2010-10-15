@@ -2,20 +2,20 @@
 
 <h2>View Dive</h2>
 
-<a href="@{Dives.edit(entity.id)}">&{'edit'}</a>
+<a href="@{Dives.edit(dive.id)}">&{'edit'}</a>
 
-<a href="@{Dives.delete(entity.id)}" onclick="if (!confirm('&{'deleteconfirmmessage'}')) return false;">&{'delete'}</a>
+<a href="@{Dives.delete(dive.id)}" onclick="if (!confirm('&{'deleteconfirmmessage'}')) return false;">&{'delete'}</a>
 
-<div class="entity">
+<div class="dive">
 
   
 	<div class="row">
         <span>
-      ${entity.spot}
+      ${dive.spot}
         </span>
 
 		<span>
-      ${entity.date}
+      ${dive.date}
 		</span>
 	</div>
   
@@ -26,19 +26,19 @@
 			maxDepth:
 		</span>
 		<span class="value">
-      ${entity.maxDepth}
+      ${dive.maxDepth}
 		</span>
 
 		<span class="elem">
 			duration:
 		</span>
 		<span class="value">
-      ${entity.duration}
+      ${dive.duration}
 		</span>
 	</div>
   
     <div class="row">
-	  #{if entity.training}
+	  #{if dive.training}
 	        <span class="elem">
 	            training
 	        </span>
@@ -47,14 +47,14 @@
             type:
         </span>
         <span class="value">
-      ${entity.type}
+      ${dive.type}
         </span>
 
         <span class="elem">
             water:
         </span>
         <span class="value">
-      ${entity.water}
+      ${dive.water}
         </span>
     </div>
 
@@ -64,21 +64,21 @@
 			air:
 		</span>
 		<span class="value">
-      ${entity.airTemperature}
+      ${dive.airTemperature}
 		</span>
 
 		<span class="elem">
 			water surface:
 		</span>
 		<span class="value">
-      ${entity.waterSurfaceTemperature}
+      ${dive.waterSurfaceTemperature}
 		</span>
 
 		<span class="elem">
 			water bottom:
 		</span>
 		<span class="value">
-      ${entity.waterBottomTemperature}
+      ${dive.waterBottomTemperature}
 		</span>
 	</div>
   
@@ -87,7 +87,7 @@
 			center:
 		</span>
 		<span class="value">
-      ${entity.center}
+      ${dive.center}
 		</span>
 	</div>
   
@@ -98,7 +98,7 @@
 			fishes:
 		</span>
 		<span class="value">
-      ${entity.fishes}
+      ${dive.fishes}
 		</span>
 	</div>
 </div>

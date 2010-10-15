@@ -10,17 +10,17 @@
 		        });
 		      </script>
 		      <!-- TODO: date format needs to come from application.conf -->
-		      <input id="date" type="text" name="entity.date" 
-		        value="${entity?.date?.format('yyyy-MM-dd')}"
+		      <input id="date" type="text" name="dive.date" 
+		        value="${dive?.date?.format('yyyy-MM-dd')}"
 		        size="10" />
 		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('entity.date')}</span>
+		  <span class="error" style="display:none;">${errors.forKey('dive.date')}</span>
 		</div>
 		
 		 <div class="row">
 		  <div class="label">Spot</div>
 		  <div class="field">
-		        <select name="entity.spot.id">
+		        <select name="dive.spot.id">
 		              
 		                      <option value="">(None)</option>              
 		              
@@ -28,7 +28,7 @@
 		          
 		          %{
 		            selected = false;
-		            if (entity?.spot?.id == it.id) {
+		            if (dive?.spot?.id == it.id) {
 		              selected = true
 		            }
 		          }%
@@ -36,38 +36,38 @@
 		        %{ } }%
 		        </select>
 		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('entity.spot')}</span>
+		  <span class="error" style="display:none;">${errors.forKey('dive.spot')}</span>
 		</div>
 		
 		 <div class="row">
 		  <div class="label">Max Depth</div>
 		  <div class="field">
-		      <input type="text" name="entity.maxDepth" value="${entity?.maxDepth}"/>
+		      <input type="text" name="dive.maxDepth" value="${dive?.maxDepth}"/>
 		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('entity.maxDepth')}</span>
+		  <span class="error" style="display:none;">${errors.forKey('dive.maxDepth')}</span>
 		</div>
 		
 		 <div class="row">
 		  <div class="label">Duration</div>
 		  <div class="field">
-		      <input type="text" name="entity.duration" value="${entity?.duration}"/>
+		      <input type="text" name="dive.duration" value="${dive?.duration}"/>
 		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('entity.duration')}</span>
+		  <span class="error" style="display:none;">${errors.forKey('dive.duration')}</span>
 		</div>
 		 <div class="row">
 		  <div class="label">Training</div>
 		  <div class="field">
-		      <input type="checkbox" name="entity.training"
-		        ${entity?.training ? 'checked':''}
+		      <input type="checkbox" name="dive.training"
+		        ${dive?.training ? 'checked':''}
 		      />
 		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('entity.training')}</span>
+		  <span class="error" style="display:none;">${errors.forKey('dive.training')}</span>
 		</div>
 		
 		 <div class="row">
 		  <div class="label">Center</div>
 		  <div class="field">
-		        <select name="entity.center.id">
+		        <select name="dive.center.id">
 		              
 		                      <option value="">(None)</option>              
 		              
@@ -75,7 +75,7 @@
 		          
 		          %{
 		            selected = false;
-		            if (entity?.center?.id == it.id) {
+		            if (dive?.center?.id == it.id) {
 		              selected = true
 		            }
 		          }%
@@ -83,7 +83,7 @@
 		        %{ } }%
 		        </select>
 		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('entity.center')}</span>
+		  <span class="error" style="display:none;">${errors.forKey('dive.center')}</span>
 		</div>
 		
     </div>
@@ -93,12 +93,12 @@
          <div class="row">
           <div class="label">Fishes</div>
           <div class="field">
-                <select name="entity.fishes.id" multiple>
+                <select name="dive.fishes.id" multiple>
                 %{ models.Fish.all().fetch().sort{ it.toString() }.each() { }%
                   
                   %{
                     selected = false;
-                    entity?.fishes.each() { f ->
+                    dive?.fishes.each() { f ->
                       if (f.id == it?.id)
                         selected = true;
                     }
@@ -107,7 +107,7 @@
                 %{ } }%
                 </select>
           </div>
-          <span class="error" style="display:none;">${errors.forKey('entity.fishes')}</span>
+          <span class="error" style="display:none;">${errors.forKey('dive.fishes')}</span>
         </div>
     </div>
     
@@ -117,36 +117,36 @@
 		<div class="row">
 		  <div class="label">Air Temperature</div>
 		  <div class="field">
-		      <input type="text" name="entity.airTemperature" value="${entity?.airTemperature}"/>
+		      <input type="text" name="dive.airTemperature" value="${dive?.airTemperature}"/>
 		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('entity.airTemperature')}</span>
+		  <span class="error" style="display:none;">${errors.forKey('dive.airTemperature')}</span>
 		</div>
 		
 		 <div class="row">
 		  <div class="label">Water Surface Temperature</div>
 		  <div class="field">
-		      <input type="text" name="entity.waterSurfaceTemperature" value="${entity?.waterSurfaceTemperature}"/>
+		      <input type="text" name="dive.waterSurfaceTemperature" value="${dive?.waterSurfaceTemperature}"/>
 		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('entity.waterSurfaceTemperature')}</span>
+		  <span class="error" style="display:none;">${errors.forKey('dive.waterSurfaceTemperature')}</span>
 		</div>
 		
 		 <div class="row">
 		  <div class="label">Water Bottom Temperature</div>
 		  <div class="field">
-		      <input type="text" name="entity.waterBottomTemperature" value="${entity?.waterBottomTemperature}"/>
+		      <input type="text" name="dive.waterBottomTemperature" value="${dive?.waterBottomTemperature}"/>
 		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('entity.waterBottomTemperature')}</span>
+		  <span class="error" style="display:none;">${errors.forKey('dive.waterBottomTemperature')}</span>
 		</div>
 		
 		 <div class="row">
 		  <div class="label">Type</div>
 		  <div class="field">
-		        <select name="entity.type.id" multiple>
+		        <select name="dive.type.id" multiple>
 		        %{ models.DiveType.all().fetch().sort{ it.toString() }.each() { }%
 		          
 		          %{
 		            selected = false;
-		            entity?.type.each() { f ->
+		            dive?.type.each() { f ->
 		              if (f.id == it?.id)
 		                selected = true;
 		            }
@@ -155,19 +155,19 @@
 		        %{ } }%
 		        </select>
 		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('entity.type')}</span>
+		  <span class="error" style="display:none;">${errors.forKey('dive.type')}</span>
 		</div>
 		
 		 <div class="row">
 		  <div class="label">Water</div>
 		  <div class="field">
-		        <select name="entity.water.id">
+		        <select name="dive.water.id">
 		                      <option value="">(None)</option>              
 		        %{ models.WaterType.all().fetch().sort{ it.toString() }.each() { }%
 		          
 		          %{
 		            selected = false;
-		            if (entity?.water?.id == it.id) {
+		            if (dive?.water?.id == it.id) {
 		              selected = true
 		            }
 		          }%
@@ -175,7 +175,7 @@
 		        %{ } }%
 		        </select>
 		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('entity.water')}</span>
+		  <span class="error" style="display:none;">${errors.forKey('dive.water')}</span>
 		</div>
     </div>
 </div>
@@ -183,9 +183,9 @@
  <div class="row">
   <div class="label"></div>
   <div class="field">
-      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+      <input type="hidden" name="dive.id" value="${dive?.id}"/>
   </div>
-  <span class="error" style="display:none;">${errors.forKey('entity.id')}</span>
+  <span class="error" style="display:none;">${errors.forKey('dive.id')}</span>
 </div>
 
     <script>

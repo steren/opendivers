@@ -11,14 +11,14 @@
 		<span>Type</span>
 		<span>Training</span>
 </div>
-#{list items:entities, as:'entity'}
+#{list items:dives, as:'dive'}
 	<div>
 		<span>
-			<a href="@{Dives.show(entity.id)}">Show</a>&nbsp;
+			<a href="@{Dives.show(dive.id)}">Show</a>&nbsp;
 		</span>
-				<span>${entity.date}</span>
-				<span>${entity.spot}</span>
-				<span>${entity.type}</span>
-				<span>${entity.training}</span>
+				<span>${dive.date}</span>
+				<span>${dive.spot}</span>
+				<span>${dive.type}</span>
+				<span>${dive.training}</span>
 	</div>
 #{/list}

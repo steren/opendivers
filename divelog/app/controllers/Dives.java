@@ -10,49 +10,49 @@ import play.data.validation.Valid;
 
 public class Dives extends Controller {
 	public static void index() {
-		List<Dive> entities = models.Dive.all().fetch();
-		render(entities);
+		List<Dive> dives = models.Dive.all().fetch();
+		render(dives);
 	}
 
-	public static void create(Dive entity) {
-		render(entity);
+	public static void create(Dive dive) {
+		render(dive);
 	}
 
 	public static void show(java.lang.Long id) {
-    Dive entity = Dive.findById(id);
-		render(entity);
+    Dive dive = Dive.findById(id);
+		render(dive);
 	}
 
 	public static void edit(java.lang.Long id) {
-    Dive entity = Dive.findById(id);
-		render(entity);
+    Dive dive = Dive.findById(id);
+		render(dive);
 	}
 
 	public static void delete(java.lang.Long id) {
-    Dive entity = Dive.findById(id);
-    entity.delete();
+    Dive dive = Dive.findById(id);
+    dive.delete();
 		index();
 	}
 	
-	public static void save(@Valid Dive entity) {
+	public static void save(@Valid Dive dive) {
 		if (validation.hasErrors()) {
 			flash.error(Messages.get("scaffold.validation"));
-			render("@create", entity);
+			render("@create", dive);
 		}
-    entity.save();
+    dive.save();
 		flash.success(Messages.get("scaffold.created", "Dive"));
 		index();
 	}
 
-	public static void update(@Valid Dive entity) {
+	public static void update(@Valid Dive dive) {
 		if (validation.hasErrors()) {
 			flash.error(Messages.get("scaffold.validation"));
-			render("@edit", entity);
+			render("@edit", dive);
 		}
 		
-      		entity = entity.merge();
+      		dive = dive.merge();
 		
-		entity.save();
+		dive.save();
 		flash.success(Messages.get("scaffold.updated", "Dive"));
 		index();
 	}
