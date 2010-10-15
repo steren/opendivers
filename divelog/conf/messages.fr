@@ -8,3 +8,6 @@ password=Mot de passe
 remember=garder en mémoire
 
 newdive=Ajouter une plongée
+edit=Editer
+delete=Supprimer
+deleteconfirmmessage=Etes vous certain de vouloir supprimer cette plongée ?
