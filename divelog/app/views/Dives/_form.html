@@ -20,21 +20,27 @@
 		 <div class="row">
 		  <div class="label">Spot</div>
 		  <div class="field">
-		        <select name="dive.spot.id">
-		              
-		                      <option value="">(None)</option>              
-		              
-		        %{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
-		          
-		          %{
-		            selected = false;
-		            if (dive?.spot?.id == it.id) {
-		              selected = true
-		            }
-		          }%
-		          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-		        %{ } }%
-		        </select>
+                <input id="spotName" type="text" name="spotName"
+                value="${dive?.spot?.name}"
+                size="50" />
+                
+                or choose
+                
+                <select name="spotId">
+                
+                <option value="">-</option>
+                
+                %{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
+                  %{
+                    selected = false;
+                    if (dive?.spot?.id == it.id) {
+                      selected = true
+                    }
+                  }%
+                  <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+                %{ } }%
+                </select>
+                
 		  </div>
 		  <span class="error" style="display:none;">${errors.forKey('dive.spot')}</span>
 		</div>
@@ -120,17 +126,13 @@
 		      <input type="text" name="dive.airTemperature" value="${dive?.airTemperature}"/>
 		  </div>
 		  <span class="error" style="display:none;">${errors.forKey('dive.airTemperature')}</span>
-		</div>
-		
-		 <div class="row">
+
 		  <div class="label">Water Surface Temperature</div>
 		  <div class="field">
 		      <input type="text" name="dive.waterSurfaceTemperature" value="${dive?.waterSurfaceTemperature}"/>
 		  </div>
 		  <span class="error" style="display:none;">${errors.forKey('dive.waterSurfaceTemperature')}</span>
-		</div>
-		
-		 <div class="row">
+
 		  <div class="label">Water Bottom Temperature</div>
 		  <div class="field">
 		      <input type="text" name="dive.waterBottomTemperature" value="${dive?.waterBottomTemperature}"/>
@@ -156,9 +158,7 @@
 		        </select>
 		  </div>
 		  <span class="error" style="display:none;">${errors.forKey('dive.type')}</span>
-		</div>
-		
-		 <div class="row">
+
 		  <div class="label">Water</div>
 		  <div class="field">
 		        <select name="dive.water.id">
@@ -194,3 +194,11 @@
     });
     </script>
 
+
+<div>Spot autocomplete :
+%{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
+  
+  ${it?.id} ${it}
+
+%{ } }%
+</div>

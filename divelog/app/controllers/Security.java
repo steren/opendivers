@@ -15,7 +15,6 @@ public class Security extends Secure.Security {
     }
 
     static boolean authenticate(String email, String password) {
-    	System.out.println("AUTHENTICATE");
     	User user = User.find("email=? and password=?", email, Crypto.passwordHash(password)).first();
     	if (user!=null) {
     		return true;

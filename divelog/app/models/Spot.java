@@ -10,7 +10,7 @@ import java.util.*;
 @Entity
 public class Spot extends Model {
 
-	public String Name;
+	public String name;
 
 	public double latitude;
 	public double longitude;
@@ -21,5 +21,9 @@ public class Spot extends Model {
 	/** dives done in this spot */
 	@OneToMany(mappedBy = "spot", cascade = CascadeType.ALL)
 	public List<Dive> dives;
+
+	public String toString() {
+		return name;
+	}
 	
 }
