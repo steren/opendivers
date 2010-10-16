@@ -1,6 +1,49 @@
 <div id="accordion">
     <h3><a href="#">Basic parameters</a></h3>
     <div>
+         <div class="row">
+          <div class="label">Spot</div>
+          
+          <div class="field">
+                <input id="spotName" type="text" name="spot.name"
+                value="${dive?.spot?.name}"
+                size="50" />
+
+	          <span>
+	              <select name="spot.country.id">
+	                <option value="">&{'selectcountry'}</option>
+	                %{ models.Country.all().fetch().sort{ it.toString() }.each() { }%
+	                  %{
+	                    selected = false;
+	                    if (dive?.spot?.country?.id == it.id) {
+	                      selected = true
+	                    }
+	                  }%
+	                  <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+	                %{ } }%
+	                </select>
+	          </span>
+                
+                or choose
+                
+                <select name="spotId">
+                <option value="">-</option>
+                %{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
+                  %{
+                    selected = false;
+                    if (dive?.spot?.id == it.id) {
+                      selected = true
+                    }
+                  }%
+                  <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+                %{ } }%
+                </select>
+                
+          </div>
+          <span class="error" style="display:none;">${errors.forKey('spot.name')}</span>
+          <span class="error" style="display:none;">${errors.forKey('spot.country')}</span>
+        </div>
+
 		<div class="row">
 		  <div class="label">Date</div>
 		  <div class="field">
@@ -15,34 +58,7 @@
 		        size="10" />
 		  </div>
 		  <span class="error" style="display:none;">${errors.forKey('dive.date')}</span>
-		</div>
-		
-		 <div class="row">
-		  <div class="label">Spot</div>
-		  <div class="field">
-                <input id="spotName" type="text" name="spotName"
-                value="${dive?.spot?.name}"
-                size="50" />
-                
-                or choose
-                
-                <select name="spotId">
-                
-                <option value="">-</option>
-                
-                %{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
-                  %{
-                    selected = false;
-                    if (dive?.spot?.id == it.id) {
-                      selected = true
-                    }
-                  }%
-                  <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-                %{ } }%
-                </select>
-                
-		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('dive.spot')}</span>
+
 		</div>
 		
 		 <div class="row">

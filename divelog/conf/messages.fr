@@ -11,3 +11,7 @@ newdive=Ajouter une plongée
 edit=Editer
 delete=Supprimer
 deleteconfirmmessage=Etes vous certain de vouloir supprimer cette plongée ?
+
+selectcountry=Pays
+
+validationSpot=Le nom du lieu n'est pas valide

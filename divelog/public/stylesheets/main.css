@@ -1,11 +1,17 @@
 #userOptions {
-    float: right;	
+    float: right;
+    padding: 5px 10px;
 }
 
 .floatingBox {
-    float:right;
-    border : 1px solid black;
+    float: right;
+    border: 1px solid black;
 }
 
 #ui-datepicker-div { font-size: 12px; }
 
+#mainContent {
+	width: 940px;
+    margin: 0px auto;
+    padding: 20px 0;
+}	

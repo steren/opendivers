@@ -35,27 +35,19 @@ public class Dives extends Controller {
 		index();
 	}
 	
-	public static void save(@Valid Dive dive, long spotId, String spotName) {
+	public static void save(@Valid Dive dive, @Valid Spot spot, long spotId) {
 		if (validation.hasErrors()) {
 			flash.error(Messages.get("scaffold.validation"));
-			render("@create", dive);
+			render("@create", dive, spot);
 		}
-
-		Spot spot;
+		
 		// if Id is specified, use this, otherwise, create a new spot 
 		if(spotId != 0) {
-			spot = Spot.findById(spotId);
+			dive.spot = Spot.findById(spotId);
 		} else {
-			Spot existingSpot = Spot.find("byName", spotName).first();
-			if(existingSpot != null) {
-				spot = existingSpot;
-			} else {
-				spot = new Spot();
-				spot.name = spotName;
-				spot.save();
-			}
+			spot.save();
+			dive.spot = spot;
 		}
-		dive.spot = spot;
 
 		dive.save();
 
@@ -63,7 +55,7 @@ public class Dives extends Controller {
 		show(dive.id);
 	}
 
-	public static void update(@Valid Dive dive, long spotId, String spotName) {
+	public static void update(@Valid Dive dive, @Valid Spot spot, long spotId) {
 		if (validation.hasErrors()) {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@edit", dive);

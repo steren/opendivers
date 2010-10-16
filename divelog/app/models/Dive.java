@@ -1,6 +1,11 @@
 package models;
 
 import play.*;
+import play.data.validation.InPast;
+import play.data.validation.Max;
+import play.data.validation.Min;
+import play.data.validation.Range;
+import play.data.validation.Required;
 import play.db.jpa.*;
 
 import javax.persistence.*;
@@ -11,6 +16,7 @@ import java.util.*;
 public class Dive extends CommentModel {
 
 	/** date of the dive */
+	@Required @InPast
 	public Date date;
 	
 	/** location of this dive */
@@ -18,6 +24,7 @@ public class Dive extends CommentModel {
 	public Spot spot;
 
 	public double maxDepth;
+	@Range(min = 0, max = 3600)
 	public long duration;
 	
 	public double airTemperature;

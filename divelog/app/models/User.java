@@ -1,6 +1,9 @@
 package models;
 
 import play.*;
+import play.data.validation.Email;
+import play.data.validation.Password;
+import play.data.validation.Required;
 import play.db.jpa.*;
 import play.libs.Crypto;
 
@@ -11,8 +14,12 @@ import java.util.*;
 @Entity
 public class User extends Model {
 	
+	
+	@Required @Email
     public String email;
+	@Required
     public String userName;
+	@Required @Password
     public String password;
     public boolean isAdmin;
     
