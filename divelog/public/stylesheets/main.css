@@ -20,13 +20,26 @@
     font-size: 140%;	
 }
 
+/**
+ * Main Menu
+ */
+#menuBar ul {
+    margin-left:0;
+    padding-left:0;
+}
+#menuBar ul li {
+    display:inline;
+}
+#menuBar a.current {
+    background-color: #EEEEEE;
+}
 
 /**
  * Search
  */
 #searchBox {
 	float:right;
-	}
+}
 /* Search input, credits MediaWiki template */
 #searchBox h5 {
 	display: none;

@@ -13,6 +13,9 @@ public class Application extends Controller {
         render();
     }
 
+    public static void explore() {
+        render("@index");
+    }
     
 	public static void search(String query) {
 		//TODO Steren : this query string construction is temporary, we should better handle this

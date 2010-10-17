@@ -19,3 +19,7 @@ validationSpot=Le nom du lieu n'est pas valide
 yourdives=Vos plongées
 editdive=Editer une plongée
 createdive=Ajouter une plongée
+
+menuhome=Acceuil
+menuexplore=Explorer
+menuyourdives=Vos plongées
