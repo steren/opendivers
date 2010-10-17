@@ -14,4 +14,44 @@
 	width: 940px;
     margin: 0px auto;
     padding: 20px 0;
-}	
+}
+
+#searchBox h5 {
+	display: none;
+}
+
+/* Search input, credits MediaWiki template */
+#simpleSearch {
+	box-shadow: 0px 3px 4px #E5E5E5 inset, 1px 1px 0 #EFEFEF;
+    -webkit-box-shadow: 0px 3px 4px #E5E5E5 inset, 1px 1px 0 #EFEFEF; 
+    -moz-box-shadow: 0px 3px 4px #E5E5E5 inset, 1px 1px 0 #EFEFEF; 	
+
+    border:1px solid #AAAAAA;
+	min-height:1px;
+	position:relative;
+	
+	width: 221px;
+}
+#simpleSearch input#searchInput {
+	background-color:transparent;
+	border-width:0;
+	font-size:13px;
+	margin:0;
+	padding:3px;
+	vertical-align:top;
+	width:14em;
+}
+#simpleSearch button#searchButton {
+	background-color:transparent;
+	border:medium none;
+	cursor:pointer;
+	font-size:x-small;
+	margin:0 5px;
+	padding:0;
+}
+#simpleSearch button#searchButton img {
+border:medium none;
+margin:0;
+padding:0;
+vertical-align:middle;
+}

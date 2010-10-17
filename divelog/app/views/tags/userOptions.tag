@@ -15,7 +15,7 @@
     #{form @Register.registerNew()}
         <p id="email-field">
             <label for="email">&{'email'}</label>
-            <input type="text" name="email" id="email" value="&{flash.email}" />
+            <input type="email" name="email" id="email" value="&{flash.email}" />
         </p>
         <p id="username-field">
             <label for="username">&{'username'}</label>
@@ -36,7 +36,7 @@
        #{form @Secure.authenticate()}
             <p id="email-field">
                 <label for="username">&{'email'}</label> *{ Secure module works using "username", but for us, username is the email }*
-                <input type="text" name="username" id="username" value="${flash.username}" />
+                <input type="email" name="username" id="username" value="${flash.username}" />
             </p>
             <p id="password-field">
                 <label for="password">&{'password'}</label>

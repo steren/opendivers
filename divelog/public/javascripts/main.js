@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+	// Focus on search field
+	if (!("autofocus" in document.createElement("input"))) {
+	      $("#searchInput").focus();
+	    }
+	
 	$("#signupLink").click(function() {
 		$("#loginBox").hide();
 		var box = $("#signupBox");

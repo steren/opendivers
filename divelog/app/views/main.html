@@ -18,13 +18,15 @@
         #{get 'moreScripts' /}
     </head>
     <body>
+        <div id="page">
+        
         #{userOptions /}
-		
-		<div id="page">
 		
 		<div id="logo">
             <a href="/"><img alt="Open Divers" src="@{'/public/images/logo.png'}" /></a>
         </div>
+        
+        #{searchInput /}
 		
 		#{if flash.error}
 		    <p class="error">
