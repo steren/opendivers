@@ -20,6 +20,12 @@
     <body>
         #{userOptions /}
 		
+		<div id="page">
+		
+		<div id="logo">
+            <a href="/"><img alt="Open Divers" src="@{'/public/images/logo.png'}" /></a>
+        </div>
+		
 		#{if flash.error}
 		    <p class="error">
 		        ${flash.error}
@@ -33,6 +39,10 @@
 		
 		<div id="mainContent">
             #{doLayout /}
+        </div>
+        
+        <div id="footer">
+        </div>
         </div>
     </body>
 </html>
