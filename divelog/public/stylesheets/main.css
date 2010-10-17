@@ -16,11 +16,17 @@
     padding: 20px 0;
 }
 
+/**
+ * Search
+ */
+
+#searchBox {
+	float:right;
+	}
+/* Search input, credits MediaWiki template */
 #searchBox h5 {
 	display: none;
 }
-
-/* Search input, credits MediaWiki template */
 #simpleSearch {
 	box-shadow: 0px 3px 4px #E5E5E5 inset, 1px 1px 0 #EFEFEF;
     -webkit-box-shadow: 0px 3px 4px #E5E5E5 inset, 1px 1px 0 #EFEFEF; 
