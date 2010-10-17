@@ -1,26 +1,13 @@
 #{extends 'main.html' /}
-
-<h2>View Dive</h2>
+#{set 'title'}
+    ${dive.spot} ${dive.date}
+#{/set}
 
 <a href="@{Dives.edit(dive.id)}">&{'edit'}</a>
 
 <a href="@{Dives.delete(dive.id)}" onclick="if (!confirm('&{'deleteconfirmmessage'}')) return false;">&{'delete'}</a>
 
-<div class="dive">
-
-  
-	<div class="row">
-        <span>
-      ${dive.spot}
-        </span>
-
-		<span>
-      ${dive.date}
-		</span>
-	</div>
-  
-
-  
+<div class="dive">  
 	<div class="row">
 		<span class="elem">
 			maxDepth:
@@ -90,8 +77,6 @@
       ${dive.center}
 		</span>
 	</div>
-  
-
   
 	<div class="row">
 		<span class="elem">

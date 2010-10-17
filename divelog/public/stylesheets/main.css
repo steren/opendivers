@@ -16,10 +16,14 @@
     padding: 20px 0;
 }
 
+#mainTitle {
+    font-size: 140%;	
+}
+
+
 /**
  * Search
  */
-
 #searchBox {
 	float:right;
 	}

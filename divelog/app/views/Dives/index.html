@@ -1,6 +1,7 @@
 #{extends 'main.html' /}
-
-<h2>My Dives</h2>
+#{set 'title'}
+    &{'yourdives'}
+#{/set}
 
 <a href="@{Dives.create}">&{'newdive'}</a>
 

@@ -15,3 +15,7 @@ deleteconfirmmessage=Are you sure you want to delete this dive?
 selectcountry=Country
 
 validationSpot=Spot name is not valid.
+
+yourdives=Your dives
+editdive=Edit dive
+createdive=Create dive

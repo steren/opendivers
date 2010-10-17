@@ -1,6 +1,7 @@
 #{extends 'main.html' /}
-
-<h2>Create Dive</h2>
+#{set 'title'}
+    &{'createdive'}
+#{/set}
 
 <div class="entity">
 #{form @Dives.save(), id:'createForm'}

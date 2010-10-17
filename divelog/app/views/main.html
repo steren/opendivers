@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>#{get 'title' /}</title>
+        <title>#{get 'title' /} - Open Divers</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/jquery-ui/smoothness/jquery-ui-1.8.5.custom.css'}">
@@ -38,6 +38,8 @@
 		        ${flash.success}
 		    </p>
 		#{/if}
+		
+		<h1 id="mainTitle">#{get 'title' /}</h1>
 		
 		<div id="mainContent">
             #{doLayout /}
