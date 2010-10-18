@@ -1,18 +1,30 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import models.Dive;
 import models.Spot;
+import models.User;
+import play.mvc.Before;
 import play.mvc.Controller;
 import play.i18n.Messages;
 import play.data.validation.Validation;
 import play.data.validation.Valid;
 
-
 public class Dives extends Controller {
+	
+	@Before(unless="show")
+	static void checkAuthentification() {
+	    if(session.get("user") == null) {
+	    	Application.index();
+	    }
+	}
+	
 	public static void index() {
-		List<Dive> dives = models.Dive.all().fetch();
-		render(dives);
+		User currentUser = Security.connectedUser();
+		
+		renderArgs.put("dives", currentUser.dives);
+		render();
 	}
 
 	public static void create(Dive dive) {
@@ -48,8 +60,14 @@ public class Dives extends Controller {
 			spot.save();
 			dive.spot = spot;
 		}
-
 		dive.save();
+		
+		User currentUser = Security.connectedUser();
+		if(currentUser.dives == null) {
+			currentUser.dives = new ArrayList<Dive>();
+		}
+		currentUser.dives.add(dive);
+		currentUser.save();
 
 		flash.success(Messages.get("scaffold.created", "Dive"));
 		show(dive.id);

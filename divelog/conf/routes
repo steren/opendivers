@@ -15,18 +15,18 @@ GET     /public/                                staticDir:public
 GET     /register                               Register.RegisterNew
 
 # Explore
-GET     /explore                                Application.explore
+GET     /explore/?                              Application.explore
 
 # Spots
 GET     /spot/{<[0-9]+>id}                      Spots.show
 
 # Dives
-GET     /dives                                  Dives.index
+GET     /dives/?                                Dives.index
 GET     /dive/{<[0-9]+>id}                      Dives.show
 GET     /dive/{<[0-9]+>id}/edit                 Dives.edit
 
 # Trips
-GET     /trips                                  Trips.index
+GET     /trips/?                                Trips.index
 GET     /trip/{<[0-9]+>id}                      Trips.show
 GET     /trip/{<[0-9]+>id}/edit                 Trips.edit
 
