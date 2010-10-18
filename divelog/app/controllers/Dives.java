@@ -15,7 +15,7 @@ public class Dives extends Controller {
 	
 	@Before(unless="show")
 	static void checkAuthentification() {
-	    if(session.get("user") == null) {
+	    if(!Security.isConnected()) {
 	    	Application.index();
 	    }
 	}
