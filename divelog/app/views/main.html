@@ -26,13 +26,9 @@
             <a href="/"><img alt="Open Divers" src="@{'/public/images/logo.png'}" /></a>
         </div>
 
-        <div id="menuBar">
-        <ul>
-            <li><a href="@{Application.index()}"    #{currentMenu 'menuHome' /} >&{'menuhome'}</a></li>
-            <li><a href="@{Application.explore()}"  #{currentMenu 'menuExplore' /} >&{'menuexplore'}</a></li>
-            <li><a href="@{Dives.index()}"          #{currentMenu 'menuYourDives' /} >&{'menuyourdives'}</a></li>
-        </ul>
-        #{searchInput /}
+        <div id="upperBar">
+            #{menuBar /}
+            #{searchInput /}
         </div>
 		
 		#{if flash.error}

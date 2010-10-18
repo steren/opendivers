@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set 'title'}
+    &{'explore'}
+#{/set}
+
+#{set currentMenu:'menuExplore' /}
+
+#{list items:spots, as:'spot'}
+	<div>
+		<a href="@{Spots.show(spot.id)}">${spot}</a>&nbsp;
+	</div>
+#{/list}

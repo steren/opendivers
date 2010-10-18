@@ -16,6 +16,7 @@ selectcountry=Pays
 
 validationSpot=Le nom du lieu n'est pas valide
 
+explore=Explorer
 yourdives=Vos plongées
 editdive=Editer une plongée
 createdive=Ajouter une plongée

@@ -14,15 +14,15 @@ public class Application extends Controller {
     }
 
     public static void explore() {
-        render("@index");
+		List<Spot> spots = models.Spot.all().fetch();
+		render(spots);
     }
     
 	public static void search(String query) {
-		//TODO Steren : this query string construction is temporary, we should better handle this
-		//String fullQueryString = "content:" + query + " OR tags:" + query + " OR category:" + query;
-		//Query q = Search.search(fullQueryString, Insight.class);
-		//List<Insight> insights = q.fetch();
-		//render(query, insights);
+		String fullQueryString = "name:" + query; // + " OR country:" + query;
+		//Query q = Search.search(fullQueryString, Spot.class);
+		//List<Spot> spots = q.fetch();
+		//render(query, spots);
 		render("@index");
 	}
     
