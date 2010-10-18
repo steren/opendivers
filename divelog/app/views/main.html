@@ -26,21 +26,23 @@
             <a href="/"><img alt="Open Divers" src="@{'/public/images/logo.png'}" /></a>
         </div>
 
+        <div id="actionFeedbackMessage">
+        #{if flash.error}
+            <p class="error">
+                ${flash.error}
+            </p>
+        #{/if}
+        #{if flash.success}
+            <p class="success">
+                ${flash.success}
+            </p>
+        #{/if}
+        </div>
+
         <div id="upperBar">
             #{menuBar /}
             #{searchInput /}
         </div>
-		
-		#{if flash.error}
-		    <p class="error">
-		        ${flash.error}
-		    </p>
-		#{/if}
-		#{if flash.success}
-		    <p class="success">
-		        ${flash.success}
-		    </p>
-		#{/if}
 		
 		<h1 id="mainTitle">#{get 'title' /}</h1>
 		

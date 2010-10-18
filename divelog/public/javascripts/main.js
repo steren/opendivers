@@ -24,5 +24,8 @@ $(document).ready(function() {
 			box.fadeIn();
 		}
 	});
+	
+	// make info disapear
+	$("#actionFeedbackMessage").delay(5000).fadeOut();
 
 });
