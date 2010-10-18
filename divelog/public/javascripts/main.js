@@ -25,7 +25,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	// make info disapear
+	// make info disappear
 	$("#actionFeedbackMessage").delay(5000).fadeOut();
 
 });
