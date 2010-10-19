@@ -17,4 +17,8 @@ public class Fish extends CommentModel {
 	@OneToMany(mappedBy = "fish", cascade = CascadeType.ALL) 
 	public List<PictureFishTag> tags;
 	
+	public String toString() {
+	    return name;
+	}
+	
 }

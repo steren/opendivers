@@ -1,0 +1,10 @@
+# Initial data for fishes
+# Warning: be sure to use spaces and not tabs in a yml file
+
+# Fishes
+
+Fish(pterois_volitans):
+    name: pterois_volitans
+    
+Fish(amphiprion bicinctus):
+    name: amphiprion_bicinctus

@@ -26,6 +26,8 @@ public class Bootstrap extends Job {
             
             // load some initial data
             Fixtures.load("initial-data.yml");
+            
+            Fixtures.load("initial-data-fishes.yml");
         }
         
     }
