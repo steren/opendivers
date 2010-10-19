@@ -7,7 +7,13 @@
 
 <a href="@{Dives.delete(dive.id)}" onclick="if (!confirm('&{'deleteconfirmmessage'}')) return false;">&{'delete'}</a>
 
-<div class="dive">  
+<div class="dive">
+
+    lat: ${dive.spot?.latitude}
+    
+    long: ${dive.spot?.longitude}
+    
+
 	<div class="row">
 		<span class="elem">
 			maxDepth:

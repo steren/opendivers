@@ -120,3 +120,18 @@
 	padding:0;
 	vertical-align:middle;
 }
+
+/**
+ * Form
+ */
+div.row {
+	clear:both
+}
+div.rowElement {
+	float: left;
+	margin-right: 10px;
+}
+div.rowElement label {
+    font-weight:normal;
+    display:block;
+}
