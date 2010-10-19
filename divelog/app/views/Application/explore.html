@@ -5,6 +5,14 @@
 
 #{set currentMenu:'menuExplore' /}
 
+<div id="mapExplore" class="mapExplore"></div>
+<script types="texts/javascripts">
+	var exploreLocations = []
+	#{list items:spots, as:'spot'}
+	     exploreLocations.push( new google.maps.LatLng(${spot.latitude}, ${spot.longitude}) );
+	#{/list}
+</script>
+
 #{list items:spots, as:'spot'}
     <div>
         <a href="@{Spots.show(spot.id)}">${spot}</a>&nbsp;

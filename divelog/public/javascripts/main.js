@@ -37,6 +37,10 @@ $(document).ready(function() {
 	if(mapDisplayDiv) {
 		attachDisplayMap(mapDisplayDiv);
 	}
+	var mapExploreDiv = $("#mapExplore").get(0);
+	if(mapExploreDiv) {
+		attachExploreMap(mapExploreDiv);
+	}
 });
 
 // Google Maps
@@ -57,6 +61,26 @@ function attachDisplayMap(mapDiv) {
 	});
 }
 
+function attachExploreMap(mapDiv) {
+	var myOptions = {
+		zoom : 2,
+		center : new google.maps.LatLng(0, 0),
+		mapTypeId : google.maps.MapTypeId.SATELLITE,
+		disableDefaultUI : true,
+		navigationControl : true
+	};
+
+	var map = new google.maps.Map(mapDiv, myOptions);
+	
+	for (var i in exploreLocations) {
+		new google.maps.Marker( {
+			map : map,
+			position : exploreLocations[i]
+		});
+		
+	} 
+	
+}
 
 function attachSelectionMap(mapDiv) {
 	var myOptions = {
