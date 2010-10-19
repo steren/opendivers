@@ -59,16 +59,19 @@ function attachDisplayMap(mapDiv) {
 
 
 function attachSelectionMap(mapDiv) {
-	var myLatlng = new google.maps.LatLng(0, 0);
 	var myOptions = {
-		zoom : 1,
-		center : myLatlng,
+		zoom : displayZoom,
+		center : displayLocation,
 		mapTypeId : google.maps.MapTypeId.SATELLITE,
 		disableDefaultUI : true,
 		navigationControl : true
 	};
 
 	var map = new google.maps.Map(mapDiv, myOptions);
+	
+	if(displayMarker) {
+		placeMarker(displayLocation);
+	}
 
 	function setLatLngInputValues(location) {
 		$("#spotLatitude").val(location.lat());
@@ -90,8 +93,10 @@ function attachSelectionMap(mapDiv) {
 		setLatLngInputValues(location);
 		map.panTo(location);
 	}
-
-	google.maps.event.addListenerOnce(map, 'click', function(event) {
-		placeMarker(event.latLng);
-	});
+	
+	if(!displayMarker) {
+		google.maps.event.addListenerOnce(map, 'click', function(event) {
+			placeMarker(event.latLng);
+		});
+	}
 }

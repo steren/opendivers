@@ -12,6 +12,7 @@
 	<span><!-- actions --></span>
 		<span>Date</span>
 		<span>Spot</span>
+		<span>Country</span>
 		<span>Type</span>
 		<span>Training</span>
 </div>
@@ -20,8 +21,9 @@
 		<span>
 			<a href="@{Dives.show(dive.id)}">Show</a>&nbsp;
 		</span>
-				<span>${dive.date}</span>
-				<span>${dive.spot}</span>
+				<span>${dive.date.format("yyyy-MM-dd")}</span>
+				<span>${dive.spot.name}</span>
+				<span>${dive.spot.country}</span>
 				<span>${dive.type}</span>
 				<span>${dive.training}</span>
 	</div>

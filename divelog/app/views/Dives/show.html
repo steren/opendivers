@@ -1,6 +1,6 @@
 #{extends 'main.html' /}
 #{set 'title'}
-    ${dive.spot} ${dive.date}
+    ${dive.spot} ${dive.date.format("yyyy-MM-dd")}
 #{/set}
 
 <a href="@{Dives.edit(dive.id)}">&{'edit'}</a>
@@ -12,7 +12,7 @@
      <div class="mapDisplayContainer">
          <div id="mapDisplayLocation" class="mapDisplay"></div>
          <script types="texts/javascripts">
-         var displayLocation = new google.maps.LatLng(${dive.spot?.latitude}, ${dive.spot?.longitude}); 
+              var displayLocation = new google.maps.LatLng(${dive.spot?.latitude}, ${dive.spot?.longitude}); 
          </script>
          
      </div>

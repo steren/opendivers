@@ -10,6 +10,7 @@ import play.db.jpa.*;
 
 import javax.persistence.*;
 
+import java.text.DateFormat;
 import java.util.*;
 
 @Entity

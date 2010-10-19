@@ -3,6 +3,17 @@
     <div>
         <div class="mapEditContainer">
             <div id="mapSelectLocation" class="mapEdit"></div>
+            <script types="texts/javascripts">
+            var displayLocation = new google.maps.LatLng(0, 0);
+            var displayZoom = 1;
+            var displayMarker = false;
+            #{if dive.spot}
+                 displayLocation = new google.maps.LatLng(${dive.spot?.latitude}, ${dive.spot?.longitude});
+                 displayZoom = 13;
+                 displayMarker = true;
+            #{/if}
+            </script>
+            
         </div>
         
          <div class="row">
