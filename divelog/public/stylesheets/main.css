@@ -157,3 +157,11 @@ div.mapEdit {
     width: 360px;
     height: 300px;
 }
+
+div.mapDisplayContainer {
+    float: right;
+}
+div.mapDisplay {
+    width: 400px;
+    height: 300px;
+}

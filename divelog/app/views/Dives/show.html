@@ -9,10 +9,13 @@
 
 <div class="dive">
 
-    lat: ${dive.spot?.latitude}
-    
-    long: ${dive.spot?.longitude}
-    
+     <div class="mapDisplayContainer">
+         <div id="mapDisplayLocation" class="mapDisplay"></div>
+         <script types="texts/javascripts">
+         var displayLocation = new google.maps.LatLng(${dive.spot?.latitude}, ${dive.spot?.longitude}); 
+         </script>
+         
+     </div>
 
 	<div class="row">
 		<span class="elem">

@@ -2,13 +2,13 @@ $(document).ready(function() {
 
 	// Focus on search field
 	if (!("autofocus" in document.createElement("input"))) {
-	      $("#searchInput").focus();
-	    }
-	
+		$("#searchInput").focus();
+	}
+
 	$("#signupLink").click(function() {
 		$("#loginBox").hide();
 		var box = $("#signupBox");
-		if(box.is(":visible")) {
+		if (box.is(":visible")) {
 			box.fadeOut();
 		} else {
 			box.fadeIn();
@@ -18,57 +18,80 @@ $(document).ready(function() {
 	$("#loginLink").click(function() {
 		$("#signupBox").hide();
 		var box = $("#loginBox");
-		if(box.is(":visible")) {
+		if (box.is(":visible")) {
 			box.fadeOut();
 		} else {
 			box.fadeIn();
 		}
 	});
-	
+
 	// make info disappear
 	$("#actionFeedbackMessage").delay(5000).fadeOut();
 
+	// Display Maps
+	var mapSelectDiv = $("#mapSelectLocation").get(0);
+	if(mapSelectDiv) {
+		attachSelectionMap(mapSelectDiv);
+	}
+	var mapDisplayDiv = $("#mapDisplayLocation").get(0);
+	if(mapDisplayDiv) {
+		attachDisplayMap(mapDisplayDiv);
+	}
 });
 
 // Google Maps
-function initialize() {
-    var mapDiv = document.getElementById('map-canvas');
-    var myLatlng = new google.maps.LatLng(0, 0);
-    var myOptions = {
-      zoom: 1,
-      center: myLatlng,
-      mapTypeId: google.maps.MapTypeId.SATELLITE,
-      disableDefaultUI: true,
-      navigationControl: true
-    };
-    
-    var map = new google.maps.Map(mapDiv, myOptions);
+function attachDisplayMap(mapDiv) {
+	var myOptions = {
+		zoom : 14,
+		center : displayLocation,
+		mapTypeId : google.maps.MapTypeId.SATELLITE,
+		disableDefaultUI : true,
+		navigationControl : true
+	};
 
-    function setLatLngInputValues(location) {
-  	  $("#spotLatitude").val(location.lat());
-	  $("#spotLongitude").val(location.lng());
-    }
-    
-    function placeMarker(location) {
-  	  var marker = new google.maps.Marker({
-  		  map: map,
-  	      position: location, 
-          draggable: true
-  	  });
+	var map = new google.maps.Map(mapDiv, myOptions);
+	
+	var marker = new google.maps.Marker( {
+		map : map,
+		position : displayLocation
+	});
+}
 
-      google.maps.event.addListener(marker, 'dragend', function(mouseEvent) {
-    	  setLatLngInputValues(mouseEvent.latLng);
-    	  map.panTo(mouseEvent.latLng);
-      });
-  	  
-	  setLatLngInputValues(location);
-      map.panTo(location);
-    }
-    
-    google.maps.event.addListenerOnce(map, 'click', function(event) {
-        placeMarker(event.latLng);
-    });
-    
-  }
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+function attachSelectionMap(mapDiv) {
+	var myLatlng = new google.maps.LatLng(0, 0);
+	var myOptions = {
+		zoom : 1,
+		center : myLatlng,
+		mapTypeId : google.maps.MapTypeId.SATELLITE,
+		disableDefaultUI : true,
+		navigationControl : true
+	};
+
+	var map = new google.maps.Map(mapDiv, myOptions);
+
+	function setLatLngInputValues(location) {
+		$("#spotLatitude").val(location.lat());
+		$("#spotLongitude").val(location.lng());
+	}
+
+	function placeMarker(location) {
+		var marker = new google.maps.Marker( {
+			map : map,
+			position : location,
+			draggable : true
+		});
+
+		google.maps.event.addListener(marker, 'dragend', function(mouseEvent) {
+			setLatLngInputValues(mouseEvent.latLng);
+			map.panTo(mouseEvent.latLng);
+		});
+
+		setLatLngInputValues(location);
+		map.panTo(location);
+	}
+
+	google.maps.event.addListenerOnce(map, 'click', function(event) {
+		placeMarker(event.latLng);
+	});
+}
