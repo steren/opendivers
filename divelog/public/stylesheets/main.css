@@ -194,3 +194,29 @@ div.mapExplore {
 #fishNet.active {
     background-color: #F2F2F2;
 }
+
+/**
+ * DiveLog
+ */ 
+ .diveLog ul {
+    margin-left:0;
+    padding-left:0;
+ }
+ .diveLog li {
+    display:inline;
+    margin: 10px;
+    padding: 5px;
+    
+    cursor: pointer;
+
+    float: left;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #222222;
+    background-color: #EEEEEE;
+}
+
+.diveLog li:hover {
+    background-color: #F2F2F2;
+    border-color: #CCCCCC;
+}

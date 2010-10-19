@@ -25,6 +25,8 @@ $(document).ready(function() {
 		}
 	});
 
+	
+	
 	// make info disappear
 	$("#actionFeedbackMessage").delay(5000).fadeOut();
 
@@ -44,6 +46,7 @@ $(document).ready(function() {
 	function putFishInNet( item ) {
 		item.fadeOut("fast", function() { item.appendTo( $("#fishNet") ).fadeIn();} );
 	}
+	
 	
 	
 	// Display Maps

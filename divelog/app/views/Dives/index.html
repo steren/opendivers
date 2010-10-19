@@ -8,23 +8,24 @@
 
 <a href="@{Dives.create}">&{'newdive'}</a>
 
-<div>
-	<span><!-- actions --></span>
-		<span>Date</span>
-		<span>Spot</span>
-		<span>Country</span>
-		<span>Type</span>
-		<span>Training</span>
-</div>
+<div class="diveLog">
+<ul>
 #{list items:dives, as:'dive'}
-	<div>
-		<span>
-			<a href="@{Dives.show(dive.id)}">Show</a>&nbsp;
-		</span>
-				<span>${dive.date.format("yyyy-MM-dd")}</span>
-				<span>${dive.spot.name}</span>
-				<span>${dive.spot.country}</span>
-				<span>${dive.type}</span>
-				<span>${dive.training}</span>
-	</div>
+	<li>
+        <a style="display:none" href="@{Dives.show(dive.id)}">show</a>
+        <h3>${dive.spot.name}</h3>
+        <p>${dive.spot.country}</p>
+        <p>${dive.date.format("yyyy-MM-dd")}</p>
+
+		<span style="display:none">${dive.type}</span>
+		<span style="display:none">${dive.training}</span>
+	</li>
 #{/list}
+</ul>
+</div>
+
+<script type="text/javascript">
+    $(".diveLog li").click( function() {
+        window.location = $(this).find("a").attr("href");
+    })
+</script>
