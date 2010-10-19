@@ -109,26 +109,18 @@
     </div>
     
     <h3><a href="#">Marine life</a></h3>
-    <div>
-         <div class="row">
-          <label for="">Fishes</label>
-          <div class="field">
-                <select name="dive.fishes.id" multiple>
-                %{ models.Fish.all().fetch().sort{ it.toString() }.each() { }%
-                  
-                  %{
-                    selected = false;
-                    dive?.fishes.each() { f ->
-                      if (f.id == it?.id)
-                        selected = true;
-                    }
-                  }%
-                  <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-                %{ } }%
-                </select>
-          </div>
-          <span class="error" style="display:none;">${errors.forKey('dive.fishes')}</span>
-        </div>
+    <div id="fishDragAndDrop">
+    
+    <div id="fishNet">
+        <div>Seen</div>
+    </div>
+    <div id="fishLibrary">
+        <div>Library</div>
+        #{list items:models.Fish.all().fetch(), as:'fish'}
+        <div class="fishBadge"><img alt="${fish.name}" src="/public/images/fishes/${fish.name}.png" /></div>
+        #{/list}
+    </div>
+    
     </div>
     
     
@@ -233,4 +225,26 @@ $(function() {
             %{ } }%
             </select>
             )
+/}*
+
+*{
+     <div class="row">
+      <label for="">Fishes</label>
+      <div class="field">
+            <select name="dive.fishes.id" multiple>
+            %{ models.Fish.all().fetch().sort{ it.toString() }.each() { }%
+              
+              %{
+                selected = false;
+                dive?.fishes.each() { f ->
+                  if (f.id == it?.id)
+                    selected = true;
+                }
+              }%
+              <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+            %{ } }%
+            </select>
+      </div>
+      <span class="error" style="display:none;">${errors.forKey('dive.fishes')}</span>
+    </div>
 /}*

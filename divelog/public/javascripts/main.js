@@ -28,6 +28,24 @@ $(document).ready(function() {
 	// make info disappear
 	$("#actionFeedbackMessage").delay(5000).fadeOut();
 
+	// Drag & Drop for fishes
+	$( "#fishLibrary .fishBadge" ).draggable({
+		revert: "invalid",
+		helper: "clone",
+		containment: "#fishDragAndDrop" // stick to demo-frame if present
+	});
+	$( "#fishNet" ).droppable({
+		activeClass: 'active',
+		drop: function( event, ui ) {
+			putFishInNet(ui.draggable); //$( this ).addClass( "dropped" );
+		}
+	});
+
+	function putFishInNet( item ) {
+		item.fadeOut("fast", function() { item.appendTo( $("#fishNet") ).fadeIn();} );
+	}
+	
+	
 	// Display Maps
 	var mapSelectDiv = $("#mapSelectLocation").get(0);
 	if(mapSelectDiv) {

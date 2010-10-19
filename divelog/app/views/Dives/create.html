@@ -6,8 +6,6 @@
 <div class="entity">
 #{form @Dives.save(), id:'createForm'}
 	#{include 'Dives/_form.html' /}
-	<input type="submit" name="submit" value="Save" />
+	<a href="@{Dives.index}">Cancel</a> <input type="submit" name="submit" value="Save" />
 #{/form}
 </div>
-
-<a href="@{Dives.index}">Cancel</a>

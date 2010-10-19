@@ -171,3 +171,26 @@ div.mapExplore {
     width: 100%;
     height: 400px;
 }
+
+/**
+ * Fish Drag & Drop
+ */
+#fishNet {
+	float:left;
+	background-color: #EEEEEE;
+	width: 50%;
+	height: 300px;
+}
+#fishLibrary {
+	float:right;
+	background-color: #DDDDDD;
+    width: 50%;
+    height: 300px;
+}
+#fishLibrary div.fishBadge {
+	width: 120px;
+	height: 120px;
+}
+#fishNet.active {
+    background-color: #F2F2F2;
+}
