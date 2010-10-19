@@ -3,6 +3,8 @@
     ${dive.spot} ${dive.date.format("yyyy-MM-dd")}
 #{/set}
 
+#{set currentMenu:'menuYourDives' /}
+
 #{set 'actions'}
 	<a href="@{Dives.edit(dive.id)}">&{'edit'}</a>
 	<a href="@{Dives.delete(dive.id)}" onclick="if (!confirm('&{'deleteconfirmmessage'}')) return false;">&{'delete'}</a>
