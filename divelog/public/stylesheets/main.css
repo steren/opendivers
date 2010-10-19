@@ -124,14 +124,36 @@
 /**
  * Form
  */
-div.row {
-	clear:both
+.form div.row {
+    clear:left;
 }
-div.rowElement {
+.form div.rowElement {
 	float: left;
 	margin-right: 10px;
 }
-div.rowElement label {
+.form div.rowElement label {
     font-weight:normal;
+}
+.form div.rowElement label.mainLabel {
     display:block;
+}
+.form select#country {
+    width:100px;
+}
+.form select#center {
+    width:100px;
+}
+.form input[type="checkbox"] {
+    vertical-align: middle;
+}
+
+/**
+ * Maps
+ */
+div.mapEditContainer {
+    float: right;
+}
+div.mapEdit {
+    width: 360px;
+    height: 300px;
 }

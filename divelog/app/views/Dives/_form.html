@@ -1,15 +1,18 @@
-<div id="accordion">
+<div id="accordion"  class="form">
     <h3><a href="#">Basic parameters</a></h3>
     <div>
+        <div class="mapEditContainer">
+            <div id="map-canvas" class="mapEdit"></div>
+        </div>
          <div class="row">
          <div class="rowElement">
-         <label for="spotName">Spot</label>
+         <label for="spotName" class="mainLabel">Spot</label>
 			<input id="spotName" type="text" name="spot.name"
 			value="${dive?.spot?.name}"
 			size="40" />
 
 			<span>
-			    <select name="spot.country.id" style="width:100px;">
+			    <select id="country" name="spot.country.id">
 			      <option value="">&{'selectcountry'}</option>
 			      %{ models.Country.all().fetch().sort{ it.toString() }.each() { }%
 			        %{
@@ -25,8 +28,10 @@
           <span class="error" style="display:none;">${errors.forKey('spot.name')}</span>
           <span class="error" style="display:none;">${errors.forKey('spot.country')}</span>
           </div>
+        </div>
+        <div class="row">
           <div class="rowElement">
-          <label for="date">Date</label>
+          <label for="date" class="mainLabel">Date</label>
               <script type="text/javascript">
                 $(function() {
                   $("#date").datepicker({ dateFormat: 'yy-mm-dd' } );
@@ -40,26 +45,7 @@
           <span class="error" style="display:none;">${errors.forKey('dive.date')}</span>
           </div>
         </div>
-
-<div id="map-canvas" style="width: 400px; height: 300px"></div>
-
-*{
-            (or choose
-            <select name="spotId">
-            <option value="">-</option>
-            %{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
-              %{
-                selected = false;
-                if (dive?.spot?.id == it.id) {
-                  selected = true
-                }
-              }%
-              <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-            %{ } }%
-            </select>
-            )
-/}*
-
+        
         <div class="row" style="display:none;">
 	        <div class="rowElement">
 	            <label for="spotLatitude">Latitude</label>
@@ -72,37 +58,23 @@
         </div>                     
 		
 		 <div class="row">
-		  <div class="label">Max Depth</div>
-		  <div class="field">
-		      <input type="text" name="dive.maxDepth" value="${dive?.maxDepth}"/>
+          <div class="rowElement">
+			  <label for="maxDepth" class="mainLabel">Max Depth (meters)</label>
+	          <input id="maxDepth" type="text" name="dive.maxDepth" value="${dive?.maxDepth}"/>
+			  <span class="error" style="display:none;">${errors.forKey('dive.maxDepth')}</span>
 		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('dive.maxDepth')}</span>
+		  <div class="rowElement">
+		      <label for="duration" class="mainLabel">Duration (minutes)</label>
+	          <input id="duration" type="text" name="dive.duration" value="${dive?.duration}"/>
+		      <span class="error" style="display:none;">${errors.forKey('dive.duration')}</span>
+	      </div>
 		</div>
 		
 		 <div class="row">
-		  <div class="label">Duration</div>
-		  <div class="field">
-		      <input type="text" name="dive.duration" value="${dive?.duration}"/>
-		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('dive.duration')}</span>
-		</div>
-		 <div class="row">
-		  <div class="label">Training</div>
-		  <div class="field">
-		      <input type="checkbox" name="dive.training"
-		        ${dive?.training ? 'checked':''}
-		      />
-		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('dive.training')}</span>
-		</div>
-		
-		 <div class="row">
-		  <div class="label">Center</div>
-		  <div class="field">
-		        <select name="dive.center.id">
-		              
-		                      <option value="">(None)</option>              
-		              
+		 <div class="rowElement">
+		  <label for="center" class="mainLabel">Diving center</label>
+	        <select id="center" name="dive.center.id">
+                <option value="">(None)</option>              
 		        %{ models.Center.all().fetch().sort{ it.toString() }.each() { }%
 		          
 		          %{
@@ -111,11 +83,15 @@
 		              selected = true
 		            }
 		          }%
-		          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-		        %{ } }%
-		        </select>
-		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('dive.center')}</span>
+	             <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+    	        %{ } }%
+	          </select>
+		      <span class="error" style="display:none;">${errors.forKey('dive.center')}</span>
+
+	          <label for="training">training session?</label>
+	          <input id="training" type="checkbox" name="dive.training" ${dive?.training ? 'checked':''} />
+	          <span class="error" style="display:none;">${errors.forKey('dive.training')}</span>
+          </div>
 		</div>
 		
     </div>
@@ -123,7 +99,7 @@
     <h3><a href="#">Marine life</a></h3>
     <div>
          <div class="row">
-          <div class="label">Fishes</div>
+          <label for="">Fishes</label>
           <div class="field">
                 <select name="dive.fishes.id" multiple>
                 %{ models.Fish.all().fetch().sort{ it.toString() }.each() { }%
@@ -146,85 +122,103 @@
     
     <h3><a href="#">Advanced parameters</a></h3>
     <div>
-		<div class="row">
-		  <div class="label">Air Temperature</div>
-		  <div class="field">
-		      <input type="text" name="dive.airTemperature" value="${dive?.airTemperature}"/>
-		  </div>
+        <div class="row">
+        <div>Temperature:</div>
+        <div class="rowElement">
+		  <label for="airTemperature">Air</label>
+	      <input id="airTemperature" type="text" name="dive.airTemperature" value="${dive?.airTemperature}"/>
 		  <span class="error" style="display:none;">${errors.forKey('dive.airTemperature')}</span>
-
-		  <div class="label">Water Surface Temperature</div>
-		  <div class="field">
-		      <input type="text" name="dive.waterSurfaceTemperature" value="${dive?.waterSurfaceTemperature}"/>
-		  </div>
+        </div>
+        <div class="rowElement">
+		  <label for="waterSurfaceTemperature">Water Surface</label>
+	      <input id="waterSurfaceTemperature" type="text" name="dive.waterSurfaceTemperature" value="${dive?.waterSurfaceTemperature}"/>
 		  <span class="error" style="display:none;">${errors.forKey('dive.waterSurfaceTemperature')}</span>
-
-		  <div class="label">Water Bottom Temperature</div>
-		  <div class="field">
-		      <input type="text" name="dive.waterBottomTemperature" value="${dive?.waterBottomTemperature}"/>
-		  </div>
+        </div>
+        <div class="rowElement">
+		  <label for="waterBottomTemperature">Water Bottom</label>
+	      <input id="waterBottomTemperature" type="text" name="dive.waterBottomTemperature" value="${dive?.waterBottomTemperature}"/>
 		  <span class="error" style="display:none;">${errors.forKey('dive.waterBottomTemperature')}</span>
 		</div>
+		</div>
 		
-		 <div class="row">
-		  <div class="label">Type</div>
-		  <div class="field">
-		        <select name="dive.type.id" multiple>
-		        %{ models.DiveType.all().fetch().sort{ it.toString() }.each() { }%
-		          
-		          %{
-		            selected = false;
-		            dive?.type.each() { f ->
-		              if (f.id == it?.id)
-		                selected = true;
-		            }
-		          }%
-		          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-		        %{ } }%
-		        </select>
-		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('dive.type')}</span>
-
-		  <div class="label">Water</div>
-		  <div class="field">
-		        <select name="dive.water.id">
-		                      <option value="">(None)</option>              
-		        %{ models.WaterType.all().fetch().sort{ it.toString() }.each() { }%
-		          
-		          %{
-		            selected = false;
-		            if (dive?.water?.id == it.id) {
-		              selected = true
-		            }
-		          }%
-		          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-		        %{ } }%
-		        </select>
-		  </div>
-		  <span class="error" style="display:none;">${errors.forKey('dive.water')}</span>
+		<div class="row">
+        <div class="rowElement">
+		<label for="">Type</label>
+		<select name="dive.type.id" multiple>
+		%{ models.DiveType.all().fetch().sort{ it.toString() }.each() { }%
+		  
+		  %{
+		    selected = false;
+		    dive?.type.each() { f ->
+		      if (f.id == it?.id)
+		        selected = true;
+		    }
+		  }%
+		<option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+		%{ } }%
+		</select>
+		 <span class="error" style="display:none;">${errors.forKey('dive.type')}</span>
+        </div>
+        </div>
+        <div class="row">
+        <div class="rowElement">
+		<label for="">Water</label>
+		<select name="dive.water.id">       
+		%{ models.WaterType.all().fetch().sort{ it.toString() }.each() { }%
+		  
+		  %{
+		    selected = false;
+		    if (dive?.water?.id == it.id) {
+		      selected = true
+		    }
+		  }%
+		<option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+		%{ } }%
+		</select>
+        <span class="error" style="display:none;">${errors.forKey('dive.water')}</span>
+		</div>
 		</div>
     </div>
 </div>
 
  <div class="row">
-  <div class="label"></div>
+  <label for=""></label>
   <div class="field">
       <input type="hidden" name="dive.id" value="${dive?.id}"/>
   </div>
   <span class="error" style="display:none;">${errors.forKey('dive.id')}</span>
 </div>
 
-    <script>
-    $(function() {
-        $( "#accordion" ).accordion();
-    });
-    </script>
+<script>
+$(function() {
+    $( "#accordion" ).accordion();
+});
+</script>
 
 
-<div>Spot autocomplete :
-%{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
-  
-  ${it?.id} ${it}
+*{
+	<div>Spot autocomplete :
+	%{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
+	  
+	  ${it?.id} ${it}
+	
+	%{ } }%
+	</div>
+/}*
 
-%{ } }%
-</div>
+*{
+            (or choose
+            <select name="spotId">
+            <option value="">-</option>
+            %{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
+              %{
+                selected = false;
+                if (dive?.spot?.id == it.id) {
+                  selected = true
+                }
+              }%
+              <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+            %{ } }%
+            </select>
+            )
+/}*
