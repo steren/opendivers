@@ -13,6 +13,7 @@
 .floatingBox {
     float: right;
     border: 1px solid black;
+    background-color: white;
 }
 
 #ui-datepicker-div { font-size: 12px; }
