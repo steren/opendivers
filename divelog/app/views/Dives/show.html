@@ -3,9 +3,10 @@
     ${dive.spot} ${dive.date.format("yyyy-MM-dd")}
 #{/set}
 
-<a href="@{Dives.edit(dive.id)}">&{'edit'}</a>
-
-<a href="@{Dives.delete(dive.id)}" onclick="if (!confirm('&{'deleteconfirmmessage'}')) return false;">&{'delete'}</a>
+#{set 'actions'}
+	<a href="@{Dives.edit(dive.id)}">&{'edit'}</a>
+	<a href="@{Dives.delete(dive.id)}" onclick="if (!confirm('&{'deleteconfirmmessage'}')) return false;">&{'delete'}</a>
+#{/set}
 
 <div class="dive">
 
@@ -16,83 +17,30 @@
          </script>
      </div>
 
-	<div class="row">
-		<span class="elem">
-			maxDepth:
-		</span>
-		<span class="value">
-      ${dive.maxDepth}
-		</span>
-
-		<span class="elem">
-			duration:
-		</span>
-		<span class="value">
-      ${dive.duration}
-		</span>
+    <div class="mainParams">
+	   <p><em>${dive.maxDepth}m</em> <em>${dive.duration} min</em></p>
 	</div>
-  
-    <div class="row">
-	  #{if dive.training}
-	        <span class="elem">
-	            training
-	        </span>
-	  #{/if}
-        <span class="elem">
-            type:
-        </span>
-        <span class="value">
-      ${dive.type}
-        </span>
 
-        <span class="elem">
-            water:
-        </span>
-        <span class="value">
-      ${dive.water}
-        </span>
+    <div>
+        <p>Fishes</p>
+        <p>${dive.fishes}</p>
     </div>
 
-  
-	<div class="row">
-		<span class="elem">
-			air:
-		</span>
-		<span class="value">
-      ${dive.airTemperature}
-		</span>
-
-		<span class="elem">
-			water surface:
-		</span>
-		<span class="value">
-      ${dive.waterSurfaceTemperature}
-		</span>
-
-		<span class="elem">
-			water bottom:
-		</span>
-		<span class="value">
-      ${dive.waterBottomTemperature}
-		</span>
-	</div>
-  
-	<div class="row">
-		<span class="elem">
-			center:
-		</span>
-		<span class="value">
-      ${dive.center}
-		</span>
-	</div>
-  
-	<div class="row">
-		<span class="elem">
-			fishes:
-		</span>
-		<span class="value">
-      ${dive.fishes}
-		</span>
-	</div>
+    <div>
+	    <p>Temperatures</p>
+	    <p>air: ${dive.airTemperature}°C water surface: ${dive.waterSurfaceTemperature}°C water bottom: ${dive.waterBottomTemperature}°C</p>
+    </div>
+    
+    <div>
+	    ${dive.center}
+	    #{if dive.training}
+	       training
+	    #{/if}
+    </div>
+    
+    <div>
+	    ${dive.type}
+	    ${dive.water}
+    </div>
 </div>
 

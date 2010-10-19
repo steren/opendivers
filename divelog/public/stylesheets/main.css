@@ -29,6 +29,10 @@
     margin: 0 0 10px;	
 }
 
+.actions {
+    float:right;	
+}
+
 /** 
  * Main upper bar
  */
@@ -221,3 +225,11 @@ div.mapExplore {
     background-color: #F2F2F2;
     border-color: #CCCCCC;
 }
+
+/**
+ * Dive view page
+ */
+ .dive .mainParams {
+    font-size: 140%;
+    margin-bottom: 15px;
+ }

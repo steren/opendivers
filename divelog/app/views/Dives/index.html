@@ -5,8 +5,9 @@
 
 #{set currentMenu:'menuYourDives' /}
 
-
-<a href="@{Dives.create}">&{'newdive'}</a>
+#{set 'actions'}
+    <a href="@{Dives.create}">&{'newdive'}</a>
+#{/set}
 
 <div class="diveLog">
 <ul>
