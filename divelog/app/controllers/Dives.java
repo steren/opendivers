@@ -80,8 +80,11 @@ public class Dives extends Controller {
 		}
 		
       	dive = dive.merge();
+      	dive.save();
+      	
+      	spot = spot.merge();
+      	spot.save();
 		
-		dive.save();
 		flash.success(Messages.get("scaffold.updated", "Dive"));
 		show(dive.id);
 	}

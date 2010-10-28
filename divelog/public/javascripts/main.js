@@ -100,7 +100,6 @@ function attachExploreMap(mapDiv) {
 		});
 		
 	} 
-	
 }
 
 function attachSelectionMap(mapDiv) {
