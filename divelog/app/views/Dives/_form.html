@@ -24,7 +24,7 @@
 			size="40" />
 
 			<span>
-			    <select id="country" name="spot.country.id">
+			    <select id="country-select" name="spot.country.id">
 			      <option value="">&{'selectcountry'}</option>
 			      %{ models.Country.all().fetch().sort{ it.toString() }.each() { }%
 			        %{
@@ -41,6 +41,17 @@
           <span class="error" style="display:none;">${errors.forKey('spot.country')}</span>
           </div>
         </div>
+        
+        <script type="text/javascript">
+        $("#country-select").change( function() {
+            var country = "";
+            $("#country-select option:selected").each(function () {
+                country = $(this).text();
+              });
+            moveSelectionMapToCountry(country);
+        })
+        </script>
+        
         <div class="row">
           <div class="rowElement">
           <label for="date" class="mainLabel">Date</label>
@@ -189,7 +200,7 @@
 </div>
 
 <input type="hidden" name="dive.id" value="${dive?.id}"/>
-<input type="hidden" name="spot.id" value="${dive?.spot.id}"/>
+<input type="hidden" name="spot.id" value="${dive?.spot?.id}"/>
 
 <script>
 $(function() {

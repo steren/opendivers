@@ -102,6 +102,9 @@ function attachExploreMap(mapDiv) {
 	} 
 }
 
+var selectionMap;
+var selectionMarker
+
 function attachSelectionMap(mapDiv) {
 	var myOptions = {
 		zoom : displayZoom,
@@ -111,7 +114,7 @@ function attachSelectionMap(mapDiv) {
 		navigationControl : true
 	};
 
-	var map = new google.maps.Map(mapDiv, myOptions);
+	selectionMap = new google.maps.Map(mapDiv, myOptions);
 	
 	if(displayMarker) {
 		placeMarker(displayLocation);
@@ -123,24 +126,39 @@ function attachSelectionMap(mapDiv) {
 	}
 
 	function placeMarker(location) {
-		var marker = new google.maps.Marker( {
-			map : map,
+		selectionMarker = new google.maps.Marker( {
+			map : selectionMap,
 			position : location,
 			draggable : true
 		});
 
-		google.maps.event.addListener(marker, 'dragend', function(mouseEvent) {
+		google.maps.event.addListener(selectionMarker, 'dragend', function(mouseEvent) {
 			setLatLngInputValues(mouseEvent.latLng);
-			map.panTo(mouseEvent.latLng);
+			selectionMap.panTo(mouseEvent.latLng);
 		});
 
 		setLatLngInputValues(location);
-		map.panTo(location);
+		selectionMap.panTo(location);
 	}
 	
 	if(!displayMarker) {
-		google.maps.event.addListenerOnce(map, 'click', function(event) {
+		google.maps.event.addListenerOnce(selectionMap, 'click', function(event) {
 			placeMarker(event.latLng);
 		});
 	}
+	
+}
+
+function moveSelectionMapToCountry(country) {
+	// if a marker exists, do not move
+	if(selectionMarker == null) {
+		var geocoder = new google.maps.Geocoder();
+		var address = country; //document.getElementById("address").value;
+	
+	    geocoder.geocode( { 'address': address}, function(results, status) {
+	      if (status == google.maps.GeocoderStatus.OK) {
+	        selectionMap.fitBounds(results[0].geometry.viewport);
+	      }
+	    });
+    }
 }
