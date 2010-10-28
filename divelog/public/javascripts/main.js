@@ -146,14 +146,21 @@ function attachSelectionMap(mapDiv) {
 			placeMarker(event.latLng);
 		});
 	}
-	
 }
 
-function moveSelectionMapToCountry(country) {
+function getValueFromCountryInput() {
+    var country = "";
+    $("#country-select option:selected").each(function () {
+        country = $(this).text();
+      });
+    return country;
+}
+
+function moveSelectionMapToLocation(location) {
 	// if a marker exists, do not move
 	if(selectionMarker == null) {
 		var geocoder = new google.maps.Geocoder();
-		var address = country; //document.getElementById("address").value;
+		var address = location;
 	
 	    geocoder.geocode( { 'address': address}, function(results, status) {
 	      if (status == google.maps.GeocoderStatus.OK) {

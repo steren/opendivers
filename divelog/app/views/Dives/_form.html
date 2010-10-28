@@ -13,7 +13,18 @@
                  displayMarker = true;
             #{/if}
             </script>
-            
+            <div>
+                <input id="mapSearch-input" type="search" placeholder="Search a city, an island...)"/>
+                <button id="mapSearch-button" type='button' name='button'  title="Search for this query">Search on map</button>
+                <script type="text/javascript">
+		        $("#mapSearch-button").click( function() {
+		            var location = "";
+		            location = $("#mapSearch-input")[0].value;
+		            location += getValueFromCountryInput();
+		            moveSelectionMapToLocation(location);
+		        })
+		        </script>
+            </div>
         </div>
         
          <div class="row">
@@ -44,12 +55,8 @@
         
         <script type="text/javascript">
         $("#country-select").change( function() {
-            var country = "";
-            $("#country-select option:selected").each(function () {
-                country = $(this).text();
-              });
-            moveSelectionMapToCountry(country);
-        })
+        	moveSelectionMapToLocation(getValueFromCountryInput());
+        });
         </script>
         
         <div class="row">
