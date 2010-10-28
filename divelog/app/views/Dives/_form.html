@@ -46,7 +46,10 @@
           <label for="date" class="mainLabel">Date</label>
               <script type="text/javascript">
                 $(function() {
-                  $("#date").datepicker({ dateFormat: 'yy-mm-dd' } );
+                  $("#date").datepicker({ 
+                      dateFormat: 'yy-mm-dd',
+                      maxDate: 0
+                  } );
                 });
               </script>
               <!-- TODO: date format needs to come from application.conf -->
@@ -185,13 +188,8 @@
     </div>
 </div>
 
- <div class="row">
-  <label for=""></label>
-  <div class="field">
-      <input type="hidden" name="dive.id" value="${dive?.id}"/>
-  </div>
-  <span class="error" style="display:none;">${errors.forKey('dive.id')}</span>
-</div>
+<input type="hidden" name="dive.id" value="${dive?.id}"/>
+<input type="hidden" name="spot.id" value="${dive?.spot.id}"/>
 
 <script>
 $(function() {
