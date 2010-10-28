@@ -24,3 +24,6 @@ createdive=Ajouter une plongée
 menuhome=Acceuil
 menuexplore=Explorer
 menuyourdives=Carnet de plongée
+
+searchonmapsplaceholder=Ville, île ...
+searchonmaps=Rechercher

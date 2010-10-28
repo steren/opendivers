@@ -25,7 +25,9 @@ $(document).ready(function() {
 		}
 	});
 
-	
+	// buttons
+	$( "button.button, input:submit, a.button").button();
+
 	
 	// make info disappear
 	$("#actionFeedbackMessage").delay(5000).fadeOut();
@@ -150,15 +152,16 @@ function attachSelectionMap(mapDiv) {
 
 function getValueFromCountryInput() {
     var country = "";
-    $("#country-select option:selected").each(function () {
-        country = $(this).text();
-      });
+    var option = $("#country-select option:selected").get(0);
+    if(option.value != "") {
+    	country = option.text;	
+    }
     return country;
 }
 
 function moveSelectionMapToLocation(location) {
-	// if a marker exists, do not move
-	if(selectionMarker == null) {
+	// if a marker exists, do something clever (selectionMarker) 
+	if(location != "") {
 		var geocoder = new google.maps.Geocoder();
 		var address = location;
 	
