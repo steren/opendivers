@@ -74,7 +74,17 @@ public class User extends Model {
 		return crDate;
 	}
     
-    public void sendRequest(User user, String message) {
+    /**
+     * send a friend request to another user
+     * @param user
+     * @param message
+     * @return true if request sent, false if already a friend.
+     */
+    public boolean sendRequest(User user, String message) {
+    	if( !this.buddies.contains(user) ) {
+    		return false;
+    	}
+    	
     	FriendRequest request = new FriendRequest(this, user, message);
 		request.save();
 		
@@ -82,6 +92,7 @@ public class User extends Model {
 		this.save();
 		user.receivedPendingRequests.add(request);
 		user.save();
+		return true;
     }
     
     public void respondRequest(FriendRequest request, FriendRequest.Status response) {
