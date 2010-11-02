@@ -25,15 +25,29 @@ public class Dive extends CommentModel {
 	public Spot spot;
 
 	public double maxDepth;
+	/** has the value been set ? */
+	public boolean maxDepthSet;
+	
 	@Range(min = 0, max = 3600)
 	public long duration;
+	/** has the value been set ? */
+	public boolean durationSet;	
 	
 	public double airTemperature;
+	/** has the value been set ? */
+	public boolean airTemperatureSet;
+	
 	public double waterSurfaceTemperature;
+	/** has the value been set ? */
+	public boolean waterSurfaceTemperatureSet;
+	
 	public double waterBottomTemperature;
+	/** has the value been set ? */
+	public boolean waterBottomTemperatureSet;
 	
 	@ManyToMany
 	public List<DiveType> type;
+	
 	@ManyToOne
 	public WaterType water;
 	

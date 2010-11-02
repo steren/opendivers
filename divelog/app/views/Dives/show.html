@@ -20,7 +20,7 @@
      </div>
 
     <div class="mainParams">
-	   <p><em>${dive.maxDepth}m</em> <em>${dive.duration} min</em></p>
+	   <p>#{if dive.maxDepthSet}<em>${dive.maxDepth}m</em>#{/if} #{if dive.durationSet}<em>${dive.duration} min</em>#{/if}</p>
 	</div>
 
     <div>
@@ -28,10 +28,12 @@
         <p>${dive.fishes}</p>
     </div>
 
+    #{if dive.airTemperatureSet || dive.waterSurfaceTemperatureSet || dive.waterBottomTemperatureSet}
     <div>
 	    <p>Temperatures</p>
-	    <p>air: ${dive.airTemperature}°C water surface: ${dive.waterSurfaceTemperature}°C water bottom: ${dive.waterBottomTemperature}°C</p>
+	    <p>#{if dive.airTemperatureSet}air: ${dive.airTemperature}°C#{/if} #{if dive.waterSurfaceTemperatureSet}water surface: ${dive.waterSurfaceTemperature}°C#{/if} #{if dive.waterBottomTemperatureSet}water bottom: ${dive.waterBottomTemperature}°C#{/if}</p>
     </div>
+    #{/if}
     
     <div>
 	    ${dive.center}

@@ -13,7 +13,7 @@ public class Picture extends Model {
     public String description;
     private Date uploadDate;
 
-    @ManyToOne
+	@ManyToOne
     public User uploader; 
     
 	public Blob image;
@@ -25,4 +25,10 @@ public class Picture extends Model {
 		return uploadDate;
 	}
 	
+    public Picture(Blob image, User uploader) {
+    	this.uploadDate = new Date();
+    	this.image = image;
+    	this.uploader = uploader;
+    }
+    
 }

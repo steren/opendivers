@@ -12,6 +12,7 @@ Users:
 #{/list}
 </ul>
 
+#{if controllers.Security.connectedUser()}
 &{'friendrequests'}
 <ul>
 #{list items:friendRequests, as:'request'}
@@ -22,6 +23,7 @@ Users:
 &{'buddies'}
 <ul>
 #{list items:buddies, as:'buddy'}
-    <ul>${buddy.userName}</ul>
+    <li>${buddy.userName}</li>
 #{/list}
 </ul>
+#{/if}

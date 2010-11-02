@@ -1,1 +1,1 @@
-<li>${_user.userName} #{if _user != controllers.Security.connectedUser() && !controllers.Security.connectedUser().buddies.contains(_user) }<a href="@{Application.sendFriendRequest(_user.id, "hohai")}">send friend request</a>#{/if}</li>
+<li>${_user.userName} #{if controllers.Security.connectedUser() && _user != controllers.Security.connectedUser() && !controllers.Security.connectedUser().buddies.contains(_user) }<a href="@{Application.sendFriendRequest(_user.id, "hohai")}">send friend request</a>#{/if}</li>

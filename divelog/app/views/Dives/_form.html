@@ -93,13 +93,21 @@
 		 <div class="row">
           <div class="rowElement">
 			  <label for="maxDepth" class="mainLabel">Max Depth (meters)</label>
-	          <input id="maxDepth" type="text" name="dive.maxDepth" value="${dive?.maxDepth}"/>
+	          <input id="maxDepth" type="text" name="dive.maxDepth" value="#{if dive?.maxDepthSet}${dive?.maxDepth}#{/if}"/>
 			  <span class="error" style="display:none;">${errors.forKey('dive.maxDepth')}</span>
+			  <input type="hidden" id="maxDepthSet" name="dive.maxDepthSet" value="${dive?.maxDepthSet}"/>
+			  <script type="text/javascript">
+			  $("#maxDepth").change(function(){ $("#maxDepthSet").val(true); });
+			  </script>
 		  </div>
 		  <div class="rowElement">
 		      <label for="duration" class="mainLabel">Duration (minutes)</label>
-	          <input id="duration" type="text" name="dive.duration" value="${dive?.duration}"/>
+	          <input id="duration" type="text" name="dive.duration" value="#{if dive?.durationSet}${dive?.duration}#{/if}"/>
 		      <span class="error" style="display:none;">${errors.forKey('dive.duration')}</span>
+		      <input type="hidden" id="durationSet" name="dive.durationSet" value="${dive?.durationSet}"/>
+		      <script type="text/javascript">
+              $("#duration").change(function(){ $("#durationSet").val(true); });
+              </script>
 	      </div>
 		</div>
 		
@@ -151,18 +159,30 @@
         <div>Temperature:</div>
         <div class="rowElement">
 		  <label for="airTemperature">Air</label>
-	      <input id="airTemperature" type="text" name="dive.airTemperature" value="${dive?.airTemperature}"/>
+	      <input id="airTemperature" type="text" name="dive.airTemperature" value="#{if dive?.airTemperatureSet}${dive?.airTemperature}#{/if}"/>
 		  <span class="error" style="display:none;">${errors.forKey('dive.airTemperature')}</span>
+          <input type="hidden" id="airTemperatureSet" name="dive.airTemperatureSet" value="${dive?.airTemperatureSet}"/>
+          <script type="text/javascript">
+          $("#airTemperature").change(function(){ $("#airTemperatureSet").val(true); });
+          </script>
         </div>
         <div class="rowElement">
 		  <label for="waterSurfaceTemperature">Water Surface</label>
-	      <input id="waterSurfaceTemperature" type="text" name="dive.waterSurfaceTemperature" value="${dive?.waterSurfaceTemperature}"/>
+	      <input id="waterSurfaceTemperature" type="text" name="dive.waterSurfaceTemperature" value="#{if dive?.waterSurfaceTemperatureSet}${dive?.waterSurfaceTemperature}#{/if}"/>
 		  <span class="error" style="display:none;">${errors.forKey('dive.waterSurfaceTemperature')}</span>
+          <input type="hidden" id="waterSurfaceTemperatureSet" name="dive.waterSurfaceTemperatureSet" value="${dive?.waterSurfaceTemperatureSet}"/>
+          <script type="text/javascript">
+          $("#waterSurfaceTemperature").change(function(){ $("#waterSurfaceTemperatureSet").val(true); });
+          </script>
         </div>
         <div class="rowElement">
 		  <label for="waterBottomTemperature">Water Bottom</label>
-	      <input id="waterBottomTemperature" type="text" name="dive.waterBottomTemperature" value="${dive?.waterBottomTemperature}"/>
+	      <input id="waterBottomTemperature" type="text" name="dive.waterBottomTemperature" value="#{if dive?.waterBottomTemperatureSet}${dive?.waterBottomTemperature}#{/if}"/>
 		  <span class="error" style="display:none;">${errors.forKey('dive.waterBottomTemperature')}</span>
+		  <input type="hidden" id="waterBottomTemperatureSet" name="dive.waterBottomTemperatureSet" value="${dive?.waterBottomTemperatureSet}"/>
+          <script type="text/javascript">
+          $("#waterBottomTemperature").change(function(){ $("#waterBottomTemperatureSet").val(true); });
+          </script>
 		</div>
 		</div>
 		
@@ -204,6 +224,16 @@
 		</div>
 		</div>
     </div>
+    
+    <h3><a href="#">Pictures</a></h3>
+    <div>
+        <div class="row">
+        <div class="rowElement">
+        <input type="file" name="pictures" /> <!-- multiple -->
+        </div>
+        </div>
+    </div> 
+    
 </div>
 
 <input type="hidden" name="dive.id" value="${dive?.id}"/>
