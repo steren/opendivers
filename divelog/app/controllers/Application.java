@@ -10,7 +10,19 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-        render();
+    	List<User> users = User.findAll();
+    	
+	    if(Security.isConnected()) {
+	    	User currentUser = Security.connectedUser();
+	    	
+	    	List<FriendRequest> friendRequests = currentUser.receivedPendingRequests;
+	    	renderArgs.put("friendRequests", friendRequests);
+	    	
+	    	List<User> buddies = currentUser.buddies;
+	    	renderArgs.put("buddies", buddies);
+	    }
+	    
+        render(users);
     }
 
     public static void explore() {
@@ -25,5 +37,32 @@ public class Application extends Controller {
 		//render(query, spots);
 		render("@index");
 	}
+	
+	/**
+	 * 
+	 * @param id: ID of the user to send a friend request
+	 */
+	public static void sendFriendRequest(long id, String message) {
+		User user = User.findById(id);
+		User currentUser = Security.connectedUser();
+		
+		currentUser.sendRequest(user, message);
+		
+		index();
+	}
+	
+	public static void acceptFriendRequest(long id) {
+		User currentUser = Security.connectedUser();
+		FriendRequest request = FriendRequest.findById(id);
+		currentUser.respondRequest(request, FriendRequest.Status.ACCEPTED);
+		index();
+	}
     
+	public static void rejectFriendRequest(long id) {
+		User currentUser = Security.connectedUser();
+		FriendRequest request = FriendRequest.findById(id);
+		currentUser.respondRequest(request, FriendRequest.Status.REJECTED);
+		index();
+	}
+	
 }

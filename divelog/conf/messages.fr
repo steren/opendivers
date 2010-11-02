@@ -27,3 +27,7 @@ menuyourdives=Carnet de plongée
 
 searchonmapsplaceholder=Ville, île ...
 searchonmaps=Rechercher
+
+friendrequests=Demandes de connexion :
+accept=Accepter
+reject=Refuser

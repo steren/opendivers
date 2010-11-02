@@ -5,4 +5,23 @@
 
 #{set currentMenu:'menuHome' /}
 
-Welcome to Open Divers.
+Users:
+<ul>
+#{list items:users, as:'user'}
+    #{userLine user:user /}
+#{/list}
+</ul>
+
+&{'friendrequests'}
+<ul>
+#{list items:friendRequests, as:'request'}
+    <ul>${request.from.userName}: ${request.message}<a href="@{Application.acceptFriendrequest(request.id)}" class="button">&{'accept'}</a> <a href="@{Application.rejectFriendrequest(request.id)}" class="button">&{'reject'}</a> </ul>
+#{/list}
+</ul>
+
+&{'buddies'}
+<ul>
+#{list items:buddies, as:'buddy'}
+    <ul>${buddy.userName}</ul>
+#{/list}
+</ul>

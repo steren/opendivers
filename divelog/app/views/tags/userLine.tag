@@ -1,0 +1,1 @@
+<li>${_user.userName} #{if _user != controllers.Security.connectedUser() }<a href="@{Application.sendFriendRequest(_user.id, "hohai")}">send friend request</a>#{/if}</li>
