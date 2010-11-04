@@ -1,8 +1,11 @@
 package controllers;
 
 import play.*;
+import play.db.jpa.Blob;
+import play.libs.Files;
 import play.mvc.*;
 
+import java.io.File;
 import java.util.*;
 
 import models.*;
@@ -65,4 +68,8 @@ public class Application extends Controller {
 		index();
 	}
 	
+	public static void renderThumbnail(long id) {
+		Picture picture = Picture.findById(id);
+		renderBinary(picture.imageOriginal.get());
+	}
 }

@@ -6,7 +6,7 @@
 #{set currentMenu:'menuYourDives' /}
 
 <div class="entity">
-#{form @Dives.save(), id:'createForm'}
+#{form @Dives.save(), id:'createForm', enctype:'multipart/form-data'}
 	#{include 'Dives/_form.html' /}
 	<a href="@{Dives.index}">Cancel</a> <input type="submit" name="submit" value="Save" />
 #{/form}

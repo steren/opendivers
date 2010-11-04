@@ -21,7 +21,7 @@
 		            var location = "";
 		            location = $("#mapSearch-input")[0].value;
 		            location += getValueFromCountryInput();
-		            moveSelectionMapToLocation(location);
+		            moveSelectionMapToAddress(location);
 		        })
 		        </script>
             </div>
@@ -33,7 +33,6 @@
 			<input id="spotName" type="text" name="spot.name"
 			value="${dive?.spot?.name}"
 			size="40" />
-
 			<span>
 			    <select id="country-select" name="spot.country.id">
 			      <option value="">&{'selectcountry'}</option>
@@ -54,10 +53,29 @@
         </div>
         
         <script type="text/javascript">
-        $("#country-select").change( function() {
-        	moveSelectionMapToLocation(getValueFromCountryInput());
+        var countrySelect = $("#country-select");
+        
+        // When a country is selected, move the map.
+        countrySelect.change( function() {
+        	moveSelectionMapToAddress(getValueFromCountryInput());
         });
-        </script>
+
+        // When a autocomplete suggestion is selected, update the country <select> 
+        var availableSpots = [
+            #{list items:models.Spot.findAll(), as:'spot'}
+                {label:"${spot.name}, ${spot.country.name}", value:"${spot.name}", country:${spot.country.id}, latitude:${spot.latitude}, longitude:${spot.longitude} } ,
+            #{/list}
+            ""
+        ];
+        $( "#spotName" ).autocomplete({
+            source: availableSpots,
+            select: function(event, ui) {
+                countrySelect.val(ui.item.country);
+                placeMarkerOnSelectionMap( new google.maps.LatLng(ui.item.latitude, ui.item.longitude) );
+            }
+        });
+	    </script>
+
         
         <div class="row">
           <div class="rowElement">
@@ -229,7 +247,7 @@
     <div>
         <div class="row">
         <div class="rowElement">
-        <input type="file" name="pictures" /> <!-- multiple -->
+        <input type="file" name="images" multiple />
         </div>
         </div>
     </div> 
@@ -244,17 +262,6 @@ $(function() {
     $( "#accordion" ).accordion();
 });
 </script>
-
-
-*{
-	<div>Spot autocomplete :
-	%{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
-	  
-	  ${it?.id} ${it}
-	
-	%{ } }%
-	</div>
-/}*
 
 *{
             (or choose

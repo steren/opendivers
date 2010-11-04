@@ -1,15 +1,21 @@
 package controllers;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
+
 import models.Dive;
+import models.Picture;
 import models.Spot;
 import models.User;
+import play.Logger;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.i18n.Messages;
 import play.data.validation.Validation;
 import play.data.validation.Valid;
+import play.db.jpa.Blob;
 
 public class Dives extends Controller {
 	
@@ -47,19 +53,21 @@ public class Dives extends Controller {
 		index();
 	}
 	
-	public static void save(@Valid Dive dive, @Valid Spot spot, long spotId) {
+	public static void save(@Valid Dive dive, @Valid Spot spot, Blob[] images) {
 		if (validation.hasErrors()) {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@create", dive, spot);
 		}
 		
-		// if Id is specified, use this, otherwise, create a new spot 
-		if(spotId != 0) {
-			dive.spot = Spot.findById(spotId);
-		} else {
+		// Check if the given spot already exists:
+		Spot existingSpot = Spot.find("byNameAndCountry", spot.name, spot.country).first();
+		if(existingSpot == null) {
 			spot.save();
 			dive.spot = spot;
+		} else {
+			dive.spot = existingSpot;
 		}
+		
 		dive.save();
 		
 		User currentUser = Security.connectedUser();
@@ -67,6 +75,22 @@ public class Dives extends Controller {
 			currentUser.dives = new ArrayList<Dive>();
 		}
 		currentUser.dives.add(dive);
+		
+		// pictures
+		/*
+		if(images != null) {
+			for(Blob image : images) {
+				Logger.info("got image");
+				Logger.info(image.getFile().getName());
+				
+				Picture picture = new Picture(image, currentUser);
+				
+				picture.dive = dive;
+				picture.save();
+			}
+		}
+		*/
+
 		currentUser.save();
 
 		flash.success(Messages.get("scaffold.created", "Dive"));

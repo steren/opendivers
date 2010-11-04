@@ -6,7 +6,7 @@
 #{set currentMenu:'menuYourDives' /}
 
 <div class="entity">
-#{form @Dives.update(), id:'createForm'}
+#{form @Dives.update(), id:'createForm', enctype:'multipart/form-data'}
 	#{include 'Dives/_form.html' /}
 	<input type="submit" name="submit" value="Save" />
 #{/form}

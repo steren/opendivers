@@ -122,48 +122,35 @@ function attachSelectionMap(mapDiv) {
 		placeMarker(displayLocation);
 	}
 
-	function setLatLngInputValues(location) {
-		$("#spotLatitude").val(location.lat());
-		$("#spotLongitude").val(location.lng());
-	}
-
-	function placeMarker(location) {
-		selectionMarker = new google.maps.Marker( {
-			map : selectionMap,
-			position : location,
-			draggable : true
-		});
-
-		google.maps.event.addListener(selectionMarker, 'dragend', function(mouseEvent) {
-			setLatLngInputValues(mouseEvent.latLng);
-			selectionMap.panTo(mouseEvent.latLng);
-		});
-
-		setLatLngInputValues(location);
-		selectionMap.panTo(location);
-	}
-	
-	if(!displayMarker) {
+	if(!displayMarker && !selectionMarker) { // if the marker hasn't already been set
 		google.maps.event.addListenerOnce(selectionMap, 'click', function(event) {
-			placeMarker(event.latLng);
+			placeMarkerOnSelectionMap(event.latLng);
 		});
 	}
+}
+
+function setLatLngInputValues(location) {
+	$("#spotLatitude").val(location.lat());
+	$("#spotLongitude").val(location.lng());
 }
 
 function getValueFromCountryInput() {
     var country = "";
     var option = $("#country-select option:selected").get(0);
-    if(option.value != "") {
+    if(option.value != "") { // this line prevent from using the "Country" option
     	country = option.text;	
     }
     return country;
 }
 
-function moveSelectionMapToLocation(location) {
+/**
+ * 
+ * @param address: the address of the location to move to (words)
+ */
+function moveSelectionMapToAddress(address) {
 	// if a marker exists, do something clever (selectionMarker) 
-	if(location != "") {
+	if(address != "") {
 		var geocoder = new google.maps.Geocoder();
-		var address = location;
 	
 	    geocoder.geocode( { 'address': address}, function(results, status) {
 	      if (status == google.maps.GeocoderStatus.OK) {
@@ -171,4 +158,24 @@ function moveSelectionMapToLocation(location) {
 	      }
 	    });
     }
+}
+
+/**
+ * 
+ * @param location: the LatLng of the position
+ */
+function placeMarkerOnSelectionMap(location) {
+	selectionMarker = new google.maps.Marker( {
+		map : selectionMap,
+		position : location,
+		draggable : true
+	});
+
+	google.maps.event.addListener(selectionMarker, 'dragend', function(mouseEvent) {
+		setLatLngInputValues(mouseEvent.latLng);
+		selectionMap.panTo(mouseEvent.latLng);
+	});
+
+	setLatLngInputValues(location);
+	selectionMap.panTo(location);
 }

@@ -46,5 +46,13 @@
 	    ${dive.type}
 	    ${dive.water}
     </div>
+    
+    <div>
+    <ul>
+    #{list items:dive.pictures, as:'picture'}
+        <li><img src="@{Application.renderThumbnail(picture.id)}" /></li>
+    #{/list}
+    </ul>
+    </div>
 </div>
 

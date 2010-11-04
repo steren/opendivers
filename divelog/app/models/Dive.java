@@ -10,6 +10,8 @@ import play.db.jpa.*;
 
 import javax.persistence.*;
 
+import org.hibernate.mapping.Array;
+
 import java.text.DateFormat;
 import java.util.*;
 
@@ -67,9 +69,18 @@ public class Dive extends CommentModel {
 	@ManyToMany(mappedBy = "dives", cascade = CascadeType.ALL)
 	public List<User> userDivers;
 	
+	
+	@OneToMany(mappedBy="dive", cascade=CascadeType.ALL)
+	public List<Picture> pictures;
+	
 	/** divers in this dive who don't have an account */
 	// TODO
 	//public List<nonUser> otherDivers;
+	
+	public Dive() {
+		pictures = new ArrayList<Picture>();
+		fishes = new ArrayList<Fish>();
+	}
 	
 	public String toString() {
 	    return date.toString();
