@@ -56,7 +56,8 @@ public class Dives extends Controller {
 	public static void save(@Valid Dive dive, @Valid Spot spot, Blob[] images) {
 		if (validation.hasErrors()) {
 			flash.error(Messages.get("scaffold.validation"));
-			render("@create", dive, spot);
+			dive.spot = spot;
+			render("@create", dive);
 		}
 		
 		// Check if the given spot already exists:
@@ -97,7 +98,7 @@ public class Dives extends Controller {
 		show(dive.id);
 	}
 
-	public static void update(@Valid Dive dive, @Valid Spot spot, long spotId) {
+	public static void update(@Valid Dive dive, @Valid Spot spot) {
 		if (validation.hasErrors()) {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@edit", dive);
