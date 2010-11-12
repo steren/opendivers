@@ -70,10 +70,20 @@ public class Application extends Controller {
 		currentUser.respondRequest(request, FriendRequest.Status.REJECTED);
 		index();
 	}
-	
-	public static void renderThumbnail(long id) {
+
+	public static void renderNormalPicture(long id) {
 		Picture picture = Picture.findById(id);
-		renderBinary(picture.imageOriginal.get());
+		renderBinary(picture.imageNormal.get());
+	}
+	
+	public static void renderThumbnailPicture(long id) {
+		Picture picture = Picture.findById(id);
+		renderBinary(picture.imageThumbnail.get());
+	}
+
+	public static void renderIconPicture(long id) {
+		Picture picture = Picture.findById(id);
+		renderBinary(picture.imageIcon.get());
 	}
 	
 	/**

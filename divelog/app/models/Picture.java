@@ -9,6 +9,8 @@ import javax.persistence.*;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
@@ -54,9 +56,7 @@ public class Picture extends Model {
     	// save the original
     	this.imageOriginal = image;
     	
-    	File normal = new File(Blob.getStore(), image.getFile().getName() + "_normal");
-    	File thumbnail = new File(Blob.getStore(), image.getFile().getName() + "_thumb");
-    	File icon = new File(Blob.getStore(), image.getFile().getName() + "_icon");
+    	
     	
     	int originalX = 0;
 		int originalY = 0;
@@ -93,15 +93,28 @@ public class Picture extends Model {
 			cropEndX = normalX;
 		}
 		
-    	// resize to a normal size
+		File normal = new File(Blob.getStore(), image.getFile().getName() + "_normal");
+		File thumbnail = new File(Blob.getStore(), image.getFile().getName() + "_thumb");
+		File icon = new File(Blob.getStore(), image.getFile().getName() + "_icon");
+
+		// resize to a normal size
     	Images.resize(image.getFile(), normal, normalX, normalY);
-    	
     	// generate a thumbnail
     	Images.crop(normal, thumbnail, cropOriginX, cropOriginY, cropEndX, cropEndY);
     	Images.resize(thumbnail, thumbnail, SIZE_THUMBNAIL, SIZE_THUMBNAIL);
-    	
     	// generate an icon from the thumbnail
     	Images.resize(thumbnail, icon, SIZE_ICON, SIZE_ICON);
+    	
+    	try {
+        	this.imageNormal = new Blob();
+			this.imageNormal.set(new FileInputStream(normal), image.type());
+        	this.imageThumbnail = new Blob();
+			this.imageThumbnail.set(new FileInputStream(thumbnail), image.type());
+        	this.imageIcon = new Blob();
+			this.imageIcon.set(new FileInputStream(icon), image.type());
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
     }
     
 }
