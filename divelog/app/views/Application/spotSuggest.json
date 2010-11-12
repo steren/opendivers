@@ -1,0 +1,3 @@
+[#{list items:spots, as:'spot'}
+{"label": "${spot.name}, ${spot.country.name}", "value":"${spot.name}", "country":${spot.country.id}, "latitude":${spot.latitude}, "longitude":${spot.longitude} } #{if !spot_isLast}, #{/if}
+#{/list}]

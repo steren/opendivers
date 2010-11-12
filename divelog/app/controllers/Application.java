@@ -72,4 +72,13 @@ public class Application extends Controller {
 		Picture picture = Picture.findById(id);
 		renderBinary(picture.imageOriginal.get());
 	}
+	
+	/**
+	 * AJAX Suggests spots from an input text
+	 * @param term : input text entered by the user
+	 */
+	public static void spotSuggest(String term) {
+		List<Spot> spots = Spot.findAll();
+		render(spots);
+	}
 }

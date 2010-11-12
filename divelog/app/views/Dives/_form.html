@@ -68,7 +68,7 @@
             ""
         ];
         $( "#spotName" ).autocomplete({
-            source: availableSpots,
+            source: "@{Application.spotSuggest()}",
             select: function(event, ui) {
                 countrySelect.val(ui.item.country);
                 placeMarkerOnSelectionMap( new google.maps.LatLng(ui.item.latitude, ui.item.longitude) );
@@ -260,23 +260,6 @@
 <script>
     $( "#accordion" ).accordion();
 </script>
-
-*{
-            (or choose
-            <select name="spotId">
-            <option value="">-</option>
-            %{ models.Spot.all().fetch().sort{ it.toString() }.each() { }%
-              %{
-                selected = false;
-                if (dive?.spot?.id == it.id) {
-                  selected = true
-                }
-              }%
-              <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-            %{ } }%
-            </select>
-            )
-/}*
 
 *{
      <div class="row">
