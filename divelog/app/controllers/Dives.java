@@ -78,19 +78,23 @@ public class Dives extends Controller {
 		currentUser.dives.add(dive);
 		
 		// pictures
-		/*
 		if(images != null) {
-			for(Blob image : images) {
-				Logger.info("got image");
-				Logger.info(image.getFile().getName());
-				
-				Picture picture = new Picture(image, currentUser);
-				
-				picture.dive = dive;
-				picture.save();
-			}
+			// FIXME use multiple file upload. Problem: the last image is duplicated.  
+			// for(Blob image : images) {
+			// Logger.info("got image");
+			// Logger.info(image.getFile().getName());
+			//
+			// Picture picture = new Picture(image, currentUser);
+			//
+			// picture.dive = dive;
+			// picture.save();
+			// }
+			
+			Picture picture = new Picture(images[0], currentUser);
+			picture.dive = dive;
+			picture.save();
+			
 		}
-		*/
 
 		currentUser.save();
 
