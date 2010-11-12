@@ -203,11 +203,11 @@ div.mapExplore {
 /**
  * DiveLog
  */ 
- .diveLog ul {
+ .diveLog .dives {
     margin-left:0;
     padding-left:0;
  }
- .diveLog li {
+ .diveLog .dive {
     display:inline;
     margin: 10px;
     padding: 5px;
@@ -221,9 +221,19 @@ div.mapExplore {
     background-color: #EEEEEE;
 }
 
-.diveLog li:hover {
+.diveLog .dive:hover {
     background-color: #F2F2F2;
     border-color: #CCCCCC;
+}
+
+/* Pictures */
+ .diveLog .divePics {
+    margin-left:0;
+    padding-left:0;
+ }
+
+.diveLog .divePic {
+	    display:inline;
 }
 
 /**

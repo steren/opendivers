@@ -10,13 +10,18 @@
 #{/set}
 
 <div class="diveLog">
-<ul>
+<ul class="dives">
 #{list items:dives, as:'dive'}
-	<li>
+	<li class="dive">
         <a style="display:none" href="@{Dives.show(dive.id)}">show</a>
         <h3>${dive.spot.name}</h3>
         <p>${dive.spot.country}</p>
         <p>${dive.date.format("yyyy-MM-dd")}</p>
+        <ul class="divePics">
+            #{list items:dive.pictures, as:'picture'}
+            #{if picture_index < 4}<li class="divePic"><img src="@{Application.renderIconPicture(picture.id)}" /></li>#{/if}
+            #{/list}
+        </ul>
 
 		<span style="display:none">${dive.type}</span>
 		<span style="display:none">${dive.training}</span>

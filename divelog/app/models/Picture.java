@@ -20,9 +20,9 @@ public class Picture extends Model {
 	public static final int SIZE_NORMAL_X = 640;
 	public static final int SIZE_NORMAL_Y = 480;
 	
-	public static final int SIZE_THUMBNAIL = 180;
+	public static final int SIZE_THUMBNAIL = 150;
 	
-	public static final int SIZE_ICON = 60;
+	public static final int SIZE_ICON = 40;
 	
     public String title;
     public String description;
