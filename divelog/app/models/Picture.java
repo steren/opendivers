@@ -18,11 +18,9 @@ public class Picture extends Model {
 	public static final int SIZE_NORMAL_X = 640;
 	public static final int SIZE_NORMAL_Y = 480;
 	
-	public static final int SIZE_THUMBNAL_X = 180;
-	public static final int SIZE_THUMBNAL_Y = 180;
+	public static final int SIZE_THUMBNAIL = 180;
 	
-	public static final int SIZE_ICON_X = 60;
-	public static final int SIZE_ICON_Y = 60;
+	public static final int SIZE_ICON = 60;
 	
     public String title;
     public String description;
@@ -60,21 +58,50 @@ public class Picture extends Model {
     	File thumbnail = new File(Blob.getStore(), image.getFile().getName() + "_thumb");
     	File icon = new File(Blob.getStore(), image.getFile().getName() + "_icon");
     	
+    	int originalX = 0;
+		int originalY = 0;
+		float ratio = 0;
+    	
     	try {
 			BufferedImage original = ImageIO.read(image.getFile());
-			int originalImageWidth = original.getWidth();
-			int originalImageHeight = original.getHeight();
-			float ratio = new Float(originalImageWidth) / new Float(originalImageHeight);
+			originalX = original.getWidth();
+			originalY = original.getHeight();
+			ratio = new Float(originalX) / new Float(originalY);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	
+		
+		// We want normal image to be contained into 640 x 480
+		int normalX = SIZE_NORMAL_X;
+		int normalY = SIZE_NORMAL_Y;
+		int cropOriginX = 0;
+		int cropOriginY = 0;
+		int cropEndX = 0;
+		int cropEndY = 0;
+		
+		if(ratio > 1) {
+			// max size = X, limit size = Y
+			normalY = (int) (SIZE_NORMAL_X / ratio);
+			cropOriginX = (int) ((normalX - normalY) / 2);
+			cropEndX = normalY + cropOriginX;
+			cropEndY = normalY;
+		} else {
+			// max size = Y, limit size = X
+			normalX = (int) (SIZE_NORMAL_Y * ratio);
+			cropOriginY = (int) ((normalY - normalX) / 2);
+			cropEndY = normalX + cropOriginY;
+			cropEndX = normalX;
+		}
+		
     	// resize to a normal size
-    	Images.resize(image.getFile(), normal, SIZE_NORMAL_X, SIZE_THUMBNAL_Y);
+    	Images.resize(image.getFile(), normal, normalX, normalY);
+    	
     	// generate a thumbnail
-    	Images.resize(normal, thumbnail, SIZE_NORMAL_X, SIZE_NORMAL_Y);
+    	Images.crop(normal, thumbnail, cropOriginX, cropOriginY, cropEndX, cropEndY);
+    	Images.resize(thumbnail, thumbnail, SIZE_THUMBNAIL, SIZE_THUMBNAIL);
+    	
     	// generate an icon from the thumbnail
-    	Images.resize(thumbnail, icon, SIZE_ICON_X, SIZE_ICON_Y);
+    	Images.resize(thumbnail, icon, SIZE_ICON, SIZE_ICON);
     }
     
 }
