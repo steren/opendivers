@@ -61,14 +61,9 @@
         });
 
         // When a autocomplete suggestion is selected, update the country <select> 
-        var availableSpots = [
-            #{list items:models.Spot.findAll(), as:'spot'}
-                {label:"${spot.name}, ${spot.country.name}", value:"${spot.name}", country:${spot.country.id}, latitude:${spot.latitude}, longitude:${spot.longitude} } ,
-            #{/list}
-            ""
-        ];
         $( "#spotName" ).autocomplete({
             source: "@{Application.spotSuggest()}",
+            minLength: 2,
             select: function(event, ui) {
                 countrySelect.val(ui.item.country);
                 placeMarkerOnSelectionMap( new google.maps.LatLng(ui.item.latitude, ui.item.longitude) );

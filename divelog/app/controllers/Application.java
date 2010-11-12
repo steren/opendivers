@@ -78,7 +78,7 @@ public class Application extends Controller {
 	 * @param term : input text entered by the user
 	 */
 	public static void spotSuggest(String term) {
-		List<Spot> spots = Spot.findAll();
+		List<Spot> spots = Spot.find( "byNameLike", "%" + term.toLowerCase() + "%").fetch(50);
 		render(spots);
 	}
 }
