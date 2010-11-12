@@ -34,11 +34,14 @@ public class Application extends Controller {
     }
     
 	public static void search(String query) {
-		String fullQueryString = "name:" + query; // + " OR country:" + query;
+		// TODO use search engine
+		//String fullQueryString = "name:" + query; // + " OR country:" + query;
 		//Query q = Search.search(fullQueryString, Spot.class);
 		//List<Spot> spots = q.fetch();
-		//render(query, spots);
-		render("@index");
+		
+		List<Spot> spots = Spot.find( "byNameLike", "%" + query.toLowerCase() + "%").fetch(50);
+		int count = spots.size();
+		render(query, count, spots);
 	}
 	
 	/**
@@ -78,6 +81,7 @@ public class Application extends Controller {
 	 * @param term : input text entered by the user
 	 */
 	public static void spotSuggest(String term) {
+		// TODO: use search engine
 		List<Spot> spots = Spot.find( "byNameLike", "%" + term.toLowerCase() + "%").fetch(50);
 		render(spots);
 	}

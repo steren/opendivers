@@ -20,6 +20,9 @@ explore=Explorer
 yourdives=Vos plongées
 editdive=Editer une plongée
 createdive=Ajouter une plongée
+searchresult=Résultats
+
+resultforquery=pour 
 
 menuhome=Acceuil
 menuexplore=Explorer

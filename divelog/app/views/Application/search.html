@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set 'title'}
+    &{'searchresult'}
+#{/set}
+
+<h2>${count} spot${count.pluralize()} &{'resultforquery'} "${query}"</h2>
+
+#{list items:spots, as:'spot'}
+    <div>
+        <a href="@{Spots.show(spot.id)}">${spot}</a>&nbsp;
+    </div>
+#{/list}
