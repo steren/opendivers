@@ -98,7 +98,8 @@ function attachExploreMap(mapDiv) {
 	for (var i in exploreLocations) {
 		new google.maps.Marker( {
 			map : map,
-			position : exploreLocations[i]
+			title : exploreLocations[i].title,
+			position : exploreLocations[i].position
 		});
 		
 	} 
