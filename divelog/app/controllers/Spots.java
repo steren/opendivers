@@ -18,5 +18,14 @@ public class Spots extends Controller {
 		Spot spot = Spot.findById(id);
 		render(spot);
 	}
+	
+	/**
+	 * Returns additional info to be displayed on the info window of a spot on the map
+	 * @param id
+	 */
+	public static void getSpotAdditionalInfo(long id) {
+		Spot spot = Spot.findById(id);
+		renderText("<p>"+ spot.name + "</p>");
+	}
 
 }

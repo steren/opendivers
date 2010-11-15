@@ -9,7 +9,7 @@
 <script types="texts/javascripts">
 	var exploreLocations = []
 	#{list items:spots, as:'spot'}
-	     exploreLocations.push( { title: "${spot.name}", position:new google.maps.LatLng(${spot.latitude}, ${spot.longitude})} );
+	     exploreLocations.push( { id: ${spot.id}, title: "${spot.name}", position:new google.maps.LatLng(${spot.latitude}, ${spot.longitude})} );
 	#{/list}
 </script>
 

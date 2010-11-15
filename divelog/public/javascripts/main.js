@@ -96,11 +96,20 @@ function attachExploreMap(mapDiv) {
 	var map = new google.maps.Map(mapDiv, myOptions);
 	
 	for (var i in exploreLocations) {
-		new google.maps.Marker( {
+		var marker = new google.maps.Marker( {
 			map : map,
 			title : exploreLocations[i].title,
 			position : exploreLocations[i].position
 		});
+		google.maps.event.addListener(marker, 'click', ( function(thisMarker, thisLocation) {
+				return function() {
+					var content = '<h3><a href="' + navigateToSpotAction({'id': thisLocation.id}) + '">' + thisLocation.title + '</a></h3>';
+					var infowindow = new google.maps.InfoWindow({
+					    content: content
+					});
+					infowindow.open(map, thisMarker);
+				};
+			}(marker, exploreLocations[i]) ));
 		
 	} 
 }
