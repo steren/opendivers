@@ -1,7 +1,8 @@
 <div id="addFish-form" title="Import a fish from Wikipedia">
+    <p><a href="http://en.wikipedia.org/wiki/Special:Search" target="_blank">Search</a> or <a href="http://en.wikipedia.org/wiki/List_of_fish_common_names" target="_blank">browse</a> English Wikipedia and find the fish you want to import</p>
     <form>
     <label for="name">Wikipedia URL</label>
-    <input type="text" name="wikipediaURL" id="wikipediaURL" class="text ui-widget-content ui-corner-all" /> <a id="readWikipediaURL">Read</a>
+    <input type="text" name="wikipediaURL" id="wikipediaURL" class="text ui-widget-content ui-corner-all" placeholder="http://en.wikipedia.org/wiki/Red_Sea_Clownfish"/> <a id="readWikipediaURL">Read</a>
     </form>
     
     <div id="insertTest"></div>
@@ -10,27 +11,45 @@
 
 <script>
 var wikipediaHTMLResult = function(data) {
-    // TODO handle redirect (example:http://en.wikipedia.org/wiki/Amphiprion)
+    var readData = $('<div>' + data.parse.text.* + '</div>');
 
-    var box = $('<div>' + data.parse.text.* + '</div>').find('.infobox');
+    // handle redirects
+    var redirect = readData.find('li:contains("REDIRECT") a').text();
+    if(redirect != '') {
+    	callWikipediaAPI(redirect);
+        return;
+    }
+    
+    var box = readData.find('.infobox');
     
     var binomialName    = box.find('.binomial').text();
     var fishName        = box.find('th').first().text();
-    var imageURL        = box.find('img').first().attr('src');
+    var imageURL        = null;
 
+    // Check if page has images
+    if(data.parse.images.length >= 1) {
+        imageURL        = box.find('img').first().attr('src');
+    }
+    
     $('#insertTest').append('<div><img src="'+ imageURL + '"/>'+ fishName +' <i>('+ binomialName +')</i></div>');
 };
 
+function callWikipediaAPI(wikipediaPage) {
+	// http://www.mediawiki.org/wiki/API:Parsing_wikitext#parse
+    $.getJSON('http://en.wikipedia.org/w/api.php?action=parse&format=json&callback=?', {page:wikipediaPage, prop:'text|images', uselang:'en'}, wikipediaHTMLResult);
+}
+
 $('#readWikipediaURL').button().click( function() {
-	//http://www.mediawiki.org/wiki/API:Parsing_wikitext#parse
-	$.getJSON("http://en.wikipedia.org/w/api.php?action=parse&format=json&callback=?", {page:$('#wikipediaURL').val(), prop:"text"}, wikipediaHTMLResult);
+		var wikipediaURL = $('#wikipediaURL').val();
+		var wikipediaPage = wikipediaURL.split('wikipedia.org/wiki/')[1];
+		callWikipediaAPI(wikipediaPage)
     }
 );
         
-$( "#addFish-form" ).dialog({
+$( '#addFish-form' ).dialog({
     autoOpen: false,
-    height: 300,
-    width: 350,
+    height: 400,
+    width: 500,
     modal: true,
     buttons: {
         "Import fish": function() {
@@ -41,14 +60,13 @@ $( "#addFish-form" ).dialog({
         }
     },
     close: function() {
-
     }
 });
 
-$( "#addFish" )
+$( '#addFish' )
     .button()
     .click(function() {
-        $( "#addFish-form" ).dialog( "open" );
+        $( '#addFish-form' ).dialog( 'open' );
     });
 </script>
 
