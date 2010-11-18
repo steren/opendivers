@@ -150,20 +150,25 @@
 		
     </div>
     
+    
+    
     <h3><a href="#">Marine life</a></h3>
     <div id="fishDragAndDrop">
+        <a id="addFish">Import a fish from Wikipedia</a>
+        
+	    <div id="fishNet">
+	        <div>Seen</div>
+	    </div>
+	    
+	    <div id="fishLibrary">
+	        <div>Library</div>
+	        #{list items:models.Fish.all().fetch(), as:'fish'}
+	        <div class="fishBadge"><img alt="${fish.name}" src="/public/images/fishes/${fish.name}.png" /></div>
+	        #{/list}
+	    </div>
     
-    <div id="fishNet">
-        <div>Seen</div>
-    </div>
-    <div id="fishLibrary">
-        <div>Library</div>
-        #{list items:models.Fish.all().fetch(), as:'fish'}
-        <div class="fishBadge"><img alt="${fish.name}" src="/public/images/fishes/${fish.name}.png" /></div>
-        #{/list}
     </div>
     
-    </div>
     
     
     <h3><a href="#">Advanced parameters</a></h3>
