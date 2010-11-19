@@ -255,10 +255,18 @@
     
     <h3><a href="#">Pictures</a></h3>
     <div>
+        <div>
+		    <ul>
+		    #{list items:dive.pictures, as:'picture'}
+		        #{pictureThumbnail picture:picture /}
+		    #{/list}
+		    </ul>
+	    </div>
+
         <div class="row">
-        <div class="rowElement">
-        <input type="file" name="images" *{multiple}* />
-        </div>
+	        <div class="rowElement">
+	        <input type="file" name="images" *{multiple}* />
+	        </div>
         </div>
     </div> 
     

@@ -23,11 +23,6 @@
 	   <p>#{if dive.maxDepthSet}<em>${dive.maxDepth}m</em>#{/if} #{if dive.durationSet}<em>${dive.duration} min</em>#{/if}</p>
 	</div>
 
-    <div>
-        <p>Fishes</p>
-        <p>${dive.fishes}</p>
-    </div>
-
     #{if dive.airTemperatureSet || dive.waterSurfaceTemperatureSet || dive.waterBottomTemperatureSet}
     <div>
 	    <p>Temperatures</p>
@@ -48,17 +43,13 @@
     </div>
     
     <div>
-    <ul>
-    #{list items:dive.fishes, as:'fish'}
-        <li><img alt="${fish.name}" src="/public/images/fishes/${fish.name}.png" />${fish.name}</li>
-    #{/list}
-    </ul>
+    #{fishList fishes:dive.fishes /}
     </div>
     
     <div>
     <ul>
     #{list items:dive.pictures, as:'picture'}
-        <li><img src="@{Application.renderThumbnailPicture(picture.id)}" /></li>
+        #{pictureThumbnail picture:picture /}
     #{/list}
     </ul>
     </div>

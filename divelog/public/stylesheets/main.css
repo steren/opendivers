@@ -200,7 +200,11 @@ div.mapExplore {
     padding-left:0;
     height:200px
 }
-.fishResult {
+.fishIcons {
+    margin-left:0;
+    padding-left:0;
+}
+.fishResult, .fishIcon {
 	display: block;
     float:left;
 	width: 80px;
@@ -208,10 +212,10 @@ div.mapExplore {
     margin: 0 0.4em 0.4em 0;
     text-align: center;
 }
-.fishResult img {
+.fishResult img, .fishIcon img {
     width: 100%;	
 }
-.fishResult h5 {
+.fishResult h5, .fishIcon h5 {
     font-size: 60%;
     font-weight: normal;    
 }

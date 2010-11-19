@@ -39,7 +39,9 @@ $(document).ready(function() {
 	var fishResults = $( '#fishResults' );
 	
 	// store here the ids of the fishes
-	var fishIds = $('#fishIds').val().split(',');
+	if($('#fishIds').size() > 0) {
+		var fishIds = $('#fishIds').val().split(',');
+	}
 	
 	function writeFishesToInputField() {
 		$('#fishIds').val(fishIds.join(','));
