@@ -28,5 +28,15 @@ public class Spot extends Model {
 	public String toString() {
 		return name + ", " + country;
 	}
+
+	public List<Picture> getPictures() {
+		List<Picture> pictures = Picture.find("select p from Picture p " 
+				+ "join p.dive d "
+				+ "join d.spot s "
+				+ "where s.id = ?"
+				+ "order by d.date DESC",
+				this.id).fetch(16);
+		return pictures;
+	}
 	
 }

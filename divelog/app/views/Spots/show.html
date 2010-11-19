@@ -7,3 +7,12 @@
 
 ${spot.name}
 ${spot.country}
+
+
+<div>
+<ul>
+#{list items:pictures, as:'picture'}
+    #{pictureThumbnail picture:picture /}
+#{/list}
+</ul>
+</div>

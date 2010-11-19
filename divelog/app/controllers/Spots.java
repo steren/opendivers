@@ -1,6 +1,8 @@
 package controllers;
 
 import java.util.List;
+
+import models.Picture;
 import models.Spot;
 import play.mvc.Controller;
 import play.i18n.Messages;
@@ -16,7 +18,10 @@ public class Spots extends Controller {
 
 	public static void show(java.lang.Long id) {
 		Spot spot = Spot.findById(id);
-		render(spot);
+		
+		List<Picture> pictures = spot.getPictures();
+		
+		render(spot, pictures);
 	}
 	
 	/**
