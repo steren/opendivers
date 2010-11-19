@@ -39,9 +39,7 @@ $(document).ready(function() {
 	var fishResults = $( '#fishResults' );
 	
 	// store here the ids of the fishes
-	var fishIds = [];
-	//read fishIDs from 
-	//$('#fishIds')
+	var fishIds = $('#fishIds').val().split(',');
 	
 	function writeFishesToInputField() {
 		$('#fishIds').val(fishIds.join(','));
@@ -59,10 +57,7 @@ $(document).ready(function() {
 				.find('a.addfish')
 					.hide()
 				.end()
-				.appendTo( fishNet ).fadeIn(function() {
-				item.animate({ width: "100px" });
-				'<a href="#" title="Remove this fish" class="ui-icon ui-icon-circle-close">Remove</a>'
-			});
+				.appendTo( fishNet ).fadeIn();
 		} );
 	}
 	function putFishInLibrary( item ) {
@@ -81,13 +76,11 @@ $(document).ready(function() {
 				.find('a.removefish')
 					.hide()
 				.end()
-				.prependTo( fishResults ).fadeIn(function() {
-				item.animate({ width: "80px" });
-			});
+				.prependTo( fishResults ).fadeIn();
 		} );
 	}
 	
-	$( ".fishBadge", fishLibrary ).draggable({
+	$( ".fishResult" ).draggable({
 		revert: "invalid",
 		cursor: "move",
 		helper: "clone",
@@ -105,14 +98,14 @@ $(document).ready(function() {
 	});
 	
 	fishNet.droppable({
-		accept: "#fishLibrary .fishBadge",
+		accept: "#fishLibrary .fishResult",
 		activeClass: 'active',
 		drop: function( event, ui ) {
 			putFishInNet(ui.draggable); //$( this ).addClass( "dropped" );
 		}
 	});
 	fishLibrary.droppable({
-		accept: "#fishNet .fishBadge",
+		accept: "#fishNet .fishResult",
 		activeClass: 'active',
 		drop: function( event, ui ) {
 			putFishInLibrary(ui.draggable);
@@ -197,7 +190,7 @@ function attachSelectionMap(mapDiv) {
 	selectionMap = new google.maps.Map(mapDiv, myOptions);
 	
 	if(displayMarker) {
-		placeMarker(displayLocation);
+		placeMarkerOnSelectionMap(displayLocation);
 	}
 
 	if(!displayMarker && !selectionMarker) { // if the marker hasn't already been set

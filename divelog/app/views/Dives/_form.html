@@ -156,6 +156,9 @@
     <div id="fishDragAndDrop" class="">
 	    <div id="fishNet" class="ui-widget-content">
 	        <h4 class="ui-widget-header">&{'marinelifeseen'}</h4>
+	        #{list items:dive.fishes, as:'fish'}
+               #{fishResult fish:fish, inLibrary:false /}
+            #{/list}
 	    </div>
 	    
 	    <div id="fishLibrary" class="ui-widget-content">
@@ -165,7 +168,7 @@
             <a id="fishSearch-button" class="button" >&{'searchfish'}</a>
             <ul id="fishResults">
 	        #{list items:models.Fish.all().fetch(), as:'fish'}
-	           <li class="fishBadge ui-widget-content ui-corner" id="${fish.id}"><a href="#" title="&{'addfish'}" class="ui-icon ui-icon-circle-plus addfish">&{'addfish'}</a><a href="#" title="&{'removefish'}" class="ui-icon ui-icon-circle-close removefish" style="display:none;">&{'removefish'}</a><img alt="${fish.name}" src="/public/images/fishes/${fish.name}.png" /><h5>${fish.name}</h5></li>
+	           #{fishResult fish:fish, inLibrary:true /}
 	        #{/list}
 	        </ul>
 	        </div>
@@ -173,7 +176,7 @@
 	        &{'cantfindfish'} <a id="addFish" href="#">&{'importfromwikipediabutton'}</a>
 	        </div>
 	    </div>
-        <input id="fishIds" name="fishIds" style="display:none;"/>
+        <input id="fishIds" name="fishIds" style="display:none;" value="#{list items:dive.fishes, as:'fish'}${fish.id}#{if !fish_isLast},#{/if}#{/list}"/>
     </div>
     
     

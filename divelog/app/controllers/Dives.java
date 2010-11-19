@@ -70,7 +70,6 @@ public class Dives extends Controller {
 		}
 
 		dive.addFish(fishIds);
-		
 		dive.save();
 		
 		User currentUser = Security.connectedUser();
@@ -108,13 +107,14 @@ public class Dives extends Controller {
 		show(dive.id);
 	}
 
-	public static void update(@Valid Dive dive, @Valid Spot spot) {
+	public static void update(@Valid Dive dive, @Valid Spot spot, String fishIds) {
 		if (validation.hasErrors()) {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@edit", dive);
 		}
 		
       	dive = dive.merge();
+		dive.addFish(fishIds);
       	dive.save();
       	
       	spot = spot.merge();
