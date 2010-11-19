@@ -12,12 +12,7 @@
 
 <div class="dive">
 
-     <div class="mapDisplayContainer">
-         <div id="mapDisplayLocation" class="mapDisplay"></div>
-         <script types="texts/javascripts">
-              var displayLocation = new google.maps.LatLng(${dive.spot?.latitude}, ${dive.spot?.longitude}); 
-         </script>
-     </div>
+     #{mapDisplay spot:dive.spot /}
 
     <div class="mainParams">
 	   <p>#{if dive.maxDepthSet}<em>${dive.maxDepth}m</em>#{/if} #{if dive.durationSet}<em>${dive.duration} min</em>#{/if}</p>
