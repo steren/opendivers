@@ -34,3 +34,20 @@ searchonmaps=Search on map
 friendrequests=Buddy requests:
 accept=Accept
 reject=Reject
+
+marinelife=Marine life
+marinelifeseen=Seen
+marinelifelibrary=Library
+
+searchfishplaceholder=Clownfish
+searchfish=Search
+cantfindfish=Can't find a fish ? Try
+importfromwikipediabutton=Importing it from Wikipedia
+
+importfromwikipedia=Import a fish from Wikipedia
+linksearchwikipedia=Search
+linkbrowsewikipedia=browse
+englishwikipedia=English Wikipedia and find the fish you want to import
+wikipediaurl=Wikipedia URL
+readwikipediaurl=Read
+importfish=Import fish

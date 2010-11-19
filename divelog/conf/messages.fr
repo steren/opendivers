@@ -34,3 +34,20 @@ searchonmaps=Rechercher
 friendrequests=Demandes de connexion :
 accept=Accepter
 reject=Refuser
+
+marinelife=Vie marine
+marinelifeseen=Vus
+marinelifelibrary=Bibliothèque
+
+searchfishplaceholder=Clownfish
+searchfish=Rechercher
+cantfindfish=Pas de résultat, essayez
+importfromwikipediabutton=d'importer un poisson depuis Wikipedia
+
+importfromwikipedia=Importation depuis Wikipedia
+linksearchwikipedia=Recherchez
+linkbrowsewikipedia=parcourez 
+englishwikipedia=la version anglaise de Wikipedia pour trouver le poisson à importer.
+wikipediaurl=URL Wikipedia
+readwikipediaurl=Lire
+importfish=Importer le poisson

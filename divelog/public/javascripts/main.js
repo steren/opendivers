@@ -33,24 +33,47 @@ $(document).ready(function() {
 	$("#actionFeedbackMessage").delay(5000).fadeOut();
 
 	// Drag & Drop for fishes
-	$( "#fishLibrary .fishBadge" ).draggable({
+	
+	var fishLibrary = $( "#fishLibrary" );
+	var fishNet 	= $( "#fishNet" );
+	
+	$( ".fishBadge", fishLibrary ).draggable({
 		revert: "invalid",
+		cursor: "move",
 		helper: "clone",
-		containment: "#fishDragAndDrop" // stick to demo-frame if present
+		containment: "#fishDragAndDrop"
 	});
-	$( "#fishNet" ).droppable({
+	fishNet.droppable({
+		accept: "#fishLibrary .fishBadge",
 		activeClass: 'active',
 		drop: function( event, ui ) {
 			putFishInNet(ui.draggable); //$( this ).addClass( "dropped" );
 		}
 	});
+	fishLibrary.droppable({
+		accept: "#fishNet .fishBadge",
+		activeClass: 'active',
+		drop: function( event, ui ) {
+			putFishInLibrary(ui.draggable);
+		}
+	});
 
+	
 	function putFishInNet( item ) {
-		item.fadeOut("fast", function() { item.appendTo( $("#fishNet") ).fadeIn();} );
+		item.fadeOut("fast", function() { 
+			item.appendTo( fishNet ).fadeIn(function() {
+				item.animate({ width: "100px" });
+			});
+		} );
 	}
-	
-	
-	
+	function putFishInLibrary( item ) {
+		item.fadeOut("fast", function() { 
+			item.appendTo( fishLibrary ).fadeIn(function() {
+				item.animate({ width: "80px" });
+			});
+		} );
+	}
+
 	// Display Maps
 	var mapSelectDiv = $("#mapSelectLocation").get(0);
 	if(mapSelectDiv) {

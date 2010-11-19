@@ -183,22 +183,32 @@ div.mapExplore {
 #fishNet {
 	float:left;
 	background-color: #EEEEEE;
-	width: 50%;
-	height: 300px;
-}
-#fishLibrary {
-	float:right;
-	background-color: #DDDDDD;
-    width: 50%;
+	width: 35%;
     height: 300px;
-}
-#fishLibrary div.fishBadge {
-	width: 120px;
-	height: 120px;
 }
 #fishNet.active {
     background-color: #F2F2F2;
 }
+#fishLibrary {
+	float:right;
+	background-color: #DDDDDD;
+    width: 60%;
+    height: 300px;
+}
+.fishBadge {
+	width: 80px;
+    padding: 5px;
+    margin: 0 0.4em 0.4em 0;
+    text-align: center;
+}
+.fishBadge img {
+    width: 100%;	
+}
+.fishBadge h5 {
+    font-size: 70%;
+    font-weight: normal;    
+}
+
 
 /**
  * DiveLog

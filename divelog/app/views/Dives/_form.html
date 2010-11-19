@@ -152,19 +152,20 @@
     
     
     
-    <h3><a href="#">Marine life</a></h3>
-    <div id="fishDragAndDrop">
-        <a id="addFish">Import a fish from Wikipedia</a>
-        
-	    <div id="fishNet">
-	        <div>Seen</div>
+    <h3><a href="#">&{'marinelife'}</a></h3>
+    <div id="fishDragAndDrop" class="">
+	    <div id="fishNet" class="ui-widget-content">
+	        <h4 class="ui-widget-header">&{'marinelifeseen'}</h4>
 	    </div>
 	    
-	    <div id="fishLibrary">
-	        <div>Library</div>
+	    <div id="fishLibrary" class="ui-widget-content">
+	        <h4 class="ui-widget-header">&{'marinelifelibrary'}</h4>
+            <input id="fishSearch-input" type="search" placeholder="&{'searchfishplaceholder'}"/>
+            <a id="fishSearch-button" class="button" >&{'searchfish'}</a>
 	        #{list items:models.Fish.all().fetch(), as:'fish'}
-	        <div class="fishBadge"><img alt="${fish.name}" src="/public/images/fishes/${fish.name}.png" /></div>
+	        <div class="fishBadge ui-widget-content ui-corner"><img alt="${fish.name}" src="/public/images/fishes/${fish.name}.png" /><h5>${fish.name}</h5></div>
 	        #{/list}
+	        &{'cantfindfish'} <a id="addFish" href="#">&{'importfromwikipediabutton'}</a>
 	    </div>
     
     </div>
@@ -260,25 +261,3 @@
 <script>
     $( "#accordion" ).accordion();
 </script>
-
-*{
-     <div class="row">
-      <label for="">Fishes</label>
-      <div class="field">
-            <select name="dive.fishes.id" multiple>
-            %{ models.Fish.all().fetch().sort{ it.toString() }.each() { }%
-              
-              %{
-                selected = false;
-                dive?.fishes.each() { f ->
-                  if (f.id == it?.id)
-                    selected = true;
-                }
-              }%
-              <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-            %{ } }%
-            </select>
-      </div>
-      <span class="error" style="display:none;">${errors.forKey('dive.fishes')}</span>
-    </div>
-/}*

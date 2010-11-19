@@ -1,8 +1,8 @@
 <div id="addFish-form" title="Import a fish from Wikipedia">
-    <p><a href="http://en.wikipedia.org/wiki/Special:Search" target="_blank">Search</a> or <a href="http://en.wikipedia.org/wiki/List_of_fish_common_names" target="_blank">browse</a> English Wikipedia and find the fish you want to import</p>
+    <p><a href="http://en.wikipedia.org/wiki/Special:Search" target="_blank">&{'linksearchwikipedia'}</a> or <a href="http://en.wikipedia.org/wiki/List_of_fish_common_names" target="_blank">&{'linkbrowsewikipedia'}</a>&{'englishwikipedia'}</p>
     <form>
-    <label for="name">Wikipedia URL</label>
-    <input type="text" name="wikipediaURL" id="wikipediaURL" class="text ui-widget-content ui-corner-all" placeholder="http://en.wikipedia.org/wiki/Red_Sea_Clownfish"/> <a id="readWikipediaURL">Read</a>
+    <label for="name">&{'wikipediaurl'}</label>
+    <input type="text" name="wikipediaURL" id="wikipediaURL" class="text ui-widget-content ui-corner-all" placeholder="http://en.wikipedia.org/wiki/Red_Sea_Clownfish"/> <a id="readWikipediaURL">&{'readwikipediaurl'}</a>
     </form>
     
     <div id="insertTest"></div>
@@ -10,7 +10,7 @@
 
 
 <script>
-var wikipediaHTMLResult = function(data) {
+function wikipediaHTMLResult(data) {
     var readData = $('<div>' + data.parse.text.* + '</div>');
 
     // handle redirects
@@ -52,7 +52,7 @@ $( '#addFish-form' ).dialog({
     width: 500,
     modal: true,
     buttons: {
-        "Import fish": function() {
+        "&{'importfish'}": function() {
             //$( this ).dialog( "close" );
         },
         Cancel: function() {
@@ -63,9 +63,7 @@ $( '#addFish-form' ).dialog({
     }
 });
 
-$( '#addFish' )
-    .button()
-    .click(function() {
+$( '#addFish' ).click(function() {
         $( '#addFish-form' ).dialog( 'open' );
     });
 </script>
