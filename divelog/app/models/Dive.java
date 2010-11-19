@@ -82,6 +82,41 @@ public class Dive extends CommentModel {
 		fishes = new ArrayList<Fish>();
 	}
 	
+	/**
+	 * Associate this dive with these fishes
+	 * @param fishIdList : a comma separated integer list of fish ids
+	 */
+	public void addFish(String fishIdList) {
+		
+		Logger.info(fishIdList);
+		
+		// read the string id, interpret them as int
+		String[] idStringArray = fishIdList.split(",");
+		
+		String cleanFishIdList = "";
+		List<Long> ids = new ArrayList<Long>();
+		
+		for (String fishStringid : idStringArray) {
+			ids.add( Long.parseLong(fishStringid.trim()) );
+		}
+		
+		// Create a final string for teh query
+        StringBuffer buffer = new StringBuffer();
+        Iterator iter = ids.iterator();
+        while (iter.hasNext()) {
+        	buffer.append("'");
+            buffer.append(iter.next());
+            buffer.append("'");
+            if (iter.hasNext()) {
+                buffer.append(",");
+            }
+        }
+        cleanFishIdList = buffer.toString();
+
+
+		this.fishes = Fish.find("select f from Fish f where f.id in (" + cleanFishIdList + ")").fetch();
+	}
+	
 	public String toString() {
 	    return date.toString();
 	}

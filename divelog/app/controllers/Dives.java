@@ -53,7 +53,7 @@ public class Dives extends Controller {
 		index();
 	}
 	
-	public static void save(@Valid Dive dive, @Valid Spot spot, Blob[] images) {
+	public static void save(@Valid Dive dive, @Valid Spot spot, String fishIds, Blob[] images) {
 		if (validation.hasErrors()) {
 			flash.error(Messages.get("scaffold.validation"));
 			dive.spot = spot;
@@ -68,6 +68,8 @@ public class Dives extends Controller {
 		} else {
 			dive.spot = existingSpot;
 		}
+
+		dive.addFish(fishIds);
 		
 		dive.save();
 		
@@ -78,7 +80,7 @@ public class Dives extends Controller {
 		currentUser.dives.add(dive);
 		
 		// pictures
-		if(images != null) {
+		if(images != null && images.length > 0) {
 			// FIXME use multiple file upload. Problem: the last image is duplicated.  
 			// for(Blob image : images) {
 			// Logger.info("got image");
@@ -90,9 +92,13 @@ public class Dives extends Controller {
 			// picture.save();
 			// }
 			
-			Picture picture = new Picture(images[0], currentUser);
-			picture.dive = dive;
-			picture.save();
+			Logger.info("got pictures - length: " + images.length);
+			// FIXME strange, but the Blob array contains a null element ?!?
+			if(images[0] != null) {
+				Picture picture = new Picture(images[0], currentUser);
+				picture.dive = dive;
+				picture.save();
+			}
 			
 		}
 

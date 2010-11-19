@@ -49,6 +49,14 @@
     
     <div>
     <ul>
+    #{list items:dive.fishes, as:'fish'}
+        <li><img alt="${fish.name}" src="/public/images/fishes/${fish.name}.png" />${fish.name}</li>
+    #{/list}
+    </ul>
+    </div>
+    
+    <div>
+    <ul>
     #{list items:dive.pictures, as:'picture'}
         <li><img src="@{Application.renderThumbnailPicture(picture.id)}" /></li>
     #{/list}

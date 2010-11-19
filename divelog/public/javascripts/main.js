@@ -38,8 +38,20 @@ $(document).ready(function() {
 	var fishNet 	= $( '#fishNet' );
 	var fishResults = $( '#fishResults' );
 	
+	// store here the ids of the fishes
+	var fishIds = [];
+	//read fishIDs from 
+	//$('#fishIds')
 	
+	function writeFishesToInputField() {
+		$('#fishIds').val(fishIds.join(','));
+	}
 	function putFishInNet( item ) {
+		// add fish to the list
+		fishIds.push(item.attr('id'));
+		writeFishesToInputField();
+		
+		// move HTML element
 		item.fadeOut("fast", function() { 
 			item.find('a.removefish')
 					.show()
@@ -54,6 +66,14 @@ $(document).ready(function() {
 		} );
 	}
 	function putFishInLibrary( item ) {
+		// remove fish from the list
+		var index = fishIds.indexOf(item.attr('id'))
+		if(index != -1) {
+			fishIds.splice(index, 1);
+		}
+		writeFishesToInputField();
+		
+		// move HTML element
 		item.fadeOut('fast', function() { 
 			item.find('a.addfish')
 					.show()
@@ -66,7 +86,6 @@ $(document).ready(function() {
 			});
 		} );
 	}
-	
 	
 	$( ".fishBadge", fishLibrary ).draggable({
 		revert: "invalid",
