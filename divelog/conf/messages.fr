@@ -43,6 +43,8 @@ searchfishplaceholder=Clownfish
 searchfish=Rechercher
 cantfindfish=Pas de résultat, essayez
 importfromwikipediabutton=d'importer un poisson depuis Wikipedia
+removefish=Retirer
+addfish=Ajouter
 
 importfromwikipedia=Importation depuis Wikipedia
 linksearchwikipedia=Recherchez

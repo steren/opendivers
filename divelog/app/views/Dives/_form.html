@@ -160,12 +160,18 @@
 	    
 	    <div id="fishLibrary" class="ui-widget-content">
 	        <h4 class="ui-widget-header">&{'marinelifelibrary'}</h4>
+	        <div>
             <input id="fishSearch-input" type="search" placeholder="&{'searchfishplaceholder'}"/>
             <a id="fishSearch-button" class="button" >&{'searchfish'}</a>
+            <ul id="fishResults">
 	        #{list items:models.Fish.all().fetch(), as:'fish'}
-	        <div class="fishBadge ui-widget-content ui-corner"><img alt="${fish.name}" src="/public/images/fishes/${fish.name}.png" /><h5>${fish.name}</h5></div>
+	           <li class="fishBadge ui-widget-content ui-corner"><a href="#" title="&{'addfish'}" class="ui-icon ui-icon-circle-plus addfish">&{'addfish'}</a><a href="#" title="&{'removefish'}" class="ui-icon ui-icon-circle-close removefish" style="display:none;">&{'removefish'}</a><img alt="${fish.name}" src="/public/images/fishes/${fish.name}.png" /><h5>${fish.name}</h5></li>
 	        #{/list}
+	        </ul>
+	        </div>
+	        <div style="clear:both">
 	        &{'cantfindfish'} <a id="addFish" href="#">&{'importfromwikipediabutton'}</a>
+	        </div>
 	    </div>
     
     </div>

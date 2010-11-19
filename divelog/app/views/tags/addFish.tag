@@ -1,4 +1,4 @@
-<div id="addFish-form" title="Import a fish from Wikipedia">
+<div id="addFish-form" title="&{'importfromwikipedia'}">
     <p><a href="http://en.wikipedia.org/wiki/Special:Search" target="_blank">&{'linksearchwikipedia'}</a> or <a href="http://en.wikipedia.org/wiki/List_of_fish_common_names" target="_blank">&{'linkbrowsewikipedia'}</a>&{'englishwikipedia'}</p>
     <form>
     <label for="name">&{'wikipediaurl'}</label>

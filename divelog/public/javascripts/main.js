@@ -34,15 +34,57 @@ $(document).ready(function() {
 
 	// Drag & Drop for fishes
 	
-	var fishLibrary = $( "#fishLibrary" );
-	var fishNet 	= $( "#fishNet" );
+	var fishLibrary = $( '#fishLibrary' );
+	var fishNet 	= $( '#fishNet' );
+	var fishResults = $( '#fishResults' );
+	
+	
+	function putFishInNet( item ) {
+		item.fadeOut("fast", function() { 
+			item.find('a.removefish')
+					.show()
+				.end()
+				.find('a.addfish')
+					.hide()
+				.end()
+				.appendTo( fishNet ).fadeIn(function() {
+				item.animate({ width: "100px" });
+				'<a href="#" title="Remove this fish" class="ui-icon ui-icon-circle-close">Remove</a>'
+			});
+		} );
+	}
+	function putFishInLibrary( item ) {
+		item.fadeOut('fast', function() { 
+			item.find('a.addfish')
+					.show()
+				.end()
+				.find('a.removefish')
+					.hide()
+				.end()
+				.prependTo( fishResults ).fadeIn(function() {
+				item.animate({ width: "80px" });
+			});
+		} );
+	}
+	
 	
 	$( ".fishBadge", fishLibrary ).draggable({
 		revert: "invalid",
 		cursor: "move",
 		helper: "clone",
 		containment: "#fishDragAndDrop"
+	}).click(function( event ) {
+			var $item = $( this ),
+			$target = $( event.target );
+	
+		if ( $target.is( "a.removefish" ) ) {
+			putFishInLibrary( $item );
+		} else if ( $target.is( "a.addfish" ) ) {
+			putFishInNet( $item );
+		} 
+		return false;
 	});
+	
 	fishNet.droppable({
 		accept: "#fishLibrary .fishBadge",
 		activeClass: 'active',
@@ -57,22 +99,6 @@ $(document).ready(function() {
 			putFishInLibrary(ui.draggable);
 		}
 	});
-
-	
-	function putFishInNet( item ) {
-		item.fadeOut("fast", function() { 
-			item.appendTo( fishNet ).fadeIn(function() {
-				item.animate({ width: "100px" });
-			});
-		} );
-	}
-	function putFishInLibrary( item ) {
-		item.fadeOut("fast", function() { 
-			item.appendTo( fishLibrary ).fadeIn(function() {
-				item.animate({ width: "80px" });
-			});
-		} );
-	}
 
 	// Display Maps
 	var mapSelectDiv = $("#mapSelectLocation").get(0);

@@ -195,7 +195,14 @@ div.mapExplore {
     width: 60%;
     height: 300px;
 }
+#fishResults {
+    margin-left:0;
+    padding-left:0;
+    height:200px
+}
 .fishBadge {
+	display: block;
+    float:left;
 	width: 80px;
     padding: 5px;
     margin: 0 0.4em 0.4em 0;
@@ -205,7 +212,7 @@ div.mapExplore {
     width: 100%;	
 }
 .fishBadge h5 {
-    font-size: 70%;
+    font-size: 60%;
     font-weight: normal;    
 }
 
