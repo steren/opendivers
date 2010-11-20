@@ -97,7 +97,9 @@ public class Dive extends CommentModel {
 		List<Long> ids = new ArrayList<Long>();
 		
 		for (String fishStringid : idStringArray) {
-			ids.add( Long.parseLong(fishStringid.trim()) );
+			if(!fishStringid.isEmpty()) {
+				ids.add( Long.parseLong(fishStringid.trim()) );
+			}
 		}
 		
 		// Create a final string for teh query

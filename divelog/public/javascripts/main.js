@@ -37,10 +37,14 @@ $(document).ready(function() {
 	var fishLibrary = $( '#fishLibrary' );
 	var fishNet 	= $( '#fishNet' );
 	var fishResults = $( '#fishResults' );
+	var fishIds 	= [];
 	
 	// store here the ids of the fishes
 	if($('#fishIds').size() > 0) {
-		var fishIds = $('#fishIds').val().split(',');
+		var val = $('#fishIds').val();
+		if(val !== "") {
+			fishIds = val.split(',');
+		}
 	}
 	
 	function writeFishesToInputField() {
