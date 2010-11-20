@@ -115,8 +115,10 @@ public class Dive extends CommentModel {
         }
         cleanFishIdList = buffer.toString();
 
-
 		this.fishes = Fish.find("select f from Fish f where f.id in (" + cleanFishIdList + ")").fetch();
+		
+		// add fishes to the spot.
+		this.spot.addFishes(this.fishes);
 	}
 	
 	public String toString() {

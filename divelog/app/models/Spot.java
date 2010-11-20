@@ -25,6 +25,14 @@ public class Spot extends Model {
 	@OneToMany(mappedBy = "spot", cascade = CascadeType.ALL)
 	public List<Dive> dives;
 
+	/** Store a pre-computed list of fishes seen on this spot */
+	@ManyToMany
+	public List<Fish> fishes;
+	
+	public Spot() {
+		this.fishes = new ArrayList<Fish>();
+	}
+	
 	public String toString() {
 		return name + ", " + country;
 	}
@@ -33,10 +41,20 @@ public class Spot extends Model {
 		List<Picture> pictures = Picture.find("select p from Picture p " 
 				+ "join p.dive d "
 				+ "join d.spot s "
-				+ "where s.id = ?"
+				+ "where s.id = ? "
 				+ "order by d.date DESC",
 				this.id).fetch(16);
 		return pictures;
+	}
+
+	public void addFishes(List<Fish> diveFishes) {
+		Logger.info("add spot fishes %1", diveFishes);
+		for(Fish fish : diveFishes) {
+			if(!fishes.contains(fish)) {
+				fishes.add(fish);
+			}
+		}
+		this.save();
 	}
 	
 }

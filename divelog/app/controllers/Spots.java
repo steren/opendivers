@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 
+import models.Fish;
 import models.Picture;
 import models.Spot;
 import play.mvc.Controller;
