@@ -53,3 +53,5 @@ englishwikipedia=la version anglaise de Wikipedia pour trouver le poisson à imp
 wikipediaurl=URL Wikipedia
 readwikipediaurl=Lire
 importfish=Importer le poisson
+
+gotospot=page du lieu
