@@ -55,3 +55,9 @@ readwikipediaurl=Read
 importfish=Import fish
 
 gotospot=Spot page
+
+divehere=Add a dive you made here
+onedivehere=Only %s dive logged
+manydiveshere=%s dives logged
+spotfishes=Marine Life
+spotpictures=Pictures

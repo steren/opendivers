@@ -57,4 +57,8 @@ public class Spot extends Model {
 		this.save();
 	}
 	
+	public int getDiveNumber() {
+		return this.dives.size();
+	}
+	
 }

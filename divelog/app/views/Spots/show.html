@@ -10,8 +10,14 @@
 ${spot.name}
 ${spot.country}
 
+#{if controllers.Secure.Security.isConnected()}
+<p><a href="@{Dives.create()}"">&{'divehere'}</a></p>
+#{/if}
+
+<p>#{if diveNumber<2}&{'onedivehere', diveNumber}#{/if}#{else}&{'manydiveshere', diveNumber}#{/else}</p>
 
 <div>
+<p>&{'spotpictures'}</p>
 <ul>
 #{list items:pictures, as:'picture'}
     #{pictureThumbnail picture:picture /}
@@ -20,5 +26,6 @@ ${spot.country}
 </div>
 
 <div>
+<p>&{'spotfishes'}</p>
 #{fishList fishes:spot.fishes /}
 </div>

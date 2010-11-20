@@ -20,9 +20,10 @@ public class Spots extends Controller {
 	public static void show(java.lang.Long id) {
 		Spot spot = Spot.findById(id);
 		
+		int diveNumber = spot.getDiveNumber();
 		List<Picture> pictures = spot.getPictures();
 		
-		render(spot, pictures);
+		render(spot, diveNumber, pictures);
 	}
 	
 	/**
