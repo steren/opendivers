@@ -37,6 +37,7 @@ public class Spot extends Model {
 		return name + ", " + country;
 	}
 
+	/** Get all pictures taken at this spot */
 	public List<Picture> getPictures() {
 		List<Picture> pictures = Picture.find("select p from Picture p " 
 				+ "join p.dive d "
@@ -47,6 +48,20 @@ public class Spot extends Model {
 		return pictures;
 	}
 
+	/** get the total list of divers you dove here */
+	public List<User> getDivers() {
+		List<User> divers = new ArrayList<User>();
+		for(Dive dive : this.dives) {
+			for(User user : dive.userDivers) {
+				if(!divers.contains(user)) {
+					divers.add(user);
+				}
+			}
+		}
+		
+		return divers;
+	}
+	
 	public void addFishes(List<Fish> diveFishes) {
 		Logger.info("add spot fishes %1", diveFishes);
 		for(Fish fish : diveFishes) {

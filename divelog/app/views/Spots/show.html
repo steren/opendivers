@@ -17,7 +17,16 @@ ${spot.country}
 <p>#{if diveNumber<2}&{'onedivehere', diveNumber}#{/if}#{else}&{'manydiveshere', diveNumber}#{/else}</p>
 
 <div>
-<p>&{'spotpictures'}</p>
+<h2>&{'theydovehere'}</h2>
+<ul>
+#{list items:divers, as:'diver'}
+    <li>${diver.userName}</li>
+#{/list}
+</ul>
+</div>
+
+<div>
+<h2>&{'spotpictures'}</h2>
 <ul>
 #{list items:pictures, as:'picture'}
     #{pictureThumbnail picture:picture /}
@@ -26,6 +35,6 @@ ${spot.country}
 </div>
 
 <div>
-<p>&{'spotfishes'}</p>
+<h2>&{'spotfishes'}</h2>
 #{fishList fishes:spot.fishes /}
 </div>

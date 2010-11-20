@@ -58,6 +58,7 @@ gotospot=page du site
 
 divehere=Ajouter une plongée que vosu avez faite ici
 onedivehere=Une seule plongée enregistrée
+theydovehere=Ils ont plongé ici
 manydiveshere=%s plongées ont été enregistrées sur ce site
 spotfishes=Vie marine
 spotpictures=Photos
