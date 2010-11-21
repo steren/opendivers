@@ -13,7 +13,7 @@ public class Country extends Model {
 
 	public String code;
 	
-	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "country")
 	public List<Spot> spots;
 	
 	public Country(String code) {

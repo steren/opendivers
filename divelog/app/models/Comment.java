@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-public class Comment extends CommentModel {
+public class Comment extends Model {
     
 	@ManyToOne
 	public CommentModel item;

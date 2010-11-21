@@ -22,7 +22,7 @@ public class Spot extends Model {
 	public Country country;
 	
 	/** dives done in this spot */
-	@OneToMany(mappedBy = "spot", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "spot")
 	public List<Dive> dives;
 
 	/** Store a pre-computed list of fishes seen on this spot */

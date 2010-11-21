@@ -9,7 +9,7 @@ import java.util.*;
 @Entity
 public class CommentModel extends Model {
 	
-	@OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "item")
 	public List<Comment> comment;
     
 }

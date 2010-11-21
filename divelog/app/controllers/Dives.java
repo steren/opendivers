@@ -49,6 +49,19 @@ public class Dives extends Controller {
 
 	public static void delete(java.lang.Long id) {
 		Dive dive = Dive.findById(id);
+		
+		dive.spot.dives.remove(dive);
+		dive.spot.save();
+		
+		for(User u : dive.userDivers) {
+			u.dives.remove(dive);
+			u.save();
+		}
+		
+		for(Picture p : dive.pictures) {
+			p.delete();
+		}
+		
 		dive.delete();
 		index();
 	}

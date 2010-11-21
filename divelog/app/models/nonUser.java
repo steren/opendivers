@@ -20,7 +20,7 @@ public class nonUser extends Model {
 	private Date crdate; // private because must be read-only.
     
 	/** the dives the user has made */
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	public List<Dive> dives;
 	
 	

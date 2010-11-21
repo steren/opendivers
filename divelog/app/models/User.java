@@ -30,19 +30,19 @@ public class User extends Model {
     public Blob avatar;
 	
 	/** the dives the user has made */
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	public List<Dive> dives;
 	
-	@OneToMany(mappedBy = "uploader", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "uploader")
 	public List<Picture> pictures;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	public List<User> buddies;
 	
-	@OneToMany(mappedBy="to", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="to")
 	public List<FriendRequest> receivedPendingRequests;
 
-	@OneToMany(mappedBy="from", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="from")
 	public List<FriendRequest> sentPendingRequests;
 	
     public User(String email, String userName, String password) {

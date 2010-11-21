@@ -42,7 +42,7 @@ public class Picture extends Model {
 	@ManyToOne
     public User uploader; 
     
-	@OneToMany(mappedBy = "picture", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "picture")
 	public List<PictureFishTag> tags;
 	
     public Date getUploadDate() {

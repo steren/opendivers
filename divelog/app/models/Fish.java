@@ -14,7 +14,7 @@ public class Fish extends CommentModel {
 	public String name;
 	
 	/** a list of tags from where the */
-	@OneToMany(mappedBy = "fish", cascade = CascadeType.ALL) 
+	@OneToMany(mappedBy = "fish") 
 	public List<PictureFishTag> tags;
 	
 	public String toString() {

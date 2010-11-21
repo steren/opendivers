@@ -16,7 +16,7 @@ import java.text.DateFormat;
 import java.util.*;
 
 @Entity
-public class Dive extends CommentModel {
+public class Dive extends Model {
 
 	/** date of the dive */
 	@Required @InPast
@@ -59,18 +59,18 @@ public class Dive extends CommentModel {
 	@ManyToOne
 	public Center center;
 	
-	@ManyToMany(mappedBy = "dives", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "dives")
 	public List<Trip> trips;
 	
 	@ManyToMany
 	public List<Fish> fishes;
 	
 	/** divers in this dive who have an account */
-	@ManyToMany(mappedBy = "dives", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "dives")
 	public List<User> userDivers;
 	
 	
-	@OneToMany(mappedBy="dive", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="dive")
 	public List<Picture> pictures;
 	
 	/** divers in this dive who don't have an account */
