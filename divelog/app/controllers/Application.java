@@ -5,8 +5,17 @@ import play.db.jpa.Blob;
 import play.libs.Files;
 import play.mvc.*;
 
+import java.awt.Image;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.*;
+
+import javax.imageio.ImageIO;
 
 import models.*;
 
@@ -95,4 +104,53 @@ public class Application extends Controller {
 		List<Spot> spots = Spot.find( "byNameLike", "%" + term.toLowerCase() + "%").fetch(50);
 		render(spots);
 	}
+	
+	public static void createFish(String wikipediaURL, String name, String binomial, String wikipediaImageURL) {
+
+		/*
+		InputStream input = null;
+		FileOutputStream writeFile = null;
+
+		try {
+			URL url = new URL("http://www.google.fr/images/logos/ps_logo2.png");
+			URLConnection connection = url.openConnection();
+			int fileLength = connection.getContentLength();
+
+			if (fileLength == -1) {
+				Logger.error("Invalide URL or file.");
+				return;
+			}
+
+			input = connection.getInputStream();
+			writeFile = new FileOutputStream("img");
+			byte[] buffer = new byte[1024];
+			int read;
+
+			while ((read = input.read(buffer)) > 0) {
+				writeFile.write(buffer, 0, read);
+			}
+			writeFile.flush();
+		} catch (IOException e) {
+			Logger.error("Error while trying to download the file.");
+			e.printStackTrace();
+		} finally {
+			try {
+				writeFile.close();
+				input.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		*/
+
+		// TODO check if the fish already doesn't exist.
+		Fish fish = new Fish(wikipediaURL);
+		fish.setName(name);
+		fish.binomial = binomial;
+		fish.wikipediaImageURL = wikipediaImageURL;
+		fish.save();
+		
+		render(fish);
+	}
+
 }

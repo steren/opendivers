@@ -10,6 +10,9 @@
 
 
 <script>
+
+var wikipediaFishResult = {};
+
 function wikipediaHTMLResult(data) {
     var readData = $('<div>' + data.parse.text.* + '</div>');
 
@@ -22,26 +25,26 @@ function wikipediaHTMLResult(data) {
     
     var box = readData.find('.infobox');
     
-    var binomialName    = box.find('.binomial').text();
-    var fishName        = box.find('th').first().text();
-    var imageURL        = null;
+    wikipediaFishResult.binomial    = box.find('.binomial').text();
+    wikipediaFishResult.name        = box.find('th').first().text();
+    wikipediaFishResult.wikipediaImageURL        = null;
 
     // Check if page has images
     if(data.parse.images.length >= 1) {
-        imageURL        = box.find('img').first().attr('src');
+    	wikipediaFishResult.wikipediaImageURL  = box.find('img').first().attr('src');
     }
     
-    $('#insertTest').append('<div><img src="'+ imageURL + '"/>'+ fishName +' <i>('+ binomialName +')</i></div>');
+    $('#insertTest').append('<div><img src="'+ wikipediaFishResult.wikipediaImageURL + '"/>'+ wikipediaFishResult.name +' <i>('+ wikipediaFishResult.binomial +')</i></div>');
 };
 
 function callWikipediaAPI(wikipediaPage) {
-	// http://www.mediawiki.org/wiki/API:Parsing_wikitext#parse
+	// see http://www.mediawiki.org/wiki/API:Parsing_wikitext#parse
     $.getJSON('http://en.wikipedia.org/w/api.php?action=parse&format=json&callback=?', {page:wikipediaPage, prop:'text|images', uselang:'en'}, wikipediaHTMLResult);
 }
 
 $('#readWikipediaURL').button().click( function() {
-		var wikipediaURL = $('#wikipediaURL').val();
-		var wikipediaPage = wikipediaURL.split('wikipedia.org/wiki/')[1];
+	    wikipediaFishResult.wikipediaURL = $('#wikipediaURL').val();
+		var wikipediaPage = wikipediaFishResult.wikipediaURL.split('wikipedia.org/wiki/')[1];
 		callWikipediaAPI(wikipediaPage)
     }
 );
@@ -53,7 +56,8 @@ $( '#addFish-form' ).dialog({
     modal: true,
     buttons: {
         "&{'importfish'}": function() {
-            //$( this ).dialog( "close" );
+        	$.get('@{Application.createFish()}', wikipediaFishResult, marineLifeCreationSuccess);
+        	$( this ).dialog( "close" );
         },
         Cancel: function() {
             $( this ).dialog( "close" );

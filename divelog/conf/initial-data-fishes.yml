@@ -4,7 +4,7 @@
 # Fishes
 
 Fish(pterois_volitans):
-    name: pterois_volitans
+    binomial: pterois_volitans
     
 Fish(amphiprion bicinctus):
-    name: amphiprion_bicinctus
+    binomial: amphiprion_bicinctus

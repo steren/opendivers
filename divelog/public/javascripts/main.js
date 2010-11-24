@@ -86,22 +86,28 @@ $(document).ready(function() {
 		} );
 	}
 	
-	$( ".fishResult" ).draggable({
-		revert: "invalid",
-		cursor: "move",
-		helper: "clone",
-		containment: "#fishDragAndDrop"
-	}).click(function( event ) {
-			var $item = $( this ),
-			$target = $( event.target );
 	
-		if ( $target.is( "a.removefish" ) ) {
-			putFishInLibrary( $item );
-		} else if ( $target.is( "a.addfish" ) ) {
-			putFishInNet( $item );
-		} 
-		return false;
-	});
+	function addDraggableBehavior(jqueryVar) {
+		jqueryVar.draggable({
+			revert: "invalid",
+			cursor: "move",
+			helper: "clone",
+			containment: "#fishDragAndDrop"
+		}).click(function( event ) {
+				var $item = $( this ),
+				$target = $( event.target );
+		
+			if ( $target.is( "a.removefish" ) ) {
+				putFishInLibrary( $item );
+			} else if ( $target.is( "a.addfish" ) ) {
+				putFishInNet( $item );
+			} 
+			return false;
+		});
+	}
+	
+	
+	addDraggableBehavior($( ".fishResult" ));
 	
 	fishNet.droppable({
 		accept: "#fishLibrary .fishResult",
@@ -132,6 +138,14 @@ $(document).ready(function() {
 		attachExploreMap(mapExploreDiv);
 	}
 });
+
+
+/** receive html of the new fish to add data from the server */
+function marineLifeCreationSuccess(data) {
+	//addDraggableBehavior(data);
+	$('#fishResults').append(data);
+}
+
 
 // Google Maps
 function attachDisplayMap(mapDiv) {
