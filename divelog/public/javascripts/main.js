@@ -66,35 +66,29 @@ $(document).ready(function() {
 		fishIds.push(item.attr('id'));
 		writeFishesToInputField();
 		
-		// move HTML element
-		item.fadeOut("fast", function() { 
-			item.find('a.removefish')
-					.show()
-				.end()
-				.find('a.addfish')
-					.hide()
-				.end()
-				.appendTo( fishNet ).fadeIn();
-		} );
+		// clone this object
+		item.clone()
+		.find('a.removefish')
+			.show()
+		.end()
+		.find('a.addfish')
+			.hide()
+		.end()
+		.appendTo( fishNet ).fadeIn();
+		
+		addDraggableBehaviorToFishResults();
 	}
 	function putFishInLibrary( item ) {
 		// remove fish from the list
 		var index = fishIds.indexOf(item.attr('id'))
 		if(index != -1) {
+			// remove from the fishIds list
 			fishIds.splice(index, 1);
 		}
 		writeFishesToInputField();
 		
 		// move HTML element
-		item.fadeOut('fast', function() { 
-			item.find('a.addfish')
-					.show()
-				.end()
-				.find('a.removefish')
-					.hide()
-				.end()
-				.prependTo( fishResults ).fadeIn();
-		} );
+		item.fadeOut('fast');
 	}
 	
 	function addDraggableBehaviorToFishResults() {
@@ -102,6 +96,7 @@ $(document).ready(function() {
 			revert: "invalid",
 			cursor: "move",
 			helper: "clone",
+			opacity: 0.7,
 			containment: "#fishDragAndDrop"
 		}).click(function( event ) {
 				var $item = $( this ),

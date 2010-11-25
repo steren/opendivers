@@ -164,15 +164,15 @@
 	    <div id="fishLibrary" class="ui-widget-content">
 	        <h4 class="ui-widget-header">&{'marinelifelibrary'}</h4>
 	        <div>
-            &{'searchfish'}<input id="fishSearch-input" type="search" placeholder="&{'searchfishplaceholder'}"/>
-            <ul id="fishResults">
-	        </ul>
+	            <p>&{'searchfish'}<input id="fishSearch-input" type="search" placeholder="&{'searchfishplaceholder'}"/></p>
+	            <ul id="fishResults">
+		        </ul>
 	        </div>
-	        <div>
-	        <a href="" id="previousFishes" style="display:none;">previous</a> <a href="" id="nextFishes">next</a>
+	        <div class="previousnext" style="clear:both">
+	           <p><a href="" id="previousFishes" style="display:none;">previous</a> <a href="" id="nextFishes">next</a></p>
 	        </div>
 	        <div style="clear:both">
-	        &{'cantfindfish'} <a id="addFish" href="#">&{'importfromwikipediabutton'}</a>
+                <p>&{'cantfindfish'} <a id="addFish" href="#">&{'importfromwikipediabutton'}</a></p>
 	        </div>
 	    </div>
         <input id="fishIds" name="fishIds" style="display:none;" value="#{list items:dive.fishes, as:'fish'}${fish.id}#{if !fish_isLast},#{/if}#{/list}"/>

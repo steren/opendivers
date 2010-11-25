@@ -184,7 +184,7 @@ div.mapExplore {
 	float:left;
 	background-color: #EEEEEE;
 	width: 35%;
-    height: 300px;
+    height: 340px;
 }
 #fishNet.active {
     background-color: #F2F2F2;
@@ -193,12 +193,12 @@ div.mapExplore {
 	float:right;
 	background-color: #DDDDDD;
     width: 60%;
-    height: 300px;
+    height: 340px;
 }
 #fishResults {
     margin-left:0;
     padding-left:0;
-    height:200px
+    height:240px
 }
 .fishIcons {
     margin-left:0;
