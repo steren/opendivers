@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.Dive;
+import models.Fish;
 import models.Picture;
 import models.Spot;
 import models.User;
@@ -82,7 +83,7 @@ public class Dives extends Controller {
 			dive.spot = existingSpot;
 		}
 
-		dive.addFish(fishIds);
+		dive.setFishList(fishIds);
 		dive.save();
 		
 		User currentUser = Security.connectedUser();
@@ -127,12 +128,13 @@ public class Dives extends Controller {
 		}
 		
       	dive = dive.merge();
-		dive.addFish(fishIds);
+      	dive.setFishList(fishIds);
       	dive.save();
-      	
-      	spot = spot.merge();
-      	spot.save();
 		
+      	spot = spot.merge();
+      	spot.addFishes(dive.fishes);
+      	spot.save();
+      	
 		flash.success(Messages.get("scaffold.updated", "Dive"));
 		show(dive.id);
 	}

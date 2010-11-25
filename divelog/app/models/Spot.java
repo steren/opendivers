@@ -63,7 +63,6 @@ public class Spot extends Model {
 	}
 	
 	public void addFishes(List<Fish> diveFishes) {
-		Logger.info("add spot fishes %1", diveFishes);
 		for(Fish fish : diveFishes) {
 			if(!fishes.contains(fish)) {
 				fishes.add(fish);

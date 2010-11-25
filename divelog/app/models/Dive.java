@@ -86,7 +86,7 @@ public class Dive extends Model {
 	 * Associate this dive with these fishes
 	 * @param fishIdList : a comma separated integer list of fish ids
 	 */
-	public void addFish(String fishIdList) {
+	public void setFishList(String fishIdList) {
 		
 		Logger.info(fishIdList);
 		
@@ -102,7 +102,7 @@ public class Dive extends Model {
 			}
 		}
 		
-		// Create a final string for teh query
+		// Create a final string for the query
         StringBuffer buffer = new StringBuffer();
         Iterator iter = ids.iterator();
         while (iter.hasNext()) {
@@ -115,10 +115,13 @@ public class Dive extends Model {
         }
         cleanFishIdList = buffer.toString();
 
-		this.fishes = Fish.find("select f from Fish f where f.id in (" + cleanFishIdList + ")").fetch();
-		
-		// add fishes to the spot.
-		this.spot.addFishes(this.fishes);
+        if(!cleanFishIdList.equals("")) {
+        	this.fishes = Fish.find("select f from Fish f where f.id in (" + cleanFishIdList + ")").fetch();
+        } else {
+        	this.fishes = new ArrayList<Fish>();
+        }
+
+        Logger.info(this.fishes.toString());
 	}
 	
 	public String toString() {
