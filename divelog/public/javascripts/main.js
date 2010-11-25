@@ -233,8 +233,7 @@ $(document).ready(function() {
 
 	/** receive html of the new fish to add data from the server */
 	function marineLifeCreationSuccess(data) {
-		$('#fishResults').prepend(data);
-		addDraggableBehaviorToFishResults();
+		putFishInNet($(data));
 	}
 	
 	$('#readWikipediaURL').button().click( function() {
