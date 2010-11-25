@@ -183,30 +183,47 @@ $(document).ready(function() {
 	//////////////////////
 	
 	var wikipediaFishResult = {};
+	var redirectOnce = false;
 
 	function wikipediaHTMLResult(data) {
 	    var readData = $('<div>' + data.parse.text.* + '</div>');
 
+	    // check if article exists:
+	    var exists = readData.find('#noarticletext');
+	    if(exists.length != 0) {
+	    	$('#wikipediaResults').html('<p>Sorry this wikipedia page is not an article</p>');
+	    	return;
+	    }
+	    
 	    // handle redirects
 	    var redirect = readData.find('li:contains("REDIRECT") a, li:contains("redirect") a').text();
 	    if(redirect != '') {
-	    	callWikipediaAPI(redirect);
+	    	// do not allow more than one redirect
+	    	if(redirectOnce == false) {
+	    		redirectOnce = true;
+		    	callWikipediaAPI(redirect);
+	    	} else {
+	    		$('#wikipediaResults').html('<p>Sorry this wikipedia redirects to an invalid page</p>');
+	    	}
 	        return;
 	    }
 	    
 	    var box = readData.find('.infobox');
 	    
-	    wikipediaFishResult.binomial    = box.find('.binomial').text();
-	    // the common name of the fish, "th" can contain other info than the name, take the first text node
-	    wikipediaFishResult.name        = box.find('th').first().contents().filter(function() { return this.nodeType == Node.TEXT_NODE;}).text();
-	    wikipediaFishResult.wikipediaImageURL        = null;
-
-	    // Check if page has images
-	    if(data.parse.images.length >= 1) {
-	    	wikipediaFishResult.wikipediaImageURL  = box.find('img').first().attr('src');
+	    if(box != null) {
+		    wikipediaFishResult.binomial    = box.find('.binomial').text();
+		    // the common name of the fish, "th" can contain other info than the name, take the first text node
+		    wikipediaFishResult.name        = box.find('th').first().contents().filter(function() { return this.nodeType == Node.TEXT_NODE;}).text();
+		    wikipediaFishResult.wikipediaImageURL        = null;
+	
+		    // Check if page has images
+		    if(data.parse.images.length >= 1) {
+		    	wikipediaFishResult.wikipediaImageURL  = box.find('img').first().attr('src');
+		    }
+		    $('#wikipediaResults').html('<div class="fishIcon ui-widget-content middle"><img src="'+ wikipediaFishResult.wikipediaImageURL + '"/> <h5>' + wikipediaFishResult.name +'</h15</div>');
+	    } else {
+	    	$('#wikipediaResults').html('<p>Sorry data do not contain an infobox</p>');
 	    }
-	    
-	    $('#insertTest').html('<div><img src="'+ wikipediaFishResult.wikipediaImageURL + '"/>'+ wikipediaFishResult.name +' <i>('+ wikipediaFishResult.binomial +')</i></div>');
 	};
 
 	function callWikipediaAPI(wikipediaPage) {
@@ -222,15 +239,27 @@ $(document).ready(function() {
 	
 	$('#readWikipediaURL').button().click( function() {
 		    wikipediaFishResult.wikipediaURL = $('#wikipediaURL').val();
-			var wikipediaPage = wikipediaFishResult.wikipediaURL.split('wikipedia.org/wiki/')[1];
-			callWikipediaAPI(wikipediaPage)
+		    redirectOnce = false;
+		    
+			var wikipediaPageArray = wikipediaFishResult.wikipediaURL.split('wikipedia.org/wiki/');
+			if(wikipediaPageArray[1] != null && wikipediaPageArray[1] != "") {
+				if(wikipediaPageArray[0].split('.')[0] == 'http://en') {
+					callWikipediaAPI(wikipediaPageArray[1])
+				} else {
+					$('#wikipediaResults').html('<p>This URL is not from the English version of Wikipedia</p>');
+				}
+			} else {
+				$('#wikipediaResults').html('<p>Not a valid wikipedia URL</p>');
+			}
+			return false;
 	    }
 	);
 	        
 	$( '#addFish-form' ).dialog({
 	    autoOpen: false,
-	    height: 400,
+	    height: 280,
 	    width: 500,
+	    resizable: false,
 	    modal: true,
 	    buttons: {
 	        "Import": function() {

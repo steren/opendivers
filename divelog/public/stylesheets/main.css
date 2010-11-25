@@ -247,7 +247,24 @@ div.mapExplore {
 #cantfindfish {
 	text-align:right;
     clear:both;
-    font-size: 80%;
+}
+#wikipediaURL {
+    width:250px;
+    font-size:80%;
+}
+#wikipediaResults {
+	text-align:center;
+	width:100%;
+}
+
+.middle {
+    margin-left: auto;
+    margin-right:auto;
+    float:       none;
+}
+
+.hint {
+    font-size: 80%;	
 }
 
 /**
