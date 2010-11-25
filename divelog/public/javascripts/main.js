@@ -1,10 +1,20 @@
 $(document).ready(function() {
 
+	// buttons
+	$( "button.button, input:submit, a.button").button();
+
+	// make info disappear
+	$("#actionFeedbackMessage").delay(5000).fadeOut();
+	
 	// Focus on search field
 	if (!("autofocus" in document.createElement("input"))) {
 		$("#searchInput").focus();
 	}
 
+	//////////////////////
+	// Login and signup
+	//////////////////////
+	
 	$("#signupLink").click(function() {
 		$("#loginBox").hide();
 		var box = $("#signupBox");
@@ -25,15 +35,14 @@ $(document).ready(function() {
 		}
 	});
 
-	// buttons
-	$( "button.button, input:submit, a.button").button();
-
 	
-	// make info disappear
-	$("#actionFeedbackMessage").delay(5000).fadeOut();
-
+	//////////////////////
+	// Fish Library
+	//////////////////////
+	
+	var libraryPage = 1;
+	
 	// Drag & Drop for fishes
-	
 	var fishLibrary = $( '#fishLibrary' );
 	var fishNet 	= $( '#fishNet' );
 	var fishResults = $( '#fishResults' );
@@ -50,6 +59,7 @@ $(document).ready(function() {
 	function writeFishesToInputField() {
 		$('#fishIds').val(fishIds.join(','));
 	}
+	
 	function putFishInNet( item ) {
 		// add fish to the list
 		fishIds.push(item.attr('id'));
@@ -86,7 +96,6 @@ $(document).ready(function() {
 		} );
 	}
 	
-	
 	function addDraggableBehaviorToFishResults() {
 		$( ".fishResult" ).draggable({
 			revert: "invalid",
@@ -106,8 +115,40 @@ $(document).ready(function() {
 		});
 	}
 	
-	addDraggableBehaviorToFishResults();
+	function getFishesResultsSuccess(data) {
+		$( "#fishResults" ).html(data);
+		addDraggableBehaviorToFishResults();
+		if( $(data).length < 12 ) {
+            $('#nextFishes').fadeOut();
+		} else {
+			$('#nextFishes').fadeIn();
+		}
+		if( libraryPage > 1 ) {
+			$('#previousFishes').fadeIn();
+		} else {
+			$('#previousFishes').fadeOut();
+		}
+	}
 	
+	function getFishes(pageNumber) {
+    	$.get(getFishesAction(), {pageNumber: pageNumber}, getFishesResultsSuccess);
+	}
+	
+	getFishes(libraryPage);
+	
+	$('#nextFishes').click(function() {
+		libraryPage++;
+		getFishes(libraryPage);
+		return false;
+	});
+	$('#previousFishes').click(function() {
+		libraryPage--;
+		getFishes(libraryPage);
+		return false;
+	});
+		
+
+
 	fishNet.droppable({
 		accept: "#fishLibrary .fishResult",
 		activeClass: 'active',
@@ -165,7 +206,7 @@ $(document).ready(function() {
 	    	wikipediaFishResult.wikipediaImageURL  = box.find('img').first().attr('src');
 	    }
 	    
-	    $('#insertTest').append('<div><img src="'+ wikipediaFishResult.wikipediaImageURL + '"/>'+ wikipediaFishResult.name +' <i>('+ wikipediaFishResult.binomial +')</i></div>');
+	    $('#insertTest').html('<div><img src="'+ wikipediaFishResult.wikipediaImageURL + '"/>'+ wikipediaFishResult.name +' <i>('+ wikipediaFishResult.binomial +')</i></div>');
 	};
 
 	function callWikipediaAPI(wikipediaPage) {
@@ -210,7 +251,9 @@ $(document).ready(function() {
 	
 });
 
+//////////////////////
 // Google Maps
+//////////////////////
 function attachDisplayMap(mapDiv) {
 	var myOptions = {
 		zoom : 14,

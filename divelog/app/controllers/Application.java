@@ -20,6 +20,8 @@ import javax.imageio.ImageIO;
 import models.*;
 
 public class Application extends Controller {
+	
+	public static final int FISH_RESULTS_NUMBER = 10;
 
     public static void index() {
     	List<User> users = User.findAll();
@@ -105,6 +107,18 @@ public class Application extends Controller {
 		render(spots);
 	}
 	
+	public static void getFishes(int pageNumber) {
+		List<Fish> fishes = Fish.all().fetch(pageNumber, FISH_RESULTS_NUMBER);
+		render(fishes);
+	}
+	
+	/**
+	 * AJAX :
+	 * @param wikipediaURL
+	 * @param name
+	 * @param binomial
+	 * @param wikipediaImageURL
+	 */
 	public static void createFish(String wikipediaURL, String name, String binomial, String wikipediaImageURL) {
 
 		/*

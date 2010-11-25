@@ -26,6 +26,7 @@
 	    <script type="text/javascript">
 	    var getSpotInfoWindowContentAction = #{jsAction @Spots.getSpotAdditionalInfo(':id') /};
 	    var navigateToSpotAction = #{jsAction @Spots.show(':id') /};
+        var getFishesAction = #{jsAction @Application.getFishes() /};
 	    var createFishAction = #{jsAction @Application.createFish() /};
 	    </script>
     </head>

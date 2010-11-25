@@ -47,7 +47,7 @@ public class Fish extends CommentModel {
 	}
 	
 	public String toString() {
-	    return binomial;
+	    return getName();
 	}
 	
 }
