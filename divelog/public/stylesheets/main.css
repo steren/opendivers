@@ -232,6 +232,16 @@ div.mapExplore {
     text-overflow: ellipsis;    
 }
 
+.previousnext {
+    clear: both; text-align:center;
+    margin-bottom: 10px;
+}
+
+#cantfindfish {
+	text-align:right;
+    clear:both;
+    font-size: 80%;
+}
 
 /**
  * DiveLog

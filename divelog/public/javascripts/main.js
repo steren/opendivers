@@ -115,14 +115,14 @@ $(document).ready(function() {
 		$( "#fishResults" ).html(data);
 		addDraggableBehaviorToFishResults();
 		if( $(data).length < 12 ) {
-            $('#nextFishes').fadeOut();
+            $('#nextFishes').fadeTo('fast', 0);
 		} else {
-			$('#nextFishes').fadeIn();
+			$('#nextFishes').fadeTo('fast', 1);
 		}
 		if( libraryPage > 1 ) {
-			$('#previousFishes').fadeIn();
+			$('#previousFishes').fadeTo('fast', 1);
 		} else {
-			$('#previousFishes').fadeOut();
+			$('#previousFishes').fadeTo('fast', 0);
 		}
 	}
 	
