@@ -224,7 +224,12 @@ div.mapExplore {
 }
 .fishResult h5, .fishIcon h5 {
     font-size: 60%;
-    font-weight: normal;    
+    font-weight: normal;
+    
+    /** use text-overflow to cut the content */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;    
 }
 
 
