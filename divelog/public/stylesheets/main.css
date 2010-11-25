@@ -182,22 +182,29 @@ div.mapExplore {
  */
 #fishNet {
 	float:left;
-	background-color: #EEEEEE;
-	width: 35%;
-    height: 340px;
+	width: 37%;
+    height: 380px;
 }
 #fishNet.active {
     background-color: #F2F2F2;
 }
+#fishNetContent {
+    padding: 10px;
+    margin-left:0;
+}
 #fishLibrary {
 	float:right;
-	background-color: #DDDDDD;
     width: 60%;
-    height: 340px;
+    height: 380px;
+}
+#libraryContent {
+    padding:10px;
+}
+#searchfish {
+    margin-bottom:10px;	
 }
 #fishResults {
     margin-left:0;
-    padding-left:0;
     height:240px
 }
 .fishIcons {

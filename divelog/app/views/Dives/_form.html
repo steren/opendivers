@@ -156,23 +156,25 @@
     <div id="fishDragAndDrop" class="">
 	    <div id="fishNet" class="ui-widget-content">
 	        <h4 class="ui-widget-header">&{'marinelifeseen'}</h4>
+	        <ul id="fishNetContent">
 	        #{list items:dive.fishes, as:'fish'}
                #{fishResult fish:fish, inLibrary:false /}
             #{/list}
+            </ul>
 	    </div>
 	    
 	    <div id="fishLibrary" class="ui-widget-content">
 	        <h4 class="ui-widget-header">&{'marinelifelibrary'}</h4>
-	        <div>
-	            <p>&{'searchfish'}<input id="fishSearch-input" type="search" placeholder="&{'searchfishplaceholder'}"/></p>
+	        <div id="libraryContent">
+	            <p id="searchfish">&{'searchfish'}<input id="fishSearch-input" type="search" placeholder="&{'searchfishplaceholder'}"/></p>
 	            <ul id="fishResults">
 		        </ul>
-	        </div>
-	        <div class="previousnext">
-	           <p><a href="" id="previousFishes" style="display:none;">previous</a> <a href="" id="nextFishes">next</a></p>
-	        </div>
-	        <div id="cantfindfish">
-                <p>&{'cantfindfish'} <a id="addFish" href="#">&{'importfromwikipediabutton'}</a></p>
+		        <div class="previousnext">
+		           <p><a href="" id="previousFishes" style="display:none;">previous</a> <a href="" id="nextFishes">next</a></p>
+		        </div>
+		        <div id="cantfindfish">
+	                <p>&{'cantfindfish'} <a id="addFish" href="#">&{'importfromwikipediabutton'}</a></p>
+		        </div>
 	        </div>
 	    </div>
         <input id="fishIds" name="fishIds" style="display:none;" value="#{list items:dive.fishes, as:'fish'}${fish.id}#{if !fish_isLast},#{/if}#{/list}"/>

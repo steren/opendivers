@@ -74,7 +74,7 @@ $(document).ready(function() {
 		.find('a.addfish')
 			.hide()
 		.end()
-		.appendTo( fishNet ).fadeIn();
+		.appendTo( $('#fishNetContent') ).fadeIn();
 		
 		addDraggableBehaviorToFishResults();
 	}
