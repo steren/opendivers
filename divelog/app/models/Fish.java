@@ -20,10 +20,10 @@ public class Fish extends CommentModel {
 	public String binomial;
 
 	/** name of the fish, in English */
-	private String name_en;
+	private String nameEn;
 	
 	/** name of the fish, in French */
-	private String name_fr;
+	private String nameFr;
 	
     public Blob imageOriginal;
     
@@ -39,11 +39,11 @@ public class Fish extends CommentModel {
 	}
 	
 	public void setName(String name) {
-		this.name_en = name;
+		this.nameEn = name;
 	}
 	
 	public String getName() {
-		return name_en;
+		return nameEn;
 	}
 	
 	public String toString() {

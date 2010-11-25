@@ -107,8 +107,17 @@ public class Application extends Controller {
 		render(spots);
 	}
 	
-	public static void getFishes(int pageNumber) {
-		List<Fish> fishes = Fish.all().fetch(pageNumber, FISH_RESULTS_NUMBER);
+	/**
+	 * AJAX get the fish list
+	 * @param pageNumber: number of teh page to display
+	 */
+	public static void getFishes(int pageNumber, String searchQuery) {
+		List<Fish> fishes;
+		if(searchQuery == null || searchQuery.equals("")) {
+			fishes = Fish.all().fetch(pageNumber, FISH_RESULTS_NUMBER);
+		} else {
+			fishes = Fish.find("byNameEnLike", "%" + searchQuery.toLowerCase() + "%").fetch(pageNumber,FISH_RESULTS_NUMBER);
+		}
 		render(fishes);
 	}
 	

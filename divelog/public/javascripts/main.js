@@ -41,6 +41,7 @@ $(document).ready(function() {
 	//////////////////////
 	
 	var libraryPage = 1;
+	var searchQuery;
 	
 	// Drag & Drop for fishes
 	var fishLibrary = $( '#fishLibrary' );
@@ -130,24 +131,27 @@ $(document).ready(function() {
 		}
 	}
 	
-	function getFishes(pageNumber) {
-    	$.get(getFishesAction(), {pageNumber: pageNumber}, getFishesResultsSuccess);
+	function getFishes() {
+    	$.get(getFishesAction(), {pageNumber: libraryPage, searchQuery:$('#fishSearch-input').val()}, getFishesResultsSuccess);
 	}
 	
-	getFishes(libraryPage);
+	getFishes();
 	
 	$('#nextFishes').click(function() {
 		libraryPage++;
-		getFishes(libraryPage);
+		getFishes();
 		return false;
 	});
 	$('#previousFishes').click(function() {
 		libraryPage--;
-		getFishes(libraryPage);
+		getFishes();
 		return false;
 	});
 		
-
+	$('#fishSearch-input').keyup(function() {
+		getFishes();
+		return false;
+	});
 
 	fishNet.droppable({
 		accept: "#fishLibrary .fishResult",
