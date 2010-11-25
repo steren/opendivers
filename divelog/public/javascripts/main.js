@@ -198,7 +198,8 @@ $(document).ready(function() {
 	    var box = readData.find('.infobox');
 	    
 	    wikipediaFishResult.binomial    = box.find('.binomial').text();
-	    wikipediaFishResult.name        = box.find('th').first().text();
+	    // the common name of the fish, "th" can contain other info than the name, take the first text node
+	    wikipediaFishResult.name        = box.find('th').first().contents().filter(function() { return this.nodeType == Node.TEXT_NODE;}).text();
 	    wikipediaFishResult.wikipediaImageURL        = null;
 
 	    // Check if page has images
