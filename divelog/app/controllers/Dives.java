@@ -86,6 +86,9 @@ public class Dives extends Controller {
 		dive.setFishList(fishIds);
 		dive.save();
 		
+      	spot.addFishes(dive.fishes);
+      	spot.save();
+		
 		User currentUser = Security.connectedUser();
 		if(currentUser.dives == null) {
 			currentUser.dives = new ArrayList<Dive>();
@@ -121,7 +124,7 @@ public class Dives extends Controller {
 		show(dive.id);
 	}
 
-	public static void update(@Valid Dive dive, @Valid Spot spot, String fishIds) {
+	public static void update(@Valid Dive dive, @Valid Spot spot, String fishIds, Blob[] images) {
 		if (validation.hasErrors()) {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@edit", dive);
@@ -135,6 +138,21 @@ public class Dives extends Controller {
       	spot.addFishes(dive.fishes);
       	spot.save();
       	
+		User currentUser = Security.connectedUser();
+
+		// FIXME image upload
+		if(images != null && images.length > 0) {
+			Logger.info("got pictures - length: " + images.length);
+			if(images[0] != null) {
+				Picture picture = new Picture(images[0], currentUser);
+				picture.dive = dive;
+				picture.save();
+			}
+			
+		}
+      	
+		currentUser.save();
+		
 		flash.success(Messages.get("scaffold.updated", "Dive"));
 		show(dive.id);
 	}
