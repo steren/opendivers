@@ -10,8 +10,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="150"
-   height="150"
+   width="80"
+   height="80"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.0 r9654"
@@ -33,12 +33,13 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient4084"
-       id="linearGradient4518"
+       id="linearGradient3204"
        gradientUnits="userSpaceOnUse"
-       x1="84.862968"
-       y1="150"
-       x2="81.832512"
-       y2="0" />
+       gradientTransform="translate(0,972.36218)"
+       x1="42.436562"
+       y1="80"
+       x2="42.436562"
+       y2="1.1368684e-13" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -47,11 +48,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="608.33885"
-     inkscape:cy="-57.712926"
+     inkscape:zoom="1.4"
+     inkscape:cx="488.21837"
+     inkscape:cy="27.813865"
      inkscape:document-units="px"
-     inkscape:current-layer="g3194"
+     inkscape:current-layer="g3030"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1175"
@@ -75,17 +76,16 @@
      inkscape:label="background"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-902.36218)"
+     transform="translate(0,-972.36218)"
      style="display:inline"
      sodipodi:insensitive="true">
     <rect
-       style="fill:url(#linearGradient4518);fill-opacity:1;stroke:#217867;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:url(#linearGradient3204);fill-opacity:1;stroke:#217867;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect3004"
-       width="150"
-       height="150"
+       width="80"
+       height="80"
        x="0"
-       y="0"
-       transform="translate(0,902.36218)"
+       y="972.36218"
        inkscape:tile-cx="75.256367"
        inkscape:tile-cy="74.743637"
        inkscape:tile-w="143.44167"
@@ -94,7 +94,7 @@
        inkscape:tile-y0="3.0228045" />
   </g>
   <g
-     transform="translate(0,-902.36218)"
+     transform="translate(0,-972.36218)"
      id="g3194"
      inkscape:groupmode="layer"
      inkscape:label="Copie de background"
@@ -184,18 +184,19 @@
      id="layer2"
      inkscape:label="altitude"
      style="display:inline"
+     transform="translate(0,-70)"
      sodipodi:insensitive="true">
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
-       x="241.01016"
-       y="84.845169"
+       style="font-size:19.11629105px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       x="244.28568"
+       y="113.93023"
        id="text3007"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3009"
-         x="241.01016"
-         y="84.845169"
+         x="244.28568"
+         y="113.93023"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi">altitude</tspan></text>
   </g>
   <g
@@ -203,17 +204,18 @@
      id="g3012"
      inkscape:groupmode="layer"
      style="display:inline"
+     transform="translate(0,-70)"
      sodipodi:insensitive="true">
     <text
        sodipodi:linespacing="125%"
        id="text3014"
-       y="83.329941"
-       x="741.33777"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       y="118.39048"
+       x="714.37152"
+       style="font-size:27.68575859px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi"
-         y="83.329941"
-         x="741.33777"
+         y="118.39048"
+         x="714.37152"
          id="tspan3016"
          sodipodi:role="line">cave</tspan></text>
   </g>
@@ -222,18 +224,19 @@
      id="g3018"
      inkscape:label="deep"
      style="display:inline"
+     transform="translate(0,-70)"
      sodipodi:insensitive="true">
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
-       x="969.07104"
-       y="82.82486"
+       style="font-size:28.19086075px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       x="927.64539"
+       y="118.1384"
        id="text3020"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3022"
-         x="969.07104"
-         y="82.82486"
+         x="927.64539"
+         y="118.1384"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi">deep</tspan></text>
   </g>
   <g
@@ -241,17 +244,18 @@
      id="g3024"
      inkscape:groupmode="layer"
      style="display:inline"
+     transform="translate(0,-70)"
      sodipodi:insensitive="true">
     <text
        sodipodi:linespacing="125%"
        id="text3026"
-       y="302.02795"
-       x="313.48203"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       y="331.97531"
+       x="280.81268"
+       style="font-size:29.55814552px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi"
-         y="302.02795"
-         x="313.48203"
+         y="331.97531"
+         x="280.81268"
          id="tspan3028"
          sodipodi:role="line">drift</tspan></text>
   </g>
@@ -260,18 +264,19 @@
      id="g3030"
      inkscape:label="ice"
      style="display:inline"
+     transform="translate(0,-70)"
      sodipodi:insensitive="true">
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
-       x="497.5889"
-       y="82.82486"
+       style="font-size:27.84809685px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       x="475.88489"
+       y="117.30802"
        id="text3032"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3034"
-         x="497.5889"
-         y="82.82486"
+         x="475.88489"
+         y="117.30802"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi">ice</tspan></text>
   </g>
   <g
@@ -279,17 +284,18 @@
      id="g3036"
      inkscape:groupmode="layer"
      style="display:inline"
+     transform="translate(0,-70)"
      sodipodi:insensitive="true">
     <text
        sodipodi:linespacing="125%"
        id="text3038"
-       y="301.01782"
-       x="530.92395"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       y="332.92224"
+       x="497.23724"
+       style="font-size:20.16798401px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi"
-         y="301.01782"
-         x="530.92395"
+         y="332.92224"
+         x="497.23724"
          id="tspan3040"
          sodipodi:role="line">night</tspan></text>
   </g>
@@ -298,18 +304,19 @@
      id="g3042"
      inkscape:label="search"
      style="display:inline"
+     transform="translate(0,-70)"
      sodipodi:insensitive="true">
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
-       x="747.8476"
-       y="301.01782"
+       style="font-size:23.03198624px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       x="711.09021"
+       y="329.54236"
        id="text3044"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3046"
-         x="747.8476"
-         y="301.01782"
+         x="711.09021"
+         y="329.54236"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi">search</tspan></text>
   </g>
   <g
@@ -317,17 +324,18 @@
      id="g3048"
      inkscape:groupmode="layer"
      style="display:inline"
+     transform="translate(0,-70)"
      sodipodi:insensitive="true">
     <text
        sodipodi:linespacing="125%"
        id="text3050"
-       y="303.03812"
-       x="961.85382"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       y="331.10434"
+       x="925.70648"
+       style="font-size:25.23298836px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi"
-         y="303.03812"
-         x="961.85382"
+         y="331.10434"
+         x="925.70648"
          id="tspan3052"
          sodipodi:role="line">wreck</tspan></text>
   </g>
