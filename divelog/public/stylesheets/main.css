@@ -268,6 +268,18 @@ div.mapExplore {
 }
 
 /**
+ * Advances parameters
+ */
+.diveTypes, .waterTypes {
+    margin-left:0;
+    padding-left:0;
+    float: left;
+}
+.diveType, .waterType {
+    display:inline;
+}
+
+/**
  * DiveLog
  */ 
  .diveLog .dives {

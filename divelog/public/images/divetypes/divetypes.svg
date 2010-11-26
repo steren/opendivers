@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="150"
+   height="150"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="divetypes.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4084">
+      <stop
+         style="stop-color:#afe9dd;stop-opacity:1;"
+         offset="0"
+         id="stop4086" />
+      <stop
+         style="stop-color:#afe9dd;stop-opacity:0;"
+         offset="1"
+         id="stop4088" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4084"
+       id="linearGradient4518"
+       gradientUnits="userSpaceOnUse"
+       x1="84.862968"
+       y1="150"
+       x2="81.832512"
+       y2="0" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="608.33885"
+     inkscape:cy="-57.712926"
+     inkscape:document-units="px"
+     inkscape:current-layer="g3194"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1175"
+     inkscape:window-x="1600"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:snap-page="true" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="background"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-902.36218)"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:url(#linearGradient4518);fill-opacity:1;stroke:#217867;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect3004"
+       width="150"
+       height="150"
+       x="0"
+       y="0"
+       transform="translate(0,902.36218)"
+       inkscape:tile-cx="75.256367"
+       inkscape:tile-cy="74.743637"
+       inkscape:tile-w="143.44167"
+       inkscape:tile-h="143.44167"
+       inkscape:tile-x0="3.5355339"
+       inkscape:tile-y0="3.0228045" />
+  </g>
+  <g
+     transform="translate(0,-902.36218)"
+     id="g3194"
+     inkscape:groupmode="layer"
+     inkscape:label="Copie de background"
+     style="display:inline">
+    <use
+       id="altitude"
+       xlink:href="#rect3004"
+       inkscape:tiled-clone-of="#rect3004"
+       y="0"
+       x="0"
+       width="150"
+       height="150"
+       transform="translate(240,0)" />
+    <use
+       id="drift"
+       transform="translate(240,215.1625)"
+       xlink:href="#rect3004"
+       inkscape:tiled-clone-of="#rect3004"
+       y="0"
+       x="0"
+       width="150"
+       height="150"
+       inkscape:label="#use3200" />
+    <use
+       id="ice"
+       transform="translate(455.1625,0)"
+       xlink:href="#rect3004"
+       inkscape:tiled-clone-of="#rect3004"
+       y="0"
+       x="0"
+       width="150"
+       height="150"
+       inkscape:label="#use3202" />
+    <use
+       id="night"
+       transform="translate(455.1625,215.1625)"
+       xlink:href="#rect3004"
+       inkscape:tiled-clone-of="#rect3004"
+       y="0"
+       x="0"
+       width="150"
+       height="150"
+       inkscape:label="#use3204" />
+    <use
+       id="cave"
+       transform="translate(670.325,0)"
+       xlink:href="#rect3004"
+       inkscape:tiled-clone-of="#rect3004"
+       y="0"
+       x="0"
+       width="150"
+       height="150"
+       inkscape:label="#use3206" />
+    <use
+       id="search"
+       transform="translate(670.325,215.1625)"
+       xlink:href="#rect3004"
+       inkscape:tiled-clone-of="#rect3004"
+       y="0"
+       x="0"
+       width="150"
+       height="150"
+       inkscape:label="#use3208" />
+    <use
+       id="deep"
+       transform="translate(885.4875,0)"
+       xlink:href="#rect3004"
+       inkscape:tiled-clone-of="#rect3004"
+       y="0"
+       x="0"
+       width="150"
+       height="150"
+       inkscape:label="#use3210" />
+    <use
+       id="wreck"
+       transform="translate(885.4875,215.1625)"
+       xlink:href="#rect3004"
+       inkscape:tiled-clone-of="#rect3004"
+       y="0"
+       x="0"
+       width="150"
+       height="150"
+       inkscape:label="#use3212" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="altitude"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       x="241.01016"
+       y="84.845169"
+       id="text3007"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3009"
+         x="241.01016"
+         y="84.845169"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi">altitude</tspan></text>
+  </g>
+  <g
+     inkscape:label="cave"
+     id="g3012"
+     inkscape:groupmode="layer"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <text
+       sodipodi:linespacing="125%"
+       id="text3014"
+       y="83.329941"
+       x="741.33777"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi"
+         y="83.329941"
+         x="741.33777"
+         id="tspan3016"
+         sodipodi:role="line">cave</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="g3018"
+     inkscape:label="deep"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       x="969.07104"
+       y="82.82486"
+       id="text3020"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3022"
+         x="969.07104"
+         y="82.82486"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi">deep</tspan></text>
+  </g>
+  <g
+     inkscape:label="drift"
+     id="g3024"
+     inkscape:groupmode="layer"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <text
+       sodipodi:linespacing="125%"
+       id="text3026"
+       y="302.02795"
+       x="313.48203"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi"
+         y="302.02795"
+         x="313.48203"
+         id="tspan3028"
+         sodipodi:role="line">drift</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="g3030"
+     inkscape:label="ice"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       x="497.5889"
+       y="82.82486"
+       id="text3032"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3034"
+         x="497.5889"
+         y="82.82486"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi">ice</tspan></text>
+  </g>
+  <g
+     inkscape:label="night"
+     id="g3036"
+     inkscape:groupmode="layer"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <text
+       sodipodi:linespacing="125%"
+       id="text3038"
+       y="301.01782"
+       x="530.92395"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi"
+         y="301.01782"
+         x="530.92395"
+         id="tspan3040"
+         sodipodi:role="line">night</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="g3042"
+     inkscape:label="search"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       x="747.8476"
+       y="301.01782"
+       id="text3044"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3046"
+         x="747.8476"
+         y="301.01782"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi">search</tspan></text>
+  </g>
+  <g
+     inkscape:label="wreck"
+     id="g3048"
+     inkscape:groupmode="layer"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <text
+       sodipodi:linespacing="125%"
+       id="text3050"
+       y="303.03812"
+       x="961.85382"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:BIRTH OF A HERO;-inkscape-font-specification:BIRTH OF A HERO"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lohit Hindi;-inkscape-font-specification:Lohit Hindi"
+         y="303.03812"
+         x="961.85382"
+         id="tspan3052"
+         sodipodi:role="line">wreck</tspan></text>
+  </g>
+</svg>

@@ -217,39 +217,67 @@
 		
 		<div class="row">
         <div class="rowElement">
-		<label for="">Type</label>
-		<select name="dive.type.id" multiple>
-		%{ models.DiveType.all().fetch().sort{ it.toString() }.each() { }%
-		  
-		  %{
-		    selected = false;
-		    dive?.type.each() { f ->
-		      if (f.id == it?.id)
-		        selected = true;
-		    }
-		  }%
-		<option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-		%{ } }%
-		</select>
-		 <span class="error" style="display:none;">${errors.forKey('dive.type')}</span>
+			
+			<ul class="diveTypes">
+			%{ models.DiveType.all().fetch().sort{ it.toString() }.each() { }%
+              
+              %{
+                selected = false;
+                dive?.type.each() { f ->
+                  if (f.id == it?.id)
+                    selected = true;
+                }
+              }%
+                <li class="diveType"><a href="/"><img alt="${it}" src="/public/images/divetypes/${it}.png" /></a></li>
+            %{ } }%
+            </ul>
+			
+			<select name="dive.type.id" multiple style="display:none;">
+			%{ models.DiveType.all().fetch().sort{ it.toString() }.each() { }%
+			  
+			  %{
+			    selected = false;
+			    dive?.type.each() { f ->
+			      if (f.id == it?.id)
+			        selected = true;
+			    }
+			  }%
+			<option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+			%{ } }%
+			</select>
+			 <span class="error" style="display:none;">${errors.forKey('dive.type')}</span>
         </div>
         </div>
+
         <div class="row">
         <div class="rowElement">
-		<label for="">Water</label>
-		<select name="dive.water.id">       
-		%{ models.WaterType.all().fetch().sort{ it.toString() }.each() { }%
-		  
-		  %{
-		    selected = false;
-		    if (dive?.water?.id == it.id) {
-		      selected = true
-		    }
-		  }%
-		<option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-		%{ } }%
-		</select>
-        <span class="error" style="display:none;">${errors.forKey('dive.water')}</span>
+            <ul class="waterTypes">
+            %{ models.WaterType.all().fetch().sort{ it.toString() }.each() { }%
+              
+              %{
+                selected = false;
+                if (dive?.water?.id == it.id) {
+                  selected = true
+                }
+              }%
+                <li class="waterType"><a href="/"><img alt="${it}" src="/public/images/watertypes/${it}.png" /></a></li>
+            %{ } }%
+            </ul>
+
+
+			<select name="dive.water.id" style="display:none;">       
+			%{ models.WaterType.all().fetch().sort{ it.toString() }.each() { }%
+			  
+			  %{
+			    selected = false;
+			    if (dive?.water?.id == it.id) {
+			      selected = true
+			    }
+			  }%
+			<option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+			%{ } }%
+			</select>
+	        <span class="error" style="display:none;">${errors.forKey('dive.water')}</span>
 		</div>
 		</div>
     </div>
