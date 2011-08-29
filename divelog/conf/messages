@@ -1,11 +1,32 @@
-signup=Sign up
-login=Login
-logout=Logout
+siteURL=http://www.opendivers.com
 
-username=User name
-email=Email
+# userOptions
+signuplink=Sign up
+loginlink=Login
+logoutlink=Logout
+signupbutton=Sign up
+email=E-mail
+username=Username
 password=Password
-remember=remember
+remember=remember?
+loginbutton=Log in
+
+# register
+signuptitle=Sign up
+register=Sign up
+passwordconfirm=Confirm password
+promocode=Access code
+registernotvalidpromocode=Not a valid code
+registeremailexist=This email already exists
+registerusernameexist=This name already exists
+
+# index
+invitesomeone=Invite someone to OpenDivers
+invitationsleft=You have %s invitations left
+inviteemailplaceholder=example@email.com
+addmessage=Add a message
+invitesubmit=Send
+inviteconfirm=Invitation sent
 
 newdive=Add dive
 edit=Edit
@@ -62,3 +83,30 @@ theydovehere=They dove here
 manydiveshere=%s dives logged
 spotfishes=Marine Life
 spotpictures=Pictures
+
+# confirm
+emailconfirmed=Email confirmed
+
+####################
+# E MAILs
+####################
+
+# confirmation
+emailwelcome=Welcome %s
+emailsignature=The OpenDivers team<br/>http://www.OpenDivers.com
+emailconfirmationsubject=OpenDivers: please confirm your email
+emailconfirmtext=You need to confirm your email :
+emailconfirmlink=Click here to confirm %s
+
+# followNotification
+emailfollownotificationsubject=User %s added you to his favorites on OpenDivers
+emailuserstartfollowing1=The user
+emailuserstartfollowing2= added you in his favorites on OpenDivers. You can check his page to learn more about him.
+
+# invitation
+emailhello=Hello,
+emailinvitationsubject=%s presents you OpenDivers
+emailinvitationmarketing=OpenDivers is a place to share predictions about the future.
+emailinvitationinvitor=%s is saying:
+emailinvitationbeta=OpenDivers is currently in closed beta.
+clickheretoregistrationpage=You have to follow this link to create your account.

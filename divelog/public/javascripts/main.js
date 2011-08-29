@@ -14,27 +14,52 @@ $(document).ready(function() {
 	//////////////////////
 	// Login and signup
 	//////////////////////
-	
-	$("#signupLink").click(function() {
-		$("#loginBox").hide();
-		var box = $("#signupBox");
-		if (box.is(":visible")) {
-			box.fadeOut();
-		} else {
-			box.fadeIn();
-		}
-	});
-
 	$("#loginLink").click(function() {
-		$("#signupBox").hide();
 		var box = $("#loginBox");
 		if (box.is(":visible")) {
 			box.fadeOut();
 		} else {
 			box.fadeIn();
 		}
+		return false;
+	});
+	
+	$("#registerForm").validate({
+		rules: {
+			email: {
+				required: true,
+				email: true
+			},
+			username: {
+				required: true,
+				minlength: 3
+			},
+			password: {
+				required: true,
+				minlength: 5
+			},
+			passwordconfirm: {
+				required: true,
+				minlength: 5,
+				equalTo: "#registerPassword"
+			}
+		}
 	});
 
+	//////////////////////
+	// Invitation System
+	//////////////////////
+    $('#emailInvite').focus(function() { $('#inviteMessage').slideDown('normal');});
+    
+    $('#inviteForm').submit(function() {
+        $.getJSON(inviteAction(), $(this).serialize(), function() { 
+        	$('#inviteconfirm').slideDown('normal');
+        	$('#inviteTextArea').val('');
+        	$('#emailInvite').val('');
+            }
+        );
+        return false;
+    });
 	
 	//////////////////////
 	// Fish Library

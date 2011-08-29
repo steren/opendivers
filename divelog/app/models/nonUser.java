@@ -14,7 +14,6 @@ public class nonUser extends Model {
     public String email;
     public String password;
     public String fullname;
-    public boolean isAdmin;
     
 	/** Date the user created his account */
 	private Date crdate; // private because must be read-only.

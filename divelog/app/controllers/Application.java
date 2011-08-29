@@ -1,6 +1,8 @@
 package controllers;
 
 import play.*;
+import play.data.validation.Email;
+import play.data.validation.Required;
 import play.db.jpa.Blob;
 import play.libs.Files;
 import play.mvc.*;
@@ -34,11 +36,33 @@ public class Application extends Controller {
 	    	
 	    	List<User> buddies = currentUser.buddies;
 	    	renderArgs.put("buddies", buddies);
+	    	
+	    	long invitationsLeft = currentUser.invitationsLeft;
+	    	renderArgs.put("invitationsLeft", invitationsLeft);
 	    }
 	    
         render(users);
     }
 
+	/**
+	 * AJAX The current user invites another user
+	 * @param email : email to invite
+	 * @param message : message displayed in the invitation email
+	 */
+	public static void invite(@Email @Required String email, String message) {
+		if (validation.hasErrors()) {
+			flash.error("Not a valid email");
+			renderText("false");
+		}
+		
+		User currentUser = Security.connectedUser();
+		if(currentUser.invite(email, message)) {
+			renderText("true");
+		} else  {
+			renderText("false");
+		}
+	}
+    
     public static void explore() {
 		List<Spot> spots = models.Spot.all().fetch();
 		render(spots);

@@ -30,6 +30,8 @@ GET     /trips/?                                Trips.index
 GET     /trip/{<[0-9]+>id}                      Trips.show
 GET     /trip/{<[0-9]+>id}/edit                 Trips.edit
 
+# Import CRUD routes
+*       /admin                                  module:crud
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

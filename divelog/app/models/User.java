@@ -5,15 +5,17 @@ import play.data.validation.Email;
 import play.data.validation.Password;
 import play.data.validation.Required;
 import play.db.jpa.*;
+import play.libs.Codec;
 import play.libs.Crypto;
 
 import javax.persistence.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Entity
 public class User extends Model {
-	
 	
 	@Required @Email
     public String email;
@@ -21,14 +23,23 @@ public class User extends Model {
     public String userName;
 	@Required @Password
     public String password;
-    public boolean isAdmin;
     
+	/** Has the user confirmed his email */
+	public boolean emailConfirmed;
+	/** Is this user an administrator ? */
+	public boolean isAdmin;
+	/** a unique identifier that designate this user */
+	public String uuid;
+	
 	/** Date the user created his account */
 	private Date crDate;
     
 	/** Avatar of this user */
     public Blob avatar;
 	
+	/** How many invitations this user can send, -1 for infinity*/
+	public long invitationsLeft;
+    
 	/** the dives the user has made */
 	@ManyToMany
 	public List<Dive> dives;
@@ -51,10 +62,17 @@ public class User extends Model {
         this.password = Crypto.passwordHash(password);
         this.crDate = new Date();
         
+		this.emailConfirmed = false;
+		this.uuid = Codec.UUID();
+        
         this.buddies = new ArrayList<User>();
         this.receivedPendingRequests = new ArrayList<FriendRequest>();
         this.sentPendingRequests = new ArrayList<FriendRequest>();
     }
+    
+	public String toString() {
+		return userName;
+	}
     
     /**
      * Authenticate a user given his email and password.
@@ -112,5 +130,38 @@ public class User extends Model {
     	request.delete();
     	
     }
+    
+	public boolean invite(String email, String message) {
+		if(invitationsLeft != 0) {
+			// Create a promocode
+			String uuid = Codec.UUID();
+			try {
+				Promocode code = new Promocode(uuid, 1, (new SimpleDateFormat("yyyy/MM/dd")).parse("2012/12/31") );
+				code.save();
+			} catch (ParseException e) {
+				Logger.error("Cannot create promocode");
+				return false;
+			}
+			
+			// Create the invitation
+			Invitation invitation = new Invitation(this, email, message, uuid);
+			invitation.save();
+
+			// create the task for mail sending
+			InvitationMailTask task = new InvitationMailTask(invitation);
+			task.save();
+			
+			invitationsLeft--;
+			save();
+			return true;
+		}
+		return false;
+	}
+	
+	public void addInvitations(long invitationNumber) {
+		this.invitationsLeft += invitationNumber;
+		save();
+	}
+	
     
 }

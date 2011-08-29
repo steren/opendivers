@@ -19,6 +19,9 @@
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script>
+        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/jquery-ui-1.8.5.custom.min.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/jquery.validate.min.js'}" type="text/javascript" charset="utf-8"></script>
         
         <script src="@{'/public/javascripts/main.js'}" type="text/javascript" charset="utf-8"></script>
         
@@ -28,6 +31,7 @@
 	    var navigateToSpotAction = #{jsAction @Spots.show(':id') /};
         var getFishesAction = #{jsAction @Application.getFishes() /};
 	    var createFishAction = #{jsAction @Application.createFish() /};
+	    var inviteAction = #{jsAction @Application.invite() /};
 	    </script>
     </head>
     <body>

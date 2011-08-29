@@ -13,6 +13,7 @@ Users:
 </ul>
 
 #{if controllers.Security.connectedUser()}
+
 &{'friendrequests'}
 <ul>
 #{list items:friendRequests, as:'request'}
@@ -26,4 +27,7 @@ Users:
     <li>${buddy.userName}</li>
 #{/list}
 </ul>
+
+#{invitations invitationsLeft:invitationsLeft /}
+
 #{/if}
